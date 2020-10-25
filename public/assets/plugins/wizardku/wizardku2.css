@@ -1,0 +1,222 @@
+.wizardku2 body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background: linear-gradient(-45deg, #2196F3 50%, #EEEEEE 50%);
+    background-repeat: no-repeat
+}
+
+.wizardku2 .card {
+    background-color: #FFF;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    z-index: 0
+}
+
+.wizardku2 .heading {
+    font-weight: normal
+}
+
+.wizardku2 .desc {
+    font-size: 14px
+}
+
+.wizardku2 #progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    padding-left: 0px
+}
+
+.wizardku2 #progressbar .active {
+    color: #673AB7
+}
+
+.wizardku2 #progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 20%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+.wizardku2 #progressbar .step0:before {
+    content: ""
+}
+
+.wizardku2 #progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    margin: auto;
+    padding: 2px
+}
+
+.wizardku2 #progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: #E0E0E0;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    z-index: -1
+}
+
+.wizardku2 #progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+.wizardku2 #progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+.wizardku2 #progressbar li.active:before,
+.wizardku2 #progressbar li.active:after {
+    background: #F9A825
+}
+
+.wizardku2 .sub-heading {
+    font-weight: 500
+}
+
+.wizardku2 .yellow-text {
+    color: #F9A825
+}
+
+.wizardku2 fieldset.show {
+    display: block
+}
+
+.wizardku2 fieldset {
+    display: none
+}
+
+.wizardku2 .radio {
+    display: inline-block;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #BDBDBD;
+    font-weight: 500;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%)
+}
+
+.wizardku2 .radio:hover {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.wizardku2 .radio.selected {
+    border: 1px solid #F9A825;
+    box-shadow: 0px 8px 16px 0px #EEEEEE;
+    color: #29B6F6 !important;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    filter: grayscale(0%)
+}
+
+.wizardku2 .card-block {
+    border: 1px solid #CFD8DC;
+    width: 45%;
+    margin: 2.5%;
+    padding: 20px 25px 15px 25px
+}
+
+@media screen and (max-width: 768px) {
+    .wizardku2 .card-block {
+        padding: 20px 20px 0px 20px;
+        height: 250px
+    }
+}
+
+.wizardku2 .icon {
+    width: 85px;
+    height: 100px
+}
+
+.wizardku2 .image-icon {
+    width: 85px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px
+}
+
+.wizardku2 select,
+.wizardku2 input,
+.wizardku2 textarea,
+.wizardku2 button {
+    padding: 8px 15px 8px 15px;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+.wizardku2 select:focus,
+.wizardku2 input:focus,
+.wizardku2 textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid skyblue !important;
+    outline-width: 0
+}
+
+.wizardku2 button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+.wizardku2 textarea {
+    height: 100px
+}
+
+.wizardku2 > button {
+    width: 120px;
+    letter-spacing: 2px
+}
+
+.wizardku2 .fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+.wizardku2 .btn-block {
+    border-radius: 5px;
+    height: 50px;
+    font-weight: 500;
+    cursor: pointer
+}
+
+.wizardku2 .fa-long-arrow-right {
+    float: right;
+    margin-top: 4px
+}
+
+.wizardku2 .fa-long-arrow-left {
+    float: left;
+    margin-top: 4px
+}
