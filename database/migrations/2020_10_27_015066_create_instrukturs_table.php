@@ -19,6 +19,7 @@ class CreateInstruktursTable extends Migration
             $table->foreignId('udiklat_id')->constrained();
             $table->foreignId('tipeinstruktur_id')->constrained();
             $table->foreignId('levelinstruktur_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->string('no_ktp', 50);
             $table->string('no_npwp', 50);
             $table->string('no_rekening', 50);
