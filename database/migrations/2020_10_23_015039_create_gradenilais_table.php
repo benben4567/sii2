@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKelompokgradesTable extends Migration
+class CreateGradenilaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateKelompokgradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('kelompokgrades', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('kelompok_grade', 100);
+        Schema::create('gradenilais', function (Blueprint $table) {
+            $table->tinyInteger('id')->autoIncrement()->unsigned();
+            $table->string('grade_nilai', 5)->unique();
+            $table->decimal('nilai_minimum', 5, 2)->unsigned();
+            $table->decimal('nilai_maksimum', 5, 2)->unsigned();
             $table->integer('dibuat_oleh')->unsigned();
             $table->integer('diedit_oleh')->unsigned();
             $table->enum('status', ['0', '1']);
@@ -30,6 +32,6 @@ class CreateKelompokgradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelompokgrades');
+        Schema::dropIfExists('gradenilais');
     }
 }

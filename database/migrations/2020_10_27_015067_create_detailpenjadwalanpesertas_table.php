@@ -20,7 +20,7 @@ class CreateDetailPenjadwalanpesertasTable extends Migration
             $table->foreignId('peserta_id')->constrained();
             $table->foreignId('detailwo_id')->constrained();
             $table->foreignId('level1unit_id')->constrained();
-            $table->foreignId('gradenilai_id')->constrained();
+            $table->tinyInteger('gradenilai_id')->unsigned();
             $table->string('unit_level_1', 255);
             $table->enum('konf_kehadiran', ['0', '1']);
             $table->integer('dikonf_kehadiran_oleh')->unsigned();
@@ -35,6 +35,8 @@ class CreateDetailPenjadwalanpesertasTable extends Migration
             $table->integer('id_evaluasi_kesesuaian_penjadwalan_itn')->unsigned();
             $table->integer('id_penjadwalan_itn')->unsigned();
             $table->timestamps();
+
+            $table->foreign('gradenilai_id')->references('id')->on('gradenilais');
         });
     }
 
