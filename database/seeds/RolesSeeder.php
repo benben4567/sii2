@@ -1,11 +1,11 @@
 <?php
 
-use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Contracts\Permission;
 use Spatie\Permission\PermissionRegistrar;
+use Spatie\Permission\Models\Role;
 
 class RolesSeeder extends Seeder
 {
