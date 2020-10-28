@@ -16,15 +16,15 @@ class CreatePesertasTable extends Migration
         Schema::create('pesertas', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             //start fk
-            $table->foreignId('role_id')->constrained();
+            $table->integer('role_id')->unsigned();
             $table->foreignId('level1unit_id')->constrained();
-            $table->foreignId('level2unit_id')->constrained();
-            $table->foreignId('level3unit_id')->constrained();
-            $table->foreignId('pendidikan_id')->constrained();
-            $table->foreignId('jurusan_id')->constrained();
-            $table->foreignId('grade_id')->constrained();
-            $table->foreignId('jenjangjabatan_id')->constrained();
-            $table->foreignId('udiklat_id')->constrained();
+            $table->foreignId('level2unit_id')->nullable()->constrained();
+            $table->foreignId('level3unit_id')->nullable()->constrained();
+            $table->foreignId('pendidikan_id')->nullable()->constrained();
+            $table->foreignId('jurusan_id')->nullable()->constrained();
+            $table->foreignId('grade_id')->nullable()->constrained();
+            $table->foreignId('jenjangjabatan_id')->nullable()->constrained();
+            $table->foreignId('udiklat_id')->nullable()->constrained();
             //end fk
             $table->enum('jeniskelamin', ['0', '1']);
             $table->string('nip', 50)->unique();
@@ -42,8 +42,8 @@ class CreatePesertasTable extends Migration
             $table->enum('status', ['0', '1']);
             $table->integer('id_peserta_lama')->unsigned();
             $table->integer('id_instruktur_lama')->unsigned();
-            $table->string('profesi1', 255);
-            $table->string('profesi2', 255);
+            $table->string('profesi1', 255)->nullable();
+            $table->string('profesi2', 255)->nullable();
             $table->timestamps();
         });
     }

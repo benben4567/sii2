@@ -23,7 +23,7 @@ class CreateJudulsTable extends Migration
             $table->foreignId('penyelenggaraan_id')->constrained();
             $table->foreignId('jenissertifikat_id')->constrained();
             $table->foreignId('dahanprofesi_id')->constrained();
-            $table->foreignId('akademi_id')->constrained();
+            $table->foreignId('akademi_id')->nullable()->constrained();
             //endforeign key
             $table->string('kode_judul', 50);
             $table->string('nama_judul', 255);

@@ -26,7 +26,7 @@ class CreateUdiklatsTable extends Migration
             $table->integer('dibuat_oleh')->unsigned();
             $table->integer('diedit_oleh')->unsigned();
             $table->enum('status', ['0', '1']);
-            $table->integer('id_udiklat_lama')->unique();
+            $table->integer('id_udiklat_lama')->unsigned();
             $table->timestamps();
         });
     }

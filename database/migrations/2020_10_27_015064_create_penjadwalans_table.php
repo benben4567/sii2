@@ -16,14 +16,14 @@ class CreatePenjadwalansTable extends Migration
         Schema::create('penjadwalans', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->foreignId('wo_id')->constrained();
-            $table->foreignId('kelas_id')->constrained();
+            $table->foreignId('kelas_id')->nullable()->constrained();
             $table->foreignId('penyelenggaraan_id')->constrained();
             $table->integer('jumlah_peserta');
             $table->integer('angkatan')->unsigned();
             $table->enum('realisasi', ['0', '1', '2', '3', '4', '5', '6', '7', '8']);
             $table->dateTime('waktu_realisasi');
             $table->integer('direalisasi_oleh');
-            $table->date('tanggal_oleh_realisasi');
+            $table->date('tanggal_mulai_realisasi');
             $table->date('tanggal_selesai_realisasi');
             $table->enum('konf_kelas', ['0', '1']);
             $table->integer('dikonf_kelas_oleh')->unsigned();

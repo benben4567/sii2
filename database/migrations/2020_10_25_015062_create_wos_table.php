@@ -19,7 +19,7 @@ class CreateWosTable extends Migration
             $table->foreignId('judul_id')->index()->constrained();
             $table->foreignId('udiklat_id')->index()->constrained();
             $table->foreignId('jenispelaksanaan_id')->index()->constrained();
-            $table->foreignId('kelas_id')->index()->constrained('kelas');
+            $table->foreignId('kelas_id')->nullable()->index()->constrained('kelas');
             $table->foreignId('penyelenggaraan_id')->index()->constrained();
             $table->foreignId('jenissertifikat_id')->index()->constrained();
             $table->integer('angkatan')->unsigned();

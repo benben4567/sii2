@@ -15,7 +15,7 @@ class CreateLevelprofisiensisTable extends Migration
     {
         Schema::create('levelprofisiensis', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('kode_level_profisiensi', 2)->unique();
+            $table->string('kode_level_profisiensi', 2);
             $table->string('level_profisiensi', 50)->unique();
             $table->enum('jenis_profisiensi', ["H", "S"])->index();
             $table->integer('dibuat_oleh')->unsigned();
