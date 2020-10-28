@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['as' => 'admin.'], function () {
+Route::group(['middleware' => ['auth'], 'as' => 'admin.'], function () {
   // Materi
   Route::get('materi',['as' => 'materi.index', 'uses' => 'MateriController@index']);
   Route::get('materi/create',['as' => 'materi.create', 'uses' => 'MateriController@create']);
