@@ -16,7 +16,7 @@ class CreateLevel3UnitsTable extends Migration
         Schema::create('level3units', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->foreignId('level2unit_id')->constrained();
-            $table->string('kode_unit_level3', 5)->unique();
+            $table->string('kode_unit_level3', 5);
             $table->string('unit_level3', 255);
             $table->integer('dibuat_oleh')->unsigned();
             $table->integer('diedit_oleh')->unsigned();
