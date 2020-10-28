@@ -38,11 +38,6 @@ class User extends Authenticatable
         return $this->hasOne(Instruktur::class, 'user_id', 'id');
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Rule');
-    }
-
     public function warnings()
     {
         return $this->hasMany('App\Warning', 'user_id');
