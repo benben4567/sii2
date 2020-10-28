@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth'], 'as' => 'admin.'], function () {
+Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function () {
   // Materi
   Route::get('materi',['as' => 'materi.index', 'uses' => 'MateriController@index']);
   Route::get('materi/create',['as' => 'materi.create', 'uses' => 'MateriController@create']);
@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth'], 'as' => 'admin.'], function () {
 
 });
 
-Route::group(['as' => 'instruktur.'], function () {
+Route::group(['middleware' => ['role:instruktur'],'as' => 'instruktur.'], function () {
 
   // Magang
   Route::get('pengalaman-magang', [ 'as' => 'magang.index', 'uses' => 'MagangController@index']);
