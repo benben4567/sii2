@@ -20,8 +20,8 @@ class RolesSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         //create roles and assign existing permissions
-        $role1 = Role::create(['name' => 'super-admin']);
-        $role2 = Role::create(['name' => 'instruktur']);
+        $role1 = Role::create(['name' => 'super-admin', 'guard_name', config('auth.defaults.guard')]);
+        $role2 = Role::create(['name' => 'instruktur', 'guard_name', config('auth.defaults.guard')]);
 
         //create user and assign role
         $user = User::create([
