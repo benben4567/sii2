@@ -45,6 +45,7 @@
         </li>
 
         {{-- Pengalaman (instruktur)--}}
+        @role('instruktur')
         <li>
           <a href="javascript:void(1);" class="waves-effect"><i class="fas fa-chalkboard-teacher"></i>
             <span> Pengalaman <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span>
@@ -57,6 +58,7 @@
             <li><a href="{{ route('instruktur.penyusun.index') }}">Penyusun</a></li>
           </ul>
         </li>
+        @endrole
 
         {{-- Pembelajaran (admin&instuktur) --}}
         <li>
@@ -64,16 +66,20 @@
             <span> Pembelajaran <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span></span>
           </a>
           {{-- admin --}}
+          @role('super-admin')
           <ul class="submenu">
             <li><a href="{{ route('admin.materi.index')}}">Materi</a></li>
             <li><a href="{{ route('admin.judul.index')}}">Judul Pembelajaran</a></li>
             <li><a href="{{ route('admin.warning.index')}}">Early Warning</a></li>
           </ul>
-          {{-- Uncomment dibawah ini ketika role sudah berjalan --}}
+          @endrole
+
           {{-- instruktur  --}}
-          {{-- <ul class="submenu">
+          @role('instruktur')
+          <ul class="submenu">
             <li><a href="{{ route('instruktur.judul.index')}}">Judul Pembelajaran</a></li>
-          </ul> --}}
+          </ul>
+          @endrole
         </li>
 
         {{-- Data Diri --}}
@@ -86,27 +92,34 @@
         </li> --}}
 
         {{-- Data Instruktur (admin) --}}
+        @role('super-admin')
         <li>
           <a href="{{ route('admin.instruktur.index') }}" class="waves-effect">
             <i class="fas fa-users"></i><span> Data Instruktur </span>
           </a>
         </li>
+        @endrole
 
         {{-- Data Penyusun (admin) --}}
+        @role('super-admin')
         <li>
           <a href="{{ route('admin.penyusun.index') }}" class="waves-effect">
             <i class="fas fa-users"></i><span> Data Penyusun </span>
           </a>
         </li>
+        @endrole
 
         {{-- Evaluasi Instruktur (admin) --}}
+        @role('super-admin')
         <li>
           <a href="#" class="waves-effect">
             <i class="fas fa-suitcase"></i><span> Evaluasi Instruktur </span>
           </a>
         </li>
+        @endrole
 
         {{-- Sertifikasi (instruktur) --}}
+        @role('instruktur')
         <li>
           <a href="javascript:void(2);" class="waves-effect"><i class="far fa-id-card"></i>
             <span> Sertifikasi <span class="float-right menu-arrow"> <i class="mdi mdi-plus"></i></span> </span>
@@ -116,8 +129,10 @@
             <li><a href="{{ route('instruktur.bidang.index') }}">Bidang</a></li>
           </ul>
         </li>
+        @endrole
 
         {{-- Authentikasi (admin) --}}
+        @role('super-admin')
         <li>
           <a href="javascript:void(3);" class="waves-effect"><i class="mdi mdi-settings"></i>
             <span> Authtentikasi <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span>
@@ -126,6 +141,7 @@
             <li><a href="{{ route('admin.users.index') }}">User</a></li>
           </ul>
         </li>
+        @endrole
       </ul>
 
     </div>
