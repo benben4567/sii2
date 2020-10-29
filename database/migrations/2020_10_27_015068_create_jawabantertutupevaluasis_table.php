@@ -18,7 +18,7 @@ class CreateJawabantertutupevaluasisTable extends Migration
             $table->foreignId('detailpenjadwalanpeserta_id')->constrained();
             $table->foreignId('pernyataanevaluasi_id')->constrained();
             $table->tinyInteger('nilai');
-            $table->mediumInteger('komentar');
+            $table->text('komentar')->nullable();
         });
     }
 

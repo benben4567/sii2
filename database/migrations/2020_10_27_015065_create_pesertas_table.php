@@ -14,19 +14,18 @@ class CreatePesertasTable extends Migration
     public function up()
     {
         Schema::create('pesertas', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
+            $table->id('id');
             //start fk
-            $table->integer('role_id')->unsigned();
-            $table->foreignId('level1unit_id')->constrained();
-            $table->foreignId('level2unit_id')->nullable()->constrained();
-            $table->foreignId('level3unit_id')->nullable()->constrained();
-            $table->foreignId('pendidikan_id')->nullable()->constrained();
-            $table->foreignId('jurusan_id')->nullable()->constrained();
-            $table->foreignId('grade_id')->nullable()->constrained();
-            $table->foreignId('jenjangjabatan_id')->nullable()->constrained();
-            $table->foreignId('udiklat_id')->nullable()->constrained();
+            $table->bigInteger('level1unit_id')->nullable();
+            $table->bigInteger('level2unit_id')->nullable();
+            $table->bigInteger('level3unit_id')->nullable();
+            $table->bigInteger('pendidikan_id')->nullable();
+            $table->bigInteger('jurusan_id')->nullable();
+            $table->bigInteger('grade_id')->nullable();
+            $table->bigInteger('jenjangjabatan_id')->nullable();
+            $table->bigInteger('udiklat_id')->nullable();
             //end fk
-            $table->enum('jeniskelamin', ['0', '1']);
+            $table->enum('jeniskelamin', ['1','2','3']);
             $table->string('nip', 50)->unique();
             $table->string('nama', 100);
             $table->string('jabatan', 255);
@@ -35,7 +34,7 @@ class CreatePesertasTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('password');
             $table->string('no_hp');
-            $table->string('email', 254)->unique();
+            $table->string('email', 254)->unique()->nullable();
             $table->dateTime('waktu_login_terakhir');
             $table->integer('dibuat_oleh')->unsigned();
             $table->integer('diedit_oleh')->unsigned();
