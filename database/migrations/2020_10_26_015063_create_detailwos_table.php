@@ -21,7 +21,7 @@ class CreateDetailwosTable extends Migration
             $table->integer('jumlah_peserta')->unsigned();
             $table->enum('status_konf_keu', ['0', '1', '2']);
             $table->integer('dikonf_keu_oleh')->unsigned();
-            $table->timestamp('waktu_konf_keu');
+            $table->datetime('waktu_konf_keu')->nullable();
             $table->integer('diedit_oleh')->unsigned();
             $table->enum('status', ['0', '1']);
             $table->integer('id_penjadwalan_itn')->unsigned();
