@@ -41,18 +41,15 @@
               <div class="card-body">
                 <form method="post" action="#" id="form-materi" target="votar">
                   @csrf
-                  <table  class="table table-bordered table-responsive nowrap table-materi" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                  <table  class="table table-bordered materi-table" id="materi-table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                       <tr>
-                        <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                         <th>No</th>
                         <th>Kode Materi</th>
                         <th>Jenis Materi</th>
                         <th>Materi</th>
                         <th>Durasi</th>
                         <th>Nilai Minimum</th>
-                        <th>Prosentase Pembayaran</th>
-                        <th>Diinput</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -77,14 +74,37 @@
 <script type="text/javascript">
   var table, save_method;
   $(function(){
-    table = $('.table-materi').DataTable({
-      "processing" :true,
+    table = $('#materi-table').DataTable({
+      "responsive" : true,
+      "pageLength" : 25,
+      "deferRender": true,
+      "lengthChange": false,
+      "processing" : true,
       "serverside" : true,
       "ajax":{
-        "url" : "",
+        "url" : "{{ route('admin.materi.getdata') }}",
         "type" : "GET"
       },
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'kode_materi', name: 'kode_materi'},
+            {data: 'jenis_materi', name: 'jenis_materi'},
+            {data: 'materi', name: 'materi'},
+            {data: 'durasi', name: 'durasi'},
+            {data: 'nilai_minimum', name: 'nilai_minimum'},
+      ],
+      "columnDefs": [{
+        "targets" : 6,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
+
+    $('#materi-table tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+    } );
 
     $('#modal-import .dropify').dropify({
       messages: {
@@ -197,10 +217,12 @@
       }
     });
   }
-
-  $('#select-all').click(function(){
-    $('input[type="checkbox"]').prop('checked', this.checked);
-  });
+  function showData(data){
+    $.each(data, function (index, value) {
+      $("#"+index+"_show").val(value);
+    });
+    $('#show-data').modal('toggle');
+  }
 
 </script>
 @endsection
