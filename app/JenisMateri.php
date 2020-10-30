@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JenisMateri extends Model
 {
+    protected $table = "jenismateris";
     protected $fillable = [
         'kode_jenis_materi',
         'jenis_materi',
@@ -16,6 +17,6 @@ class JenisMateri extends Model
 
     public function materi()
     {
-        return $this->belongsTo(Materi::class);
+        return $this->hasMany(Materi::class);
     }
 }

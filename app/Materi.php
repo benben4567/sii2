@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Materi extends Model
 {
+    protected $table = "materis";
     protected $fillable = [
         'jenismateri_id',
         'kode_materi',
@@ -22,7 +23,7 @@ class Materi extends Model
 
     public function jenismateri()
     {
-        return $this->hasOne(JenisMateri::class);
+        return $this->belongsTo("App\JenisMateri", "jenismateri_id");
     }
 
     public function pendalamanmateri()
