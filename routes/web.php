@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -24,6 +24,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function () {
   // Materi
   Route::get('materi',['as' => 'materi.index', 'uses' => 'MateriController@index']);
+  Route::get('materi/getData',['as' => 'materi.getdata', 'uses' => 'MateriController@getData']);
   Route::get('materi/create',['as' => 'materi.create', 'uses' => 'MateriController@create']);
   Route::get('materi/edit',['as' => 'materi.edit', 'uses' => 'MateriController@edit']);
 
