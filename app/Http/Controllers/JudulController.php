@@ -24,7 +24,12 @@ class JudulController extends Controller
       $judul = DB::table('juduls')
         ->join('jenisdiklats', 'jenisdiklats.id', "=", "juduls.jenisdiklat_id")
         ->join('sifatdiklats', 'sifatdiklats.id', "=", "juduls.sifatdiklat_id")
-        ->select('nama_judul', 'jenis_diklat', 'sifat_diklat', 'durasi_hari')
+        ->join('dahanprofesis', 'dahanprofesis.id', "=", 'juduls.dahanprofesi_id')
+        ->join('levelprofisiensis', 'levelprofisiensis.id', '=', 'juduls.levelprofisiensi_id')
+        ->join('penyelenggaraans', 'penyelenggaraans.id', '=', 'juduls.penyelenggaraan_id')
+        ->join('jenissertifikats', 'jenissertifikats.id', '=', 'juduls.jenissertifikat_id')
+        ->join('penanggungjawabs', 'penanggungjawabs.id', "=", "juduls.penanggungjawab_id")
+        ->select('juduls.*', 'jenis_diklat', 'sifat_diklat', 'dahan_profesi', 'level_profisiensi', 'penyelenggaraan', 'penanggung_jawab', 'jenis_Sertifikat')
         ->get();
 
       // return dd($judul);

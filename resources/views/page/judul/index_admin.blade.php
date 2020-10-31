@@ -73,6 +73,7 @@
 </div> <!-- content -->
 
 @include('page.judul.show-warning')
+@include('page.judul.form')
 
 @section('js')
 <script type="text/javascript">
@@ -101,6 +102,12 @@
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
       }]
     });
+
+    $('#table-judul tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+    } );
 
     function showData(data){
       $.each(data, function (index, value) {
