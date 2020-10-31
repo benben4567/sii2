@@ -35,31 +35,15 @@
             <div class="card-body">
               <form method="post" action="#" id="form-instruktur" target="votar">
                 {{ csrf_field() }}
-                <table  class="table table-bordered table-responsive nowrap table-instruktur" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table  class="table table-bordered" id="table-instruktur" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                   <thead>
                     <tr>
-                      <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                       <th>No</th>
                       <th>NIP</th>
                       <th>Nama instruktur</th>
                       <th>Tipe instruktur</th>
-                      <th>Udiklat</th>
                       <th>Jabatan</th>
-                      <th>Grade</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Tempat Lahir</th>
-                      <th>Cabang Profesi</th>
-                      <th>No Handphone</th>
                       <th>Email</th>
-                      <th>Unit Induk</th>
-                      <th>Pendidikan</th>
-                      <th>No KTP</th>
-                      <th>No NPWP</th>
-                      <th>Level Instruktur</th>
-                      <th>Bank</th>
-                      <th>No Rekening</th>
-                      <th>Nama Rekening</th>
-                      <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -82,13 +66,30 @@
 <script type="text/javascript">
   var table, save_method;
   $(function(){
-    table = $('.table-instruktur').DataTable({
-      "processing" :true,
+    table = $('#table-instruktur').DataTable({
+      "responsive" : true,
+      "pageLength" : 10,
+      "deferRender": true,
+      "lengthChange": false,
+      "processing" : true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "/instruktur/getdata",
         "type" : "GET"
       },
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama', name: 'nama'},
+            {data: 'nip', name: 'nip'},
+            {data: 'tipe_instruktur', name: 'tipe_instruktur'},
+            {data: 'jabatan', name: 'jabatan'},
+            {data: 'email', name: 'email'},
+      ],
+      "columnDefs": [{
+        "targets" : 6,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
 
     $('#modal-import .dropify').dropify({
