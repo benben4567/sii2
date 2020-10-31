@@ -40,6 +40,7 @@ Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function 
 
   // Instruktur
   Route::get('instruktur/',['as' => 'instruktur.index', 'uses' => 'InstrukturController@index']);
+  Route::get('instruktur/getdata',['as' => 'instruktur.getdata', 'uses' => 'InstrukturController@getData']);
   Route::get('instruktur/create',['as' => 'instruktur.create', 'uses' => 'InstrukturController@create']);
   Route::get('instruktur/update',['as' => 'instruktur.update', 'uses' => 'InstrukturController@update']);
   Route::get('instruktur/show',['as' => 'instruktur.show', 'uses' => 'InstrukturController@show']);
