@@ -37,27 +37,16 @@
 
               <div class="card-body">
                   {{ csrf_field() }}
-                  <table  class="table table-bordered table-responsive nowrap table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                  <table  class="table table-bordered table-responsive nowrap" id="table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    
                     <thead>
                       <tr>
-                        <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
+                        {{-- <th width="20"><input type="checkbox" id="select-all" value="1" ></th> --}}
                         <th>No</th>
-                        <th>Kode Judul</th>
-                        <th>Kode Judul Lama</th>
                         <th>Nama Judul</th>
                         <th>Jenis Diklat</th>
                         <th>Sifat Diklat</th>
-                        <th>Dahan Profesi</th>
-                        <th>Level Profisiensi</th>
-                        <th>Penyelenggaraan</th>
-                        <th>Penanggung Jawab</th>
-                        <th>Jenis Sertifikat</th>
-                        <th>Tahun Terbit</th>
                         <th>Durasi Hari Efektif</th>
-                        <th>Total JP Materi</th>
-                        <th>Jml Pagu Anggaran</th>
-                        <th>Cabang Profesi</th>
-                        <th>Tanggal Input</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -88,6 +77,31 @@
 @section('js')
 <script type="text/javascript">
   var table, save_method;
+  $(function(){
+    table = $('#table-judul').DataTable({ 
+      "pageLength" : 25,
+      "deferRender": true,
+      "lengthChange": false,
+      "processing" : true,
+      "serverside" : true,
+      "ajax":{
+        "url" : "judul/getdata",
+        "type" : "GET"
+      },
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_judul', name: 'nama_judul'},
+            {data: 'jenis_diklat', name: 'jenis_diklat'},
+            {data: 'sifat_diklat', name: 'sifat_diklat'},
+            {data: 'durasi_hari', name: 'durasi_hari'}
+      ],
+      "columnDefs": [{
+        "targets" : 5,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
+    });
+
 
   // $('.table-judul tbody').on( 'click', '.detailWarning', function () {
   //   let id = $(this).data('id')
@@ -174,15 +188,6 @@
     //   });
     // }
 
-  $(function(){
-    table = $('.table-judul').DataTable({
-      "processing" :true,
-      "serverside" : true,
-      "ajax":{
-        "url" : "#",
-        "type" : "GET"
-      },
-    });
 
     $('#modal-import .dropify').dropify({
       messages: {
