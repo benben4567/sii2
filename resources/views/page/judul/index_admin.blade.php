@@ -102,6 +102,13 @@
       }]
     });
 
+    function showData(data){
+      $.each(data, function (index, value) {
+        $("#"+index+"_show").val(value);
+      });
+      $('#show-data').modal('toggle');
+    }
+
 
   // $('.table-judul tbody').on( 'click', '.detailWarning', function () {
   //   let id = $(this).data('id')

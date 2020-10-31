@@ -79,10 +79,10 @@
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'nama', name: 'nama'},
             {data: 'nip', name: 'nip'},
+            {data: 'nama_instruktur', name: 'nama_instruktur'},
             {data: 'tipe_instruktur', name: 'tipe_instruktur'},
-            {data: 'jabatan', name: 'jabatan'},
+            {data: 'jabatan_peserta', name: 'jabatan_peserta'},
             {data: 'email', name: 'email'},
       ],
       "columnDefs": [{
@@ -91,6 +91,12 @@
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
       }]
     });
+
+    $('#table-instruktur tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+    } );
 
     $('#modal-import .dropify').dropify({
       messages: {
@@ -239,6 +245,13 @@
         });
       }
     });
+  }
+
+  function showData(data){
+    $.each(data, function (index, value) {
+      $("#"+index+"_show").val(value);
+    });
+    $('#show-data').modal('toggle');
   }
 
   $('#select-all').click(function(){

@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="prosentase_pembayaran" class="col-sm-4 col-form-label">Prosentase Pembayaran</label>
+            <label for="presentase_pembayaran" class="col-sm-4 col-form-label">Presentase Pembayaran</label>
             <div class="col-sm-4">
               <input type="number" min="0" class="form-control" id="presentase_pembayaran_show">
             </div>
