@@ -46,7 +46,6 @@
                         <th>Nama Judul</th>
                         <th>Jenis Diklat</th>
                         <th>Sifat Diklat</th>
-                        <th>Durasi Hari Efektif</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -93,11 +92,10 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'nama_judul', name: 'nama_judul'},
             {data: 'jenis_diklat', name: 'jenis_diklat'},
-            {data: 'sifat_diklat', name: 'sifat_diklat'},
-            {data: 'durasi_hari', name: 'durasi_hari'}
+            {data: 'sifat_diklat', name: 'sifat_diklat'}
       ],
       "columnDefs": [{
-        "targets" : 5,
+        "targets" : 4,
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
       }]
