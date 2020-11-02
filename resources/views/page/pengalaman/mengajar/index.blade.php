@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Pengalaman Mengajar')
 @section('content')
 <!-- Start content -->
 <div class="content">
@@ -84,7 +85,18 @@
         "url" : "#",
         "type" : "GET"
       },
-
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'judul_id', name: 'judul_id'},
+            {data: 'tempat_mengajar', name: 'tempat_mengajar'},
+            {data: 'tgl_mulai', name: 'tgl_mulai'},
+            {data: 'tgl_selesai', name: 'tgl_selesai'},
+      ],
+      "columnDefs": [{
+        "targets" : 5,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
 
     $('#modal-mengajar .dropify').dropify({

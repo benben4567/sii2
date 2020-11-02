@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\MateriDataTable;
-use App\Materi;
 use Illuminate\Http\Request;
-use DataTables;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
+use App\Materi;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use File;
+use Carbon\Carbon;
 
 class MateriController extends Controller
 {

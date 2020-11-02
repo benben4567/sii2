@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Pengalaman Narasumber')
 @section('content')
 <!-- Start content -->
 <div class="content">
@@ -81,7 +82,22 @@
         "url" : "#",
         "type" : "GET"
       },
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'pengalaman_bidang', name: 'pengalaman_bidang'},
+            {data: 'pendidikan_formal', name: 'pendidikan_formal'},
+            {data: 'judul_id', name: 'judul_id'},
+            {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
+            {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
+      ],
+      "columnDefs": [{
+        "targets" : 6,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
+
+
     $('form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
         url = "#";

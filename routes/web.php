@@ -64,6 +64,7 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Magang
   Route::get('pengalaman-magang', ['as' => 'magang.index', 'uses' => 'MagangController@index']);
+  Route::get('pengalaman-magang/getdata', ['as' => 'magang.getdata', 'uses' => 'MagangController@getData']);
   Route::get('pengalaman-magang/show/{id}', ['as' => 'magang.show', 'uses' => 'MagangController@show']);
   Route::post('pengalaman-magang', ['as' => 'magang.store', 'uses' => 'MagangController@store']);
   Route::put('pengalaman-magang/update/{id}', ['as' => 'magang.update', 'uses' => 'MagangController@update']);

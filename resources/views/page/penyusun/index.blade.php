@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Penyusun')
+@section('title', 'Pengalaman Penyusun')
 @section('content')
 <!-- Start content -->
 <div class="content">
@@ -93,6 +93,21 @@
         "url" : "#",
         "type" : "GET"
       },
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'file_penyusun', name: 'file_penyusun'},
+            {data: 'judul_id', name: 'judul_id'},
+            {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
+            {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
+            {data: 'pendidikan_formal', name: 'pendidikan_formal'},
+            {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
+            {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
+      ],
+      "columnDefs": [{
+        "targets" : 6,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
 
     $('#modal-import .dropify').dropify({
