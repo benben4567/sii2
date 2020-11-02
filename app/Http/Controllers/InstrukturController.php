@@ -51,6 +51,7 @@ class InstrukturController extends Controller
         case 'magang':
           $instruktur = DB::table('instrukturs')
             ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('magangs', 'magangs.instruktur_id', "=", "instrukturs.id")
             ->where('pesertas.nip',"=", $nip)
             ->get();
 
@@ -59,7 +60,15 @@ class InstrukturController extends Controller
             ->make(true);
           break;
         case 'mengajar':
-          # code...
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('mengajars', 'mengajars.instruktur_id', "=", "instrukturs.id")
+            ->where('pesertas.nip',"=", $nip)
+            ->get();
+
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
           break;
         case 'materi':
           # code...
