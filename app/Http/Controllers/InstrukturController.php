@@ -32,9 +32,22 @@ class InstrukturController extends Controller
     }
   }
 
-  public function show()
+  public function show($nip)
   {
-    return view('page.instruktur.show');
+    $instruktur = DB::table('instrukturs')
+        ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+        ->join('tipeinstrukturs', 'tipeinstrukturs.id', "=", "instrukturs.tipeinstruktur_id")
+        ->join('udiklats', 'udiklats.id', "=", "instrukturs.udiklat_id")
+        ->join('grades', 'grades.id', '=', 'pesertas.grade_id')
+        ->join('level1units', 'level1units.id', '=', 'pesertas.level1unit_id')
+        ->join('pendidikans', 'pendidikans.id', '=', 'pesertas.pendidikan_id')
+        ->join('levelinstrukturs', 'levelinstrukturs.id', '=', 'instrukturs.levelinstruktur_id')
+        ->select('pesertas.nama as nama_instruktur', 'nip', 'tipe_instruktur', 'pesertas.jabatan as jabatan_peserta', 'email', 'udiklat', 'grade', 'jeniskelamin', 'tempat_lahir', 'no_hp', 'unit_level1', 'pendidikan', 'instrukturs.*', 'level_instruktur')
+        ->where('pesertas.nip',"=", $nip)
+        ->first();
+
+        // dd($instruktur);
+    return view('page.instruktur.show',compact("instruktur"));
   }
 
   public function create()
