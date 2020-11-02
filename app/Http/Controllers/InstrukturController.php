@@ -32,7 +32,7 @@ class InstrukturController extends Controller
     }
   }
 
-  public function show($nip)
+  public function show(Request $request, $nip, $type=null)
   {
     $instruktur = DB::table('instrukturs')
         ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
@@ -45,6 +45,36 @@ class InstrukturController extends Controller
         ->select('pesertas.nama as nama_instruktur', 'nip', 'tipe_instruktur', 'pesertas.jabatan as jabatan_peserta', 'email', 'udiklat', 'grade', 'jeniskelamin', 'tempat_lahir', 'no_hp', 'unit_level1', 'pendidikan', 'instrukturs.*', 'level_instruktur')
         ->where('pesertas.nip',"=", $nip)
         ->first();
+
+    if ($request->ajax()) {
+      switch ($type) {
+        case 'magang':
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->where('pesertas.nip',"=", $nip)
+            ->get();
+
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
+          break;
+        case 'mengajar':
+          # code...
+          break;
+        case 'materi':
+          # code...
+          break;
+        case 'narasumber':
+          # code...
+          break;
+        case 'penyusun':
+          # code...
+          break;
+        default:
+          break;
+      }
+    }
+
 
         // dd($instruktur);
     return view('page.instruktur.show',compact("instruktur"));
