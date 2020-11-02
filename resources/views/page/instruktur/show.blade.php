@@ -307,15 +307,30 @@
         },
         "columns": [
               {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'tema_magang', name: 'tema_magang'},
+              {data: 'tempat_magang', name: 'tempat_magang'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'nama_file', name: 'nama_file'},
         ],
       });
 
-      var table2 = $('#table-mengajar').DataTable();
+      var table2 = $('#table-mengajar').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/mengajar' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'tempat_mengajar', name: 'tempat_mengajar'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+        ],
+      });
 
       var table3 = $('#table-pendalaman-materi').DataTable();
 
