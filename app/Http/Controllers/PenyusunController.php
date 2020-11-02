@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
+use App\Penyusun;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use File;
+use Carbon\Carbon;
 
 class PenyusunController extends Controller
 {
@@ -10,6 +17,18 @@ class PenyusunController extends Controller
   {
     // return view('page.penyusun.index'); //admin
     return view('page.pengalaman.penyusun.index'); //instruktur
+  }
+
+  public function getData(Request $request)
+  {
+    if ($request->ajax()) {
+      $penyusun = DB::table('penyusuns')->get();
+
+      // return dd($penyusun);
+      return DataTables::of($penyusun)
+        ->addIndexColumn()
+        ->make(true);
+    }
   }
 
   public function create()

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Sertifikasi Kompetensi Bidang')
 @section('content')
 <!-- Start content -->
 <div class="content">

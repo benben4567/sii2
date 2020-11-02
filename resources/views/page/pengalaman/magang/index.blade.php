@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Pengalaman Instruktur')
+@section('title', 'Pengalaman Magang')
 @section('content')
 <!-- Start content -->
 <div class="content">
@@ -81,13 +81,28 @@
   var table, save_method;
   $(function(){
     table = $('.table-magang').DataTable({
-      "processing" :true,
+      "pageLength" : 10,
+      "deferRender": true,
+      "lengthChange": false,
+      "processing" : true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "instruktur.magang.getdata",
         "type" : "GET"
       },
-
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'tempat_magang', name: 'tempat_magang'},
+            {data: 'tema_magang', name: 'tema_magang'},
+            {data: 'tgl_mulai', name: 'tgl_mulai'},
+            {data: 'tgl_selesai', name: 'tgl_selesai'},
+            {data: 'nama_file', name: 'nama_file'},
+      ],
+      "columnDefs": [{
+        "targets" : 6,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
 
     $('#modal-magang .dropify').dropify({
