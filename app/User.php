@@ -35,7 +35,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function instrukturs()
+    public function instruktur()
     {
         return $this->hasOne(Instruktur::class, 'user_id', 'id');
     }
