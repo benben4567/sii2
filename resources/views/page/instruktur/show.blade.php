@@ -179,12 +179,15 @@
                       <h6>Pengalaman Magang</h6>
                     </div>
                     <div class="card-body">
-                      <table class="table table-bordered">
+                      <table class="table table-bordered" id="table-magang" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                           <tr>
-                            <th>One</th>
-                            <th>Two</th>
-                            <th>Three</th>
+                            <th>#</th>
+                            <th>Tema</th>
+                            <th>Tempat</th>
+                            <th>Tgl Mulai</th>
+                            <th>Tgl Selesai</th>
+                            <th>Data Dukung</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -199,12 +202,14 @@
                       <h6>Pengalaman Mengajar</h6>
                     </div>
                     <div class="card-body">
-                      <table class="table table-bordered">
+                      <table class="table table-bordered" id="table-mengajar" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                           <tr>
-                            <th>One</th>
-                            <th>Two</th>
-                            <th>Three</th>
+                            <th>#</th>
+                            <th>Judul</th>
+                            <th>Tempat Mengajar</th>
+                            <th>Tgl Mulai</th>
+                            <th>Tgl Selesai</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -219,12 +224,15 @@
                       <h6>Pengalaman Pendalaman Materi</h6>
                     </div>
                     <div class="card-body">
-                      <table class="table table-bordered">
+                      <table class="table table-bordered" id="table-pendalaman-materi" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                           <tr>
-                            <th>One</th>
-                            <th>Two</th>
-                            <th>Three</th>
+                            <th>#</th>
+                            <th>Materi</th>
+                            <th>Kode Materi</th>
+                            <th>Tgl Mulai</th>
+                            <th>Tgl Selesai</th>
+                            <th>Penyelenggara</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -239,12 +247,14 @@
                       <h6>Pengalaman Narasumber</h6>
                     </div>
                     <div class="card-body">
-                      <table class="table table-bordered">
+                      <table class="table table-bordered" id="table-narasumber" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                           <tr>
-                            <th>One</th>
-                            <th>Two</th>
-                            <th>Three</th>
+                            <th>#</th>
+                            <th>Pengalaman Bidang</th>
+                            <th>Pendidikan Formal</th>
+                            <th>File Pendidikan Formal</th>
+                            <th>File Sertifikat Pembelajaran</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -259,12 +269,14 @@
                       <h6>Pengalaman Penyusun</h6>
                     </div>
                     <div class="card-body">
-                      <table class="table table-bordered">
+                      <table class="table table-bordered" id="table-penyusun" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                           <tr>
-                            <th>One</th>
-                            <th>Two</th>
-                            <th>Three</th>
+                            <th>#</th>
+                            <th>Judul</th>
+                            <th>Tgl Mulai</th>
+                            <th>Tgl Selesai</th>
+                            <th>File Karya Tulis</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -283,5 +295,94 @@
 </div> <!-- content -->
 @endsection
 @push('js')
+  <script>
+    $(document).ready(function () {
+      var table1 = $('#table-magang').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/magang' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'tema_magang', name: 'tema_magang'},
+              {data: 'tempat_magang', name: 'tempat_magang'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'nama_file', name: 'nama_file'},
+        ],
+      });
 
+      var table2 = $('#table-mengajar').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/mengajar' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'tempat_mengajar', name: 'tempat_mengajar'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+        ],
+      });
+
+      var table3 = $('#table-pendalaman-materi').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/materi' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'materi', name: 'materi'},
+              {data: 'kode_materi', name: 'kode_materi'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'penyelenggara', name: 'penyelenggara'},
+        ],
+      });
+
+      var table4 = $('#table-narasumber').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/narasumber' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'pengalaman_bidang', name: 'pengalaman_bidang'},
+              {data: 'pendidikan_formal', name: 'pendidikan_formal'},
+              {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
+              {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
+        ],
+      });
+
+      var table5 = $('#table-penyusun').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/penyusun' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
+        ],
+      });
+    });
+  </script>
 @endpush
