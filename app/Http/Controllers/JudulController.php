@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class JudulController extends Controller
 {
   public function index()
   {
-    // if ($role == 'admin') {
-    //   return view('page.judul.index_admin');
-    // } else {
-    //   return view('page.judul.index_instruktur');
-    // }
-    return view('page.judul.index_admin');
+    $role = Auth::user()->roles->pluck('name');
+    if ($role[0] == 'superadmin') {
+      return view('page.judul.index_admin');
+    } else {
+      return view('page.judul.index_instruktur');
+    }
   }
 
   public function getData(Request $request)
