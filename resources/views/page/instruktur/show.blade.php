@@ -332,11 +332,57 @@
         ],
       });
 
-      var table3 = $('#table-pendalaman-materi').DataTable();
+      var table3 = $('#table-pendalaman-materi').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/materi' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'materi', name: 'materi'},
+              {data: 'kode_materi', name: 'kode_materi'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'penyelenggara', name: 'penyelenggara'},
+        ],
+      });
 
-      var table4 = $('#table-narasumber').DataTable();
+      var table4 = $('#table-narasumber').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/narasumber' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'pengalaman_bidang', name: 'pengalaman_bidang'},
+              {data: 'pendidikan_formal', name: 'pendidikan_formal'},
+              {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
+              {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
+        ],
+      });
 
-      var table5 = $('#table-penyusun').DataTable();
+      var table5 = $('#table-penyusun').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/penyusun' }}",
+          "type" : "GET"
+        },
+        "columns": [
+              {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'tgl_mulai', name: 'tgl_mulai'},
+              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
+        ],
+      });
     });
   </script>
 @endpush
