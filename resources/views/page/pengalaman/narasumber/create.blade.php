@@ -25,53 +25,52 @@
               <div class="card-header">
                 <h5>Tambah Pengalaman Narasumber</h5>
               </div>
-              <form action="">
-              @csrf
+              <form class="form" method="post" enctype="multipart/form-data" action="pengalaman-narasumber/store">
+                {{csrf_field()}} {{method_field('POST')}}
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="">Lama Pengalaman Bidang</label>
-                    <select class="form-control" name="" id="">
-                      <option>< 1 Tahun</option>
-                      <option>1 - 3 Tahun</option>
-                      <option>3 - 5 Tahun</option>
-                      <option>> 5 Tahun</option>
+                    <label for="pengalaman_bidang">Lama Pengalaman Bidang</label>
+                    <select class="form-control" name="pengalaman_bidang" id="pengalaman_bidang">
+                      <option value="1 Tahun">< 1 Tahun</option>
+                      <option value="1 - 3 Tahun">1 - 3 Tahun</option>
+                      <option value="3 - 5 Tahun">3 - 5 Tahun</option>
+                      <option value="5 Tahun">5 Tahun</option>
                     </select>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Pendidikan Formal</label>
-                        <select class="form-control" name="" id="">
+                        <label for="pendidikan_formal">Pendidikan Formal</label>
+                        <select class="form-control" name="pendidikan_formal" id="pendidikan_formal">
                           <option value="" selected disabled>- pilih -</option>
-                          <option>SMA</option>
-                          <option>D3</option>
-                          <option>S1</option>
-                          <option>S2</option>
-                          <option>S3</option>
+                          <option value="SMA">SMA</option>
+                          <option value="D3">D3</option>
+                          <option value="S1">S1</option>
+                          <option value="S2">S2</option>
+                          <option value="S3">S3</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Bukti Dukung Pendidikan Formal</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="filependidikanformalinput" id="filependidikanformalinput"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <label for="file_pendidikan_formal">Bukti Dukung Pendidikan Formal</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary"  class="form-control filestyle">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Sertifikasi</label>
-                        <select class="form-control select2" name="" id="">
-                          <option value="" selected disabled>- pilih -</option>
-                          <option value=""></option>
+                        <label for="judul_id">Sertifikasi</label>
+                        <select name="judul_id" id="judul_id" type="text" class="form-control">
                         </select>
+                        <span class="help-block with-errors"></span>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Bukti Dukung Sertifikasi</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="filesertifikasiinput" id="filesertifikasiinput"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <label for="file_sertifikat_pembelajaran">Bukti Dukung Sertifikasi</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran"  data-buttonname="btn-secondary"  class="form-control filestyle">
                       </div>
                     </div>
                   </div>

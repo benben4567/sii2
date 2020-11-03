@@ -17,16 +17,16 @@
             </div>
           </div> --}}
           <div class="form-group">
-            <label for="judul" class="col-md-5 control-label">Judul Materi</label>
+            <label for="materi_id" class="col-md-5 control-label">Judul Materi</label>
             <div class="col-md-12">
-            <select name="judul" id="judul"  class="form-control select2 js-states"></select>
+            <select name="materi_id" id="materi_id"  class="form-control select2 js-states"></select>
             <span class="help-block with-errors"></span>
           </div>
           </div>
           <div class="form-group">
-            <label for="unit_penyelenggara" class="col-md-5 control-label">Unit Penyelenggara</label>
+            <label for="penyelenggara" class="col-md-5 control-label">Unit Penyelenggara</label>
             <div class="col-md-12">
-            <input type="text" name="unit_penyelenggara" id="unit_penyelenggara" class="form-control" placeholder="Unit Penyelenggara"  autofocus required>
+            <input type="text" name="penyelenggara" id="penyelenggara" class="form-control" placeholder="Unit Penyelenggara"  autofocus required>
             <span class="help-block with-errors"></span>
           </div>
           </div>

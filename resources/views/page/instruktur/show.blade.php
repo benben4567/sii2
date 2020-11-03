@@ -325,7 +325,7 @@
         },
         "columns": [
               {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'judul', name: 'judul'},
+              {data: 'nama_judul', name: 'nama_judul'},
               {data: 'tempat_mengajar', name: 'tempat_mengajar'},
               {data: 'tgl_mulai', name: 'tgl_mulai'},
               {data: 'tgl_selesai', name: 'tgl_selesai'},
@@ -377,9 +377,9 @@
         },
         "columns": [
               {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-              {data: 'judul', name: 'judul'},
-              {data: 'tgl_mulai', name: 'tgl_mulai'},
-              {data: 'tgl_selesai', name: 'tgl_selesai'},
+              {data: 'nama_judul', name: 'nama_judul'},
+              {data: 'tanggal_mulai', name: 'tanggal_mulai'},
+              {data: 'tanggal_selesai', name: 'tanggal_selesai'},
               {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
         ],
       });

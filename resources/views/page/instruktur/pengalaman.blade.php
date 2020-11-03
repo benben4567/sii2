@@ -180,7 +180,7 @@
           return {
             results: data.items.map(function (item) {
               return {
-                id: item.id_judul,
+                id: item.id,
                 text: item.nama_judul
               };
             }),

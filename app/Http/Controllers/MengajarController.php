@@ -25,7 +25,7 @@ class MengajarController extends Controller
         ->join('juduls', 'juduls.id', "=", "mengajars.judul_id")
         ->get();
 
-      // return dd($mengajar);
+      // dd($mengajar);
       return DataTables::of($mengajar)
         ->addIndexColumn()
         ->make(true);
@@ -63,7 +63,7 @@ class MengajarController extends Controller
         return response()->json(['status' => 'errorTime'], 200);
       } else {
         Mengajar::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
-          'id_judul' => $request->materi_pembelajaran,
+          'judul_id' => $request->materi_pembelajaran,
           'tempat_mengajar' => $request->tempat_mengajar,
           'tgl_mulai' => $request->tgl_mulai,
           'tgl_selesai' => $request->tgl_selesai,
@@ -81,9 +81,11 @@ class MengajarController extends Controller
 
   public function show()
   {
+    // 
   }
 
   public function update()
   {
+    // 
   }
 }

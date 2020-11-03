@@ -22,7 +22,9 @@ class PenyusunController extends Controller
   public function getData(Request $request)
   {
     if ($request->ajax()) {
-      $penyusun = DB::table('penyusuns')->get();
+      $penyusun = DB::table('penyusuns')
+        ->join('juduls', 'juduls.id', "=", "penyusuns.judul_id")
+        ->get();
 
       // return dd($penyusun);
       return DataTables::of($penyusun)

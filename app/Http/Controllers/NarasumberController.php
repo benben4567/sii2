@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use App\Narasumber;
+use App\{Narasumber, Judul};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use File;
@@ -21,13 +21,24 @@ class NarasumberController extends Controller
   public function getData(Request $request)
   {
     if ($request->ajax()) {
-      $narasumber = DB::table('narasumbers')->get();
+      $narasumber = DB::table('narasumbers')
+        ->join('juduls', 'juduls.id', "=", "narasumbers.judul_id")
+        ->get();
 
       // return dd($narasumber);
       return DataTables::of($narasumber)
         ->addIndexColumn()
         ->make(true);
     }
+  }
+
+  public function select2judul(Request $request)
+  {
+    $data = Judul::selectRaw('id,nama_judul')
+      ->where('nama_judul', 'LIKE', "%$request->q%")
+      ->orderBy('nama_judul', 'asc')
+      ->paginate(10);
+    return response()->json(['items' => $data->toArray()['data'], 'pagination' => $data->nextPageUrl() ? true : false]);
   }
 
   public function store(Request $request)
@@ -48,10 +59,10 @@ class NarasumberController extends Controller
         $file->move('assets/file/narasumber/file_sertifikat_pembelajaran', $namafilesertifikat);
       }
       Narasumber::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
-        'pengalaman_bidang' => $request->tahun_pengalaman,
+        'pengalaman_bidang' => $request->pengalaman_bidang,
         'pendidikan_formal' => $request->pendidikan_formal,
         'file_pendidikan_formal' => $namafilependidikan,
-        'judul_sertifikat_pembelajaran' => $request->judul_sertifikat_pembelajaran,
+        'judul_id' => $request->judul_id,
         'file_sertifikat_pembelajaran' => $namafilesertifikat,
         'instruktur_id' => Auth::user()->instruktur->id
       ]);

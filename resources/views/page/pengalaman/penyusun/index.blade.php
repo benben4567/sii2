@@ -33,7 +33,6 @@
                   <table class="table table-bordered  nowrap table-penyusun" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
                     <thead class='text-center'>
                       <tr>
-                        <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                         <th>No</th>
                         <th>Sertifikasi Pembelajaran</th>
                         <th>Tanggal Mulai</th>
@@ -45,9 +44,13 @@
                         <th>Aksi</th>
                       </tr>
                     </thead>
+
+                    <tbody>
+
+                    </tbody>
+
                     <tfoot class='text-center'>
                       <tr>
-                        <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                         <th>No</th>
                         <th>Sertifikasi Pembelajaran</th>
                         <th>Tanggal Mulai</th>
@@ -59,9 +62,6 @@
                         <th>Aksi</th>
                       </tr>
                     </tfoot>
-                    <tbody>
-
-                    </tbody>
 
                   </table>
                 </div>
@@ -82,10 +82,28 @@
           "processing" :true,
           "serverside" : true,
           "ajax":{
-            "url" : "#",
+            "url" : "pengalaman-penyusun/getdata",
             "type" : "GET"
           },
+          "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_judul', name: 'nama_judul'},
+            {data: 'tanggal_mulai', name: 'tanggal_mulai'},
+            {data: 'tanggal_selesai', name: 'tanggal_selesai'},
+            {data: 'pendidikan_formal', name: 'pendidikan_formal'},
+            {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
+            {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
+            {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
+          ],
+          "columnDefs": [{
+            "targets" : 8,
+            "data" : null,
+            "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+          }]
         });
+
+
+
       $('form').validator().on('submit', function(e){
         if(!e.isDefaultPrevented()){
           url = "#";

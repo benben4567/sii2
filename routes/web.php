@@ -79,6 +79,8 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Pendalaman Materi
   Route::get('pendalaman-materi', ['as' => 'pendalaman-materi.index', 'uses' => 'PendalamanMateriController@index']);
+  Route::get('pendalaman-materi/getdata', ['as' => 'mengajar.getdata', 'uses' => 'PendalamanMateriController@getData']);
+  Route::get('pendalaman-materi/select2', ['as' => 'mengajar.select2', 'uses' => 'PendalamanMateriController@select2']);
   Route::get('pendalaman-materi/show/{id}', ['as' => 'pendalaman-materi.show', 'uses' => 'PendalamanMateriController@show']);
   Route::post('pendalaman-materi', ['as' => 'pendalaman-materi.store', 'uses' => 'PendalamanMateriController@store']);
   Route::put('pendalaman-materi/update/{id}', ['as' => 'pendalaman-materi.update', 'uses' => 'PendalamanMateriController@update']);
@@ -103,11 +105,15 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Narasumber
   Route::get('pengalaman-narasumber', ['as' => 'narasumber.index', 'uses' => 'NarasumberController@index']);
+  Route::get('pengalaman-narasumber/getdata', ['as' => 'narasumber.getdata', 'uses' => 'NarasumberController@getData']);
+  Route::get('pengalaman-narasumber/select2', ['as' => 'narasumber.select2', 'uses' => 'NarasumberController@select2judul']);
   Route::get('pengalaman-narasumber/create', ['as' => 'narasumber.create', 'uses' => 'NarasumberController@create']);
+  Route::post('pengalaman-narasumber/store', ['as' => 'narasumber.store', 'uses' => 'NarasumberController@store']);
   Route::get('pengalaman-narasumber/edit', ['as' => 'narasumber.edit', 'uses' => 'NarasumberController@edit']);
 
   // Penyusun
   Route::get('pengalaman-penyusun', ['as' => 'penyusun.index', 'uses' => 'PenyusunController@index']);
+  Route::get('pengalaman-penyusun/getdata', ['as' => 'penyusun.getdata', 'uses' => 'PenyusunController@getData']);
   Route::get('pengalaman-penyusun/create', ['as' => 'penyusun.create', 'uses' => 'PenyusunController@create']);
   Route::get('pengalaman-penyusun/edit', ['as' => 'penyusun.edit', 'uses' => 'PenyusunController@edit']);
 });

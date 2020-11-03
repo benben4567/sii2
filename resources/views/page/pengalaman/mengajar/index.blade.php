@@ -90,13 +90,13 @@
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'judul_id', name: 'judul_id'},
+            {data: 'nama_judul', name: 'nama_judul'},
             {data: 'tempat_mengajar', name: 'tempat_mengajar'},
             {data: 'tgl_mulai', name: 'tgl_mulai'},
             {data: 'tgl_selesai', name: 'tgl_selesai'},
       ],
       "columnDefs": [{
-        "targets" : 6,
+        "targets" : 5,
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
       }]

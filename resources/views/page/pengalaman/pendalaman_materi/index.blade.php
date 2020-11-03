@@ -39,30 +39,29 @@
                     <table class="table table-bordered  nowrap table-pendalaman_materi" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
                       <thead>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
-                          <th>Judul</th>
-                          <th>Durasi</th>
+                          <th>Judul Materi</th>
                           <th>Unit Penyelenggara</th>
                           <th>Tanggal Mulai</th>
                           <th>Tanggal Selesai</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
+
+                      <tbody>
+
+                      </tbody>
+                      
                       <tfoot>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
-                          <th>Judul</th>
-                          <th>Durasi</th>
+                          <th>Judul Materi</th>
                           <th>Unit Penyelenggara</th>
                           <th>Tanggal Mulai</th>
                           <th>Tanggal Selesai</th>
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
-                      <tbody>
-                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -85,12 +84,12 @@
       "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "pendalaman-materi/getdata",
         "type" : "GET"
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'materi_id', name: 'materi_id'},
+            {data: 'materi', name: 'materi'},
             {data: 'penyelenggara', name: 'penyelenggara'},
             {data: 'tgl_mulai', name: 'tgl_mulai'},
             {data: 'tgl_selesai', name: 'tgl_selesai'},
@@ -111,14 +110,15 @@
         //     'error':   'Ooops, something wrong happended.'
         // }
         // });
-        $("select#judul").select2({
+        
+        $("select#materi_id").select2({
           allowClear: true,
           width: 'resolve', // need to override the changed default
           dropdownParent: $("#modal-pendalaman_materi"),
           placeholder: 'Pilih Judul',
           minimumInputLength: 1,
           ajax: {
-            url: '#',
+            url: 'pendalaman-materi/select2',
             dataType: 'json',
             data: function (params) {
               return {
@@ -131,8 +131,8 @@
               return {
                 results: data.items.map(function (item) {
                   return {
-                    id: item.id_judul,
-                    text:item.jenis_materi +' - '+ item.materi
+                    id: item.id,
+                    text:item.materi
                   };
                 }),
                 pagination: {
@@ -143,6 +143,8 @@
             cache: true
           }
         });
+
+
         $('#modal-pendalaman_materi form').validator().on('submit', function(e){
           if(!e.isDefaultPrevented()){
             var id = $('#id_pendalaman_materi').val();
@@ -193,8 +195,8 @@
         $('#modal-pendalaman_materi').modal('show');
         $('#modal-pendalaman_materi form')[0].reset();
         $('.modal-title').text('Tambah Pendalaman Materi');
-        $('#modal-pendalaman_materi #judul').val('').trigger('change');
-        $('#modal-pendalaman_materi #judul').attr('required',true);
+        $('#modal-pendalaman_materi #materi_id').val('').trigger('change');
+        $('#modal-pendalaman_materi #materi_id').attr('required',true);
         // $('#modal-pendalaman_materi #nama_file').attr('required',true);
         // drEvent = drEvent.data('dropify');
         // drEvent.resetPreview();

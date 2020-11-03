@@ -34,7 +34,6 @@
                     <table class="table table-bordered  nowrap table-narasumber" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
                       <thead class='text-center'>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           <th>Lama Pengalaman</th>
                           <th>Pendidikan Formal</th>
@@ -44,9 +43,13 @@
                           <th>Aksi</th>
                         </tr>
                       </thead>
+
+                      <tbody>
+
+                      </tbody>
+
                       <tfoot class='text-center'>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           <th>Lama Pengalaman</th>
                           <th>Pendidikan Formal</th>
@@ -56,10 +59,6 @@
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
-                      <tbody>
-
-                      </tbody>
-
                     </table>
                   </div>
                 </div>
@@ -79,14 +78,14 @@
       "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "pengalaman-narasumber/getdata",
         "type" : "GET"
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'pengalaman_bidang', name: 'pengalaman_bidang'},
             {data: 'pendidikan_formal', name: 'pendidikan_formal'},
-            {data: 'judul_id', name: 'judul_id'},
+            {data: 'nama_judul', name: 'nama_judul'},
             {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
             {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
       ],
@@ -121,12 +120,13 @@
         return false;
       };
     });
-    $('select#judul_sertifikat_pembelajaran').select2({
+
+    $('select#judul_id').select2({
       allowClear: true,
       placeholder: 'Search',
       minimumInputLength: 1,
       ajax: {
-        url: '#',
+        url: 'pengalaman-narasumber/select2',
         dataType: 'json',
         data: function (params) {
           return {
@@ -139,37 +139,7 @@
           return {
             results: data.items.map(function (item) {
               return {
-                id: item.id_judul,
-                text: item.nama_judul
-              };
-            }),
-            pagination: {
-              more: data.pagination
-            }
-          }
-        },
-        cache: true
-      }
-    });
-    $('select#sertifikasi').select2({
-      allowClear: true,
-      placeholder: 'Search',
-      minimumInputLength: 1,
-      ajax: {
-        url: '#',
-        dataType: 'json',
-        data: function (params) {
-          return {
-            q: $.trim(params.term),
-            page: params.page || 1
-          };
-        },
-        processResults: function (data) {
-          data.page = data.page || 1;
-          return {
-            results: data.items.map(function (item) {
-              return {
-                id: item.id_judul,
+                id: item.id,
                 text: item.nama_judul
               };
             }),
