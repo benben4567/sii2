@@ -34,10 +34,9 @@
               <div class="card-body">
                 <div class="table-rep-plugin">
                   <div class="table-responsive b-0" data-pattern="priority-columns">
-                    <table class="table table-bordered  nowrap table-magang" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
+                    <table class="table table-bordered nowrap table-magang" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
                       <thead>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           <th>Tempat Magang</th>
                           <th>Tema Magang</th>
@@ -47,9 +46,11 @@
                           <th>Aksi</th>
                         </tr>
                       </thead>
+                      <tbody>
+                        
+                      </tbody>
                       <tfoot>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           <th>Tempat Magang</th>
                           <th>Tema Magang</th>
@@ -59,10 +60,6 @@
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
-                      <tbody>
-
-                      </tbody>
-
                     </table>
                   </div>
                 </div>
@@ -87,7 +84,7 @@
       "processing" : true,
       "serverside" : true,
       "ajax":{
-        "url" : "instruktur.magang.getdata",
+        "url" : "pengalaman-magang/getdata",
         "type" : "GET"
       },
       "columns": [
@@ -96,7 +93,7 @@
             {data: 'tema_magang', name: 'tema_magang'},
             {data: 'tgl_mulai', name: 'tgl_mulai'},
             {data: 'tgl_selesai', name: 'tgl_selesai'},
-            {data: 'nama_file', name: 'nama_file'},
+            {data: 'nama_file', name: 'nama_file'}
       ],
       "columnDefs": [{
         "targets" : 6,

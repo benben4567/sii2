@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use App\Magang;
+use App\{Magang, User};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use File;
@@ -26,7 +26,6 @@ class MagangController extends Controller
   {
     if ($request->ajax()) {
       $magang = DB::table('magangs')->get();
-
       // return dd($magang);
       return DataTables::of($magang)
         ->addIndexColumn()
@@ -60,7 +59,7 @@ class MagangController extends Controller
           'tgl_mulai' => $request->tgl_mulai,
           'tgl_selesai' => $request->tgl_selesai,
           'nama_file' => $name,
-          'instruktur_id' => Auth::user()->id
+          'instruktur_id' => Auth::user()->instruktur->id
         ]);
         // return dd($magang);
         // //semua proses benar

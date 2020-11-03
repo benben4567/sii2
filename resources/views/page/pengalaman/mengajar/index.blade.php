@@ -36,9 +36,9 @@
                 <div class="table-rep-plugin">
                   <div class="table-responsive b-0" data-pattern="priority-columns">
                     <table class="table table-bordered  nowrap table-mengajar" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
+                      
                       <thead>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           <th>Materi Pembelajaran</th>
                           <th>Tempat</th>
@@ -47,9 +47,13 @@
                           <th>Aksi</th>
                         </tr>
                       </thead>
+                      
+                      <tbody>
+
+                      </tbody>
+
                       <tfoot>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           <th>Materi Pembelajaran</th>
                           <th>Tempat</th>
@@ -58,8 +62,7 @@
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
-                      <tbody>
-                      </tbody>
+                      
                     </table>
                   </div>
                 </div>
@@ -82,7 +85,7 @@
       "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "pengalaman-mengajar/getdata",
         "type" : "GET"
       },
       "columns": [
@@ -93,7 +96,7 @@
             {data: 'tgl_selesai', name: 'tgl_selesai'},
       ],
       "columnDefs": [{
-        "targets" : 5,
+        "targets" : 6,
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
       }]
@@ -150,6 +153,8 @@
         return false;
       }
     });
+
+    
     $("select#materi_pembelajaran").select2({
       allowClear: true,
       width: 'resolve', // need to override the changed default
@@ -157,7 +162,7 @@
       placeholder: 'Pilih Judul',
       minimumInputLength: 1,
       ajax: {
-        url: '#',
+        url: 'pengalaman-mengajar/select2',
         dataType: 'json',
         data: function (params) {
           return {
@@ -171,7 +176,7 @@
           return {
             results: data.items.map(function (item) {
               return {
-                id: item.id_judul,
+                id: item.id,
                 text:item.nama_judul
               };
             }),

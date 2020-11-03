@@ -71,6 +71,8 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Mengajar
   Route::get('pengalaman-mengajar', ['as' => 'mengajar.index', 'uses' => 'MengajarController@index']);
+  Route::get('pengalaman-mengajar/getdata', ['as' => 'mengajar.getdata', 'uses' => 'MengajarController@getData']);
+  Route::get('pengalaman-mengajar/select2', ['as' => 'mengajar.select2', 'uses' => 'MengajarController@select2']);
   Route::get('pengalaman-mengajar/show/{id}', ['as' => 'mengajar.show', 'uses' => 'MengajarController@show']);
   Route::post('pengalaman-mengajar', ['as' => 'mengajar.store', 'uses' => 'MengajarController@store']);
   Route::put('pengalaman-mengajar/update/{id}', ['as' => 'mengajar.update', 'uses' => 'MengajarController@update']);

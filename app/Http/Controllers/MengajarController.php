@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use App\Mengajar;
+use App\{Mengajar, Judul};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use File;
@@ -30,6 +30,15 @@ class MengajarController extends Controller
         ->addIndexColumn()
         ->make(true);
     }
+  }
+
+  public function select2(Request $request)
+  {
+    $data = Judul::selectRaw('id,nama_judul')
+      ->where('nama_judul', 'LIKE', "%$request->q%")
+      ->orderBy('nama_judul', 'asc')
+      ->paginate(10);
+    return response()->json(['items' => $data->toArray()['data'], 'pagination' => $data->nextPageUrl() ? true : false]);
   }
 
   public function store(Request $request)
@@ -58,7 +67,7 @@ class MengajarController extends Controller
           'tempat_mengajar' => $request->tempat_mengajar,
           'tgl_mulai' => $request->tgl_mulai,
           'tgl_selesai' => $request->tgl_selesai,
-          'instruktur_id' => Auth::user()->id
+          'instruktur_id' => Auth::user()->instruktur->id
         ]);
 
         DB::commit();
