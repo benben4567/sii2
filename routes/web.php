@@ -87,6 +87,7 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Judul
   Route::get('judul-instruktur', ['as' => 'judul.index', 'uses' => 'JudulController@index']);
+  Route::get('judul-instruktur/getdata', ['as' => 'judul.getdata', 'uses' => 'JudulController@getData']);
 
   // Warning
   Route::get('warning/kategori', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
