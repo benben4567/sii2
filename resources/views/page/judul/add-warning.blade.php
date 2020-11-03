@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade add-warning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add-warning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,24 +13,30 @@
         <form action="/warning/store" method="post" enctype="multipart/form-data" id="form-warning">
           {{ csrf_field() }}
           <div class="form-group">
-            
-            <input class="id_judul" type="hidden" name="id_judul" readonly/>
+
+            <input id="id_judul" type="hidden" name="id_judul" readonly/>
 
             <label for="aspek">
-              <i class="fas fa-exclamation-triangle mr-3"></i> Aspek Pembaruan 
+              <i class="fas fa-exclamation-triangle mr-3"></i> Aspek Pembaruan
             </label>
 
-            @foreach($aspek as $aspek)
+
+            {{-- @forelse($aspeks as $aspek)
               <div class="custom-control custom-checkbox my-1 mr-sm-2">
                 <input type="checkbox" class="custom-control-input aspek" id="{{$aspek->aspek}}" name="aspek[]" value="{{$aspek->aspek}}">
                 <label class="custom-control-label" for="{{$aspek->aspek}}">{{$aspek->aspek}}</label>
               </div>
-            @endforeach
+            @empty --}}
+              <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input aspek" name="aspek[]" value="">
+                <label class="custom-control-label"></label>
+              </div>
+            {{-- @endforelse --}}
 
             <br><label for="informasi_pendukung"><i class="fas fa-info-circle mr-2 informasi_pendukung"></i>Informasi Pendukung</label>
             <textarea class="form-control" id="informasi_pendukung" name="informasi_pendukung" rows="3"></textarea>
 
-            
+
           </div>
 
       <div class="modal-footer">
@@ -41,7 +47,7 @@
         </form>
       </div>
 
-    
+
     </div>
   </div>
 </div>

@@ -67,9 +67,8 @@
     </div> <!-- container-fluid -->
   </div> <!-- content -->
 </div> <!-- content -->
-{{-- @include('page.judul.add-warning') --}}
+@include('page.judul.add-warning')
 @section('js')
-
 <script type="text/javascript">
   var table, save_method;
   $(function(){
@@ -102,7 +101,7 @@
         "targets" : 6,
         "className": "text-center",
         "data" : null,
-        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fas fa-plus\"></i></button>"
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fas fa-exclamation\"></i></button>"
       }],
       "order": [[1, 'asc']]
     });
@@ -163,12 +162,10 @@
     } );
 
     $('.table-judul tbody').on( 'click', '.btn-danger', function () {
-        let id = $(this).data('id')
-        $('.id_judul').val(id)
-
-        let nama = $(this).data('judul')
-        $('.modal-title').text(nama)
-        $('.add-warning').modal('show')
+        var data = table.row( $(this).parents('tr') ).data();
+        $('#id_judul').val(data.id)
+        $('.modal-title').html(data.nama_judul)
+        $('#add-warning').modal('show')
     });
 
 
