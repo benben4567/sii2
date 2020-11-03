@@ -60,7 +60,7 @@
     </div><!-- end page content-->
   </div> <!-- container-fluid -->
 </div> <!-- content -->
-
+<a name="" id="" class="btn btn-primary" href="#" role="button"></a>
 @include('page.instruktur.form')
 @section('js')
 <script type="text/javascript">
@@ -87,15 +87,14 @@
       ],
       "columnDefs": [{
         "targets" : 6,
-        "data" : null,
-        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+        "data" : '',
+        "defaultContent": `<button type="button" class="btn btn-sm btn-show btn-info"><i class="fas fa-eye"></i></button>`
       }]
     });
 
     $('#table-instruktur tbody').on( 'click', '.btn-show', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        console.log(data);
-        showData(data);
+        location.href = "/instruktur/show/"+data.nip
     } );
 
     $('#modal-import .dropify').dropify({

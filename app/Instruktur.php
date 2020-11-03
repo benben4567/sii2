@@ -22,6 +22,11 @@ class Instruktur extends Model
         'id_instruktur_lama'
     ];
 
+    public function user()
+    {
+      return $this->belongsTo(User::class);
+    }
+
 
     public function peserta()
     {
