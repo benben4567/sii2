@@ -65,19 +65,42 @@ class InstrukturController extends Controller
             ->join('mengajars', 'mengajars.instruktur_id', "=", "instrukturs.id")
             ->where('pesertas.nip',"=", $nip)
             ->get();
-
           return DataTables::of($instruktur)
             ->addIndexColumn()
             ->make(true);
           break;
         case 'materi':
-          # code...
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('pendalamanmateris', 'pendalamanmateris.instruktur_id', "=", "instrukturs.id")
+            ->join('materis', 'materis.id', "=", "pendalamanmateris.materi_id")
+            ->where('pesertas.nip',"=", $nip)
+            ->get();
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
           break;
         case 'narasumber':
-          # code...
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('narasumbers', 'narasumbers.instruktur_id', "=", "instrukturs.id")
+            ->join('juduls', 'juduls.id', "=", "narasumbers.judul_id")
+            ->where('pesertas.nip',"=", $nip)
+            ->get();
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
           break;
         case 'penyusun':
-          # code...
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('penyusuns', 'penyusuns.instruktur_id', "=", "instrukturs.id")
+            ->join('juduls', 'juduls.id', "=", "penyusuns.judul_id")
+            ->where('pesertas.nip',"=", $nip)
+            ->get();
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
           break;
         default:
           break;
