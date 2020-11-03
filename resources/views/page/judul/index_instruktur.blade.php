@@ -45,30 +45,18 @@
                   {{ csrf_field() }}
                   <table  class="table table-bordered table-responsive nowrap table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
-                      <tr>
-                        <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
+                      <tr class="text-center">
+                        <th></th>
                         <th>No</th>
                         <th>Kode Judul</th>
-                        <th>Kode Judul Lama</th>
                         <th>Nama Judul</th>
-                        <th>Jenis Diklat</th>
-                        <th>Sifat Diklat</th>
                         <th>Dahan Profesi</th>
                         <th>Level Profisiensi</th>
-                        <th>Penyelenggaraan</th>
-                        <th>Penanggung Jawab</th>
-                        <th>Jenis Sertifikat</th>
-                        <th>Tahun Terbit</th>
-                        <th>Durasi Hari Efektif</th>
-                        <th>Total JP Materi</th>
-                        <th>Jml Pagu Anggaran</th>
-                        <th>Cabang Profesi</th>
-                        <th>Tanggal Input</th>
+                        <th>Warning</th>
                       </tr>
                     </thead>
                     <tbody>
                     </tbody>
-
                   </table>
               </div>
             </div>
@@ -81,19 +69,100 @@
 </div> <!-- content -->
 {{-- @include('page.judul.add-warning') --}}
 @section('js')
+
 <script type="text/javascript">
   var table, save_method;
   $(function(){
+    $(this)
+    .find('[data-fa-i2svg]')
+    .toggleClass('fa-minus-square')
+    .toggleClass('fa-plus-square');
+
     table = $('.table-judul').DataTable({
       "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "/judul-instruktur/getdata",
         "type" : "GET"
       },
+      "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": '<i class="fas fa-plus-circle"></i>'
+            },
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'kode_judul', name: 'kode_judul'},
+            {data: 'nama_judul', name: 'nama_judul'},
+            {data: 'dahan_profesi', name: 'dahan_profesi'},
+            {data: 'level_profisiensi', name: 'level_profisiensi'},
+      ],
+      "columnDefs": [{
+        "targets" : 6,
+        "className": "text-center",
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fas fa-plus\"></i></button>"
+      }],
+      "order": [[1, 'asc']]
     });
 
-    $('.table-judul tbody').on( 'click', '.addwarning', function () {
+    function format ( d ) {
+      // `d` is the original data object for the row
+      return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+          '<tr>'+
+              '<td>Kode Judul Lama:</td>'+
+              '<td>'+d.kode_judul_lama+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.sifat_diklat+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.jenis_diklat+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.penyelenggaraan+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.penanggung_jawab+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.jenis_Sertifikat+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.tahun_terbit+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.durasi_hari+'</td>'+
+          '</tr>'+
+      '</table>';
+    }
+
+    // Add event listener for opening and closing details
+    $('.table-judul tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.find('i').attr('class', 'fas fa-plus-circle');    // FontAwesome 5
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.find('i').attr('class', 'fas fa-minus-circle'); // FontAwesome 5
+        }
+    } );
+
+    $('.table-judul tbody').on( 'click', '.btn-danger', function () {
         let id = $(this).data('id')
         $('.id_judul').val(id)
 
@@ -104,6 +173,8 @@
 
 
   })
+
+
 
   // function showKategori(id){
   //     $.ajax({
