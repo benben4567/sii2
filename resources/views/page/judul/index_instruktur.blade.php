@@ -52,7 +52,7 @@
                         <th>Nama Judul</th>
                         <th>Dahan Profesi</th>
                         <th>Level Profisiensi</th>
-                        <th>Warning</th>
+                        <th>Tambah Warning</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -89,7 +89,7 @@
                 "className":      'details-control',
                 "orderable":      false,
                 "data":           null,
-                "defaultContent": '<i class="fas fa-plus-circle"></i>'
+                "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
             },
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'kode_judul', name: 'kode_judul'},
@@ -101,7 +101,7 @@
         "targets" : 6,
         "className": "text-center",
         "data" : null,
-        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fas fa-exclamation\"></i></button>"
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fas fa-exclamation-triangle\"></i></button>"
       }],
       "order": [[1, 'asc']]
     });
@@ -152,12 +152,12 @@
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
-            tr.find('i').attr('class', 'fas fa-plus-circle');    // FontAwesome 5
+            tr.find('i[name="collapse"]').attr('class', 'fas fa-plus-circle');    // FontAwesome 5
         }
         else {
             // Open this row
             row.child( format(row.data()) ).show();
-            tr.find('i').attr('class', 'fas fa-minus-circle'); // FontAwesome 5
+            tr.find('i[name="collapse"]').attr('class', 'fas fa-minus-circle'); // FontAwesome 5
         }
     } );
 
