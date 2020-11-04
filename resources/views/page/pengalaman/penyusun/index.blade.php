@@ -128,36 +128,7 @@
         };
       });
 
-      $('select#judul_sertifikat_pembelajaran').select2({
-        allowClear: true,
-        placeholder: 'Search',
-        minimumInputLength: 1,
-        ajax: {
-          url: '#',
-          dataType: 'json',
-          data: function (params) {
-            return {
-              q: $.trim(params.term),
-              page: params.page || 1
-            };
-          },
-          processResults: function (data) {
-            data.page = data.page || 1;
-            return {
-              results: data.items.map(function (item) {
-                return {
-                  id: item.id_judul,
-                  text: item.nama_judul
-                };
-              }),
-              pagination: {
-                more: data.pagination
-              }
-            }
-          },
-          cache: true
-        }
-      });
+      
       $('select#sertifikasi').select2({
         allowClear: true,
         placeholder: 'Search',
@@ -176,7 +147,7 @@
             return {
               results: data.items.map(function (item) {
                 return {
-                  id: item.id_judul,
+                  id: item.id,
                   text: item.nama_judul
                 };
               }),

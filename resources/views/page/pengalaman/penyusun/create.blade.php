@@ -25,43 +25,45 @@
               <div class="card-header">
                 <h5>Tambah Pengalaman Penyusun</h5>
               </div>
-              <form action="">
+              <form class="form" method="post" enctype="multipart/form-data" action="/pengalaman-penyusun/store">
               @csrf
                 <div class="card-body">
+
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="">Sertifikasi</label>
-                        <select class="form-control select2" name="" id="">
-                          <option value="" selected disabled>- pilih -</option>
-                          <option value=""></option>
-                        </select>
+                        <select type="text" id="judul_id" class="form-control" name="judul_id" autofocus ></select>
+                        <span class="help-block with-errors"></span>
                       </div>
                     </div>
+
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Bukti Dukung Sertifikasi</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="filesertifikasiinput" id="filesertifikasiinput"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <label for="file_sertifikat_pembelajaran">Bukti Dukung Sertifikasi</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran"  data-buttonname="btn-secondary"  class="form-control filestyle">
                       </div>
                     </div>
                   </div>
+
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Tanggal Mulai</label>
-                        <input type="date"  class="form-control" id="tgl_mulai_input" name="tgl_mulai_input" placeholder="">
+                        <label for="tanggal_mulai">Tanggal Mulai</label>
+                        <input type="date"  class="form-control" id="tanggal_mulai" name="tanggal_mulai" placeholder="">
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <label for="">Tanggal Selesai</label>
-                        <input type="date"  class="form-control" id="tgl_selesai_input" name="tgl_selesai_input" placeholder="">
+                      <label for="tanggal_selesai">Tanggal Selesai</label>
+                        <input type="date"  class="form-control" id="tanggal_selesai" name="tanggal_selesai" placeholder="">
                     </div>
                   </div>
+
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Pendidikan Formal</label>
-                        <select class="form-control" name="" id="">
+                        <label for="pendidikan_formal">Pendidikan Formal</label>
+                        <select class="form-control" name="pendidikan_formal" id="pendidikan_formal">
                           <option value="" selected disabled>- pilih -</option>
                           <option>SMA</option>
                           <option>D3</option>
@@ -71,18 +73,31 @@
                         </select>
                       </div>
                     </div>
+
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="">Bukti Dukung Pendidikan Formal</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="filependidikanformalinput" id="filependidikanformalinput"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <label for="file_pendidikan_formal">Bukti Dukung Pendidikan Formal</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary"  class="form-control filestyle">
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="">Karya Ilmiah</label>
-                    <input type="file" data-allowed-file-extensions="pdf" name="filependidikanformalinput" id="filependidikanformalinput"  data-buttonname="btn-secondary"  class="form-control filestyle">
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="file_bukti_karyatulis">Karya Ilmiah</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_bukti_karyatulis" id="file_bukti_karyatulis"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="file_penyusun">Materi Pembelajaran</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_penyusun" id="file_penyusun"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                      </div>
+                    </div>
                   </div>
                 </div>
+                
                 <div class="card-footer">
                   <div class="text-right">
                     <a class="btn btn-secondary" href="{{ route('instruktur.penyusun.index') }}" role="button">Kembali</a>
@@ -98,5 +113,37 @@
 </div> <!-- content -->
 @endsection
 @push('js')
+<script type="text/javascript">
+$('select#judul_id').select2({
+  allowClear: true,
+  placeholder: 'Search',
+  minimumInputLength: 1,
+  ajax: {
+    url: '/pengalaman-penyusun/select2',
+    dataType: 'json',
+    data: function (params) {
+      return {
+        q: $.trim(params.term),
+        page: params.page || 1
+      };
+    },
+    processResults: function (data) {
+      data.page = data.page || 1;
+      return {
+        results: data.items.map(function (item) {
+          return {
+            id: item.id,
+            text: item.nama_judul
+          };
+        }),
+        pagination: {
+          more: data.pagination
+        }
+      }
+    },
+    cache: true
+  }
+});
+</script>
 
 @endpush

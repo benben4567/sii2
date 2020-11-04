@@ -109,14 +109,16 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   // Narasumber
   Route::get('pengalaman-narasumber', ['as' => 'narasumber.index', 'uses' => 'NarasumberController@index']);
   Route::get('pengalaman-narasumber/getdata', ['as' => 'narasumber.getdata', 'uses' => 'NarasumberController@getData']);
-  Route::get('pengalaman-narasumber/select2', ['as' => 'narasumber.select2', 'uses' => 'NarasumberController@select2judul']);
+  Route::get('pengalaman-narasumber/select2', ['as' => 'narasumber.select2', 'uses' => 'NarasumberController@select2']);
   Route::get('pengalaman-narasumber/create', ['as' => 'narasumber.create', 'uses' => 'NarasumberController@create']);
   Route::post('pengalaman-narasumber/store', ['as' => 'narasumber.store', 'uses' => 'NarasumberController@store']);
   Route::get('pengalaman-narasumber/edit', ['as' => 'narasumber.edit', 'uses' => 'NarasumberController@edit']);
 
   // Penyusun
   Route::get('pengalaman-penyusun', ['as' => 'penyusun.index', 'uses' => 'PenyusunController@index']);
+  Route::get('pengalaman-penyusun/select2', ['as' => 'penyusun.select2', 'uses' => 'PenyusunController@select2']);
   Route::get('pengalaman-penyusun/getdata', ['as' => 'penyusun.getdata', 'uses' => 'PenyusunController@getData']);
   Route::get('pengalaman-penyusun/create', ['as' => 'penyusun.create', 'uses' => 'PenyusunController@create']);
+  Route::post('pengalaman-penyusun/store', ['as' => 'penyusun.store', 'uses' => 'PenyusunController@store']);
   Route::get('pengalaman-penyusun/edit', ['as' => 'penyusun.edit', 'uses' => 'PenyusunController@edit']);
 });

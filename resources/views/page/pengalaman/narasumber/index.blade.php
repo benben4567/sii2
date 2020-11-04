@@ -70,6 +70,8 @@
   </div> <!-- container-fluid -->
 </div> <!-- content -->
 
+{{-- @include('page.pengalaman.narasumber.create') --}}
+
 @section('js')
 <script type="text/javascript">
   var table, save_method;
@@ -122,36 +124,93 @@
     });
 
     $('select#judul').select2({
-      allowClear: true,
-      placeholder: 'Search',
-      minimumInputLength: 1,
-      ajax: {
-        url: 'pengalaman-narasumber/select2',
-        dataType: 'json',
-        data: function (params) {
-          return {
-            q: $.trim(params.term),
-            page: params.page || 1
-          };
-        },
-        processResults: function (data) {
-          data.page = data.page || 1;
-          return {
-            results: data.items.map(function (item) {
-              return {
-                id: item.id,
-                text: item.nama_judul
-              };
-            }),
-            pagination: {
-              more: data.pagination
-            }
+    allowClear: true,
+    placeholder: 'Search',
+    minimumInputLength: 1,
+    ajax: {
+      url: '/pengalaman-narasumber/select2',
+      dataType: 'json',
+      data: function (params) {
+        return {
+          q: $.trim(params.term),
+          page: params.page || 1
+        };
+      },
+      processResults: function (data) {
+        data.page = data.page || 1;
+        return {
+          results: data.items.map(function (item) {
+            return {
+              id: item.id,
+              text: item.nama_judul
+            };
+          }),
+          pagination: {
+            more: data.pagination
           }
-        },
-        cache: true
+        }
+      },
+      cache: true
+    }
+  });
+  
+  $('#modal-narasumber form').validator().on('submit', function(e){
+      if(!e.isDefaultPrevented()){
+        var id = $('#id').val();
+        if (save_method == "add")
+        url = "#";
+        else url = "narasumber/"+id;
+        $.ajax({
+          url : url,
+          type : "POST",
+          data : new FormData($(".form")[0]),
+          dataType : 'JSON',
+          async: false,
+          processData: false,
+          contentType:false,
+          success : function(data){
+            if (save_method == "add"){
+              if (data.status=="errorTime") {
+                toastr.warning('Tanggal Selesai tidak boleh lebih dulu dari Tanggal Mulai!', 'Warning Alert', {timeOut: 7000});
+                $('#tgl_selesai').focus().select();
+              }else{
+              toastr.success('Data Berhasil di Simpan!', 'Success Alert', {timeOut: 4000});
+              $('#modal-narasumber').modal('hide');
+              table.ajax.reload( null, false );
+              }
+            }else{
+              if (data.status=="errorTime") {
+                toastr.warning('Tanggal Selesai tidak boleh lebih dulu dari Tanggal Mulai!', 'Warning Alert', {timeOut: 7000});
+                $('#tgl_selesai').focus().select();
+              }else{
+              toastr.success('Data Berhasil di update!', 'Success Alert', {timeOut: 4000});
+              $('#modal-narasumber').modal('hide');
+              table.ajax.reload( null, false );
+              }
+            }
+          },
+          error : function(){
+            toastr.error('Tidak dapat menyimpan data!', 'Error Alert', {timeOut: 4000});
+          }
+        });
+        return false;
       }
     });
+
   });
+
+  function addForm(){
+    var drEvent = $('#modal-narasumber .dropify').dropify();
+    save_method = "add";
+    $('input[name = _method]').val('POST');
+    $('#modal-narasumber').modal('show');
+    $('#modal-narasumber form')[0].reset();
+    $('.modal-title').text('Tambah narasumber');
+    $('#modal-narasumber #nama_file').attr('required',true);
+    drEvent = drEvent.data('dropify');
+    drEvent.resetPreview();
+    drEvent.clearElement();
+  }
 
   $('.form-edit').validator().on('submit',function(e){
     var id = $('#id').val();
@@ -189,6 +248,7 @@
     getData();
      return false;
   }
+
   function getData(){
     $('input[name = _method]').val('PATCH');
     $.ajax({

@@ -32,7 +32,7 @@ class NarasumberController extends Controller
     }
   }
 
-  public function select2judul(Request $request)
+  public function select2(Request $request)
   {
     $data = Judul::selectRaw('id,nama_judul')
       ->where('nama_judul', 'LIKE', "%$request->q%")
@@ -41,16 +41,23 @@ class NarasumberController extends Controller
     return response()->json(['items' => $data->toArray()['data'], 'pagination' => $data->nextPageUrl() ? true : false]);
   }
 
+  // show form create
+  public function create()
+  {
+    return view('page.pengalaman.narasumber.create');
+  }
+
   public function store(Request $request)
   {
-    // dd($request->all());
+    // dd($request);
+    // // dd($request->all());
     DB::beginTransaction();
     try {
       $namafilependidikan = NULL;
-      if ($request->hasFile('ijazah')) {
-        $file = $request->file('ijazah');
+      if ($request->hasFile('file_pendidikan_formal')) {
+        $file = $request->file('file_pendidikan_formal');
         $namafilependidikan = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
-        $file->move('assets/file/narasumber/file_ijazah', $namafilependidikan);
+        $file->move('assets/file/narasumber/file_pendidikan_formal', $namafilependidikan);
       }
       $namafilesertifikat = NULL;
       if ($request->hasFile('file_sertifikat_pembelajaran')) {
@@ -72,12 +79,6 @@ class NarasumberController extends Controller
       DB::rollback();
       return response()->json(['status' => 'error', 'data' => $e->getMessage()], 200);
     }
-  }
-
-  // show form create
-  public function create()
-  {
-    return view('page.pengalaman.narasumber.create');
   }
 
   // shoe form edit
