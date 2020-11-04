@@ -13,7 +13,9 @@ class Penyusun extends Model
         'tanggal_mulai',
         'tanggal_selesai',
         'pendidikan_formal',
-        'file_bukti_karyatulis'
+        'file_bukti_karyatulis',
+        'file_sertifikat_pembelajaran',
+        'file_pendidikan_formal'
     ];
 
     public function judul()
