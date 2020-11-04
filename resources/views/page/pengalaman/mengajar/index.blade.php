@@ -203,6 +203,19 @@
     drEvent.clearElement();
   }
 
+  $('.table-mengajar tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+    } );
+
+    function showData(data){
+      $.each(data, function (index, value) {
+        $("#"+index+"_show").val(value);
+      });
+      $('#show-data').modal('toggle');
+    }
+
   function editForm(id){
     save_method = "edit";
     $('input[name = _method]').val('PATCH');

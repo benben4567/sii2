@@ -70,7 +70,7 @@
   </div> <!-- container-fluid -->
 </div> <!-- content -->
 
-{{-- @include('page.pengalaman.narasumber.create') --}}
+@include('page.pengalaman.narasumber.edit')
 
 @section('js')
 <script type="text/javascript">
@@ -97,6 +97,19 @@
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
       }]
     });
+
+    $('.table-narasumber tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+    } );
+
+    function showData(data){
+      $.each(data, function (index, value) {
+        $("#"+index+"_show").val(value);
+      });
+      $('#show-data').modal('toggle');
+    }
 
 
     $('form').validator().on('submit', function(e){

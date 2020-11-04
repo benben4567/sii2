@@ -73,7 +73,7 @@
     </div> <!-- end page content-->
   </div> <!-- container-fluid -->
 </div> <!-- content -->
-
+@include('page.pengalaman.penyusun.edit')
   @section('js')
   <script type="text/javascript">
     var table, save_method;
@@ -101,6 +101,19 @@
             "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
           }]
         });
+
+        $('.table-penyusun tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+        });
+
+        function showData(data){
+          $.each(data, function (index, value) {
+            $("#"+index+"_show").val(value);
+          });
+          $('#show-data').modal('toggle');
+        }
 
 
 

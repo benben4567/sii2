@@ -102,6 +102,19 @@
 
     });
 
+    $('.table-pendalaman_materi tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        showData(data);
+    } );
+
+    function showData(data){
+      $.each(data, function (index, value) {
+        $("#"+index+"_show").val(value);
+      });
+      $('#show-data').modal('toggle');
+    }
+
     // $('#modal-pendalaman_materi .dropify').dropify({
       //   messages: {
         //     'default': 'Drag and drop a file here or click',
