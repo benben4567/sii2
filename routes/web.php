@@ -36,6 +36,7 @@ Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function 
 
   // Early Warning
   Route::get('warning/', ['as' => 'warning.index', 'uses' => 'WarningController@index']);
+  Route::get('warning/getdata', ['as' => 'warning.getdata', 'uses' => 'WarningController@getData']);
   Route::get('warning/edit', ['as' => 'warning.edit', 'uses' => 'WarningController@edit']);
 
   // Instruktur

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Warning;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
+use App\{Aspek, Warning};
 
 class WarningController extends Controller
 {
@@ -16,6 +18,21 @@ class WarningController extends Controller
   public function show()
   {
     return view('page.early_warning.kategoriReview');
+  }
+
+  public function getData(Request $request)
+  {
+    if ($request->ajax()) {
+      $judul = DB::table('warnings')
+        ->join('users', 'users.id', "=", "warnings.user_id")
+        ->join('juduls', 'juduls.id', "=", "warnings.judul_id")
+        ->get();
+
+      // return dd($judul);
+      return DataTables::of($judul)
+        ->addIndexColumn()
+        ->make(true);
+    }
   }
 
 

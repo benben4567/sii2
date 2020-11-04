@@ -10,10 +10,12 @@ class Penyusun extends Model
         'instruktur_id',
         'file_penyusun',
         'judul_id',
+        'file_sertifikat_pembelajaran',
         'tanggal_mulai',
         'tanggal_selesai',
         'pendidikan_formal',
-        'file_bukti_karyatulis'
+        'file_pendidikan_formal',
+        'file_bukti_karyatulis',
     ];
 
     public function judul()
