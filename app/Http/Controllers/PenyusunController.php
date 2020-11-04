@@ -81,7 +81,7 @@ class PenyusunController extends Controller
         // $file->move('assets/file/penyusun/file_bukti_karyatulis', $file_karya_tulis);
         $path = $request->file('file_bukti_karyatulis')->storeAs('public/file/penyusun/file_bukti_karyatulis', $file_karya_tulis);
       }
-      Penyusun::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
+      $penyusun = Penyusun::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
         'file_penyusun' => $file_penyusun,
         'pendidikan_formal' => $request->pendidikan_formal,
         'file_pendidikan_formal' => $ijazah,
@@ -93,7 +93,14 @@ class PenyusunController extends Controller
         'instruktur_id' => Auth::user()->instruktur->id
       ]);
       DB::commit();
-      return redirect()->route('instruktur.penyusun.index');
+      if ($penyusun) {
+        alert()->success('Data berhasil Ditambah!');
+        return redirect()->back();
+      } else {
+        alert()->error('Coba lagi...', 'Data gagal ditambah!');
+        return redirect()->back();
+      }
+      return response()->route('instruktur.penyusun.index');
     } catch (\Exception $e) {
       DB::rollback();
       return redirect()->back();

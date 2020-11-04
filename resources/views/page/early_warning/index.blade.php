@@ -33,7 +33,6 @@
                   <table  class="table table-bordered table-materi" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                       <tr>
-                        <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                         <th>No</th>
                         <th>Judul</th>
                         <th>Nama Instruktur</th>
@@ -64,12 +63,28 @@
 var table;
 $(function(){
   table = $('.table-materi').DataTable({
+      "responsive" : true,
+      "pageLength" : 10,
+      "deferRender": true,
+      "lengthChange": false,
       "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "warning/getdata",
         "type" : "GET"
       },
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_judul', name: 'nama_judul'},
+            {data: 'username', name: 'username'},
+            {data: 'aspek', name: 'aspek'},
+            {data: 'informasi_pendukung', name: 'tipe_instruktur'}
+      ],
+      "columnDefs": [{
+        "targets" : 5,
+        "data" : '',
+        "defaultContent": `<button type="button" class="btn btn-sm btn-show btn-info"><i class="fas fa-eye"></i></button>`
+      }]
     });
 })
 

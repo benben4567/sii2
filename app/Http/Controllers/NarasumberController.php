@@ -62,7 +62,7 @@ class NarasumberController extends Controller
         $namafilesertifikat = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         $path = $request->file('file_sertifikat_pembelajaran')->storeAs('public/file/narasumber/file_sertifikat_pembelajaran', $namafilesertifikat);
       }
-      Narasumber::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
+      $narasumber = Narasumber::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
         'pengalaman_bidang' => $request->pengalaman_bidang,
         'pendidikan_formal' => $request->pendidikan_formal,
         'file_pendidikan_formal' => $namafilependidikan,
@@ -71,6 +71,16 @@ class NarasumberController extends Controller
         'instruktur_id' => Auth::user()->instruktur->id
       ]);
       DB::commit();
+      if ($narasumber) {
+        alert()->success('Data berhasil Ditambah!');
+        return redirect()->back();
+      } else {
+        alert()->error('Coba lagi...', 'Data gagal ditambah!');
+        return redirect()->back();
+      }
+    } catch (\Exception $e) {
+      DB::rollback();
+      return response()->json_encode(['status' => 'error', 'data' => $e->getMessage()], 200);
       // return response()->json(['status' => 'success'], 200);
       return redirect()->route('instruktur.narasumber.index');
     } catch (\Exception $e) {
