@@ -89,10 +89,10 @@ class PenyusunController extends Controller
         'instruktur_id' => Auth::user()->instruktur->id
       ]);
       DB::commit();
-      return response()->json(['status' => 'success'], 200);
+      return response()->route('instruktur.penyusun.index');
     } catch (\Exception $e) {
       DB::rollback();
-      return response()->json(['status' => 'error', 'data' => $e->getMessage()], 200);
+      return response()->back();
     }
   }
 
