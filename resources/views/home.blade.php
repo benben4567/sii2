@@ -109,7 +109,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-8 border-right">
-                  <h4 class="mt-0 header-title mb-0">Selamat Datang {{ $nama }}</h4>
+                  <h4 class="mt-0 header-title mb-0">Selamat Datang {{ Auth::user()->username }}</h4>
                 </div>
 
               </div>
@@ -132,7 +132,7 @@
 
 @section('js')
 <script type="text/javascript">
-  var nama = "{{{ $nama }}}";
+  var nama = "{{{ Auth::user()->username }}}";
   $(function() {
     toastr.options.timeOut = "10000";
     toastr.options.closeButton = true;

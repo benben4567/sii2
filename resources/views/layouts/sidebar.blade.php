@@ -15,7 +15,7 @@
       <div class="user-info">
         <div class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{!empty(Auth::user()->instruktur()->first()->nama_instruktur) ? awalNama(Auth::user()->instruktur()->first()->nama_instruktur) : Auth::user()->username}}
+            {{Auth::user()->username}}
           </a>
           <ul class="dropdown-menu">
             <li><a href="#" class="dropdown-item"><i class="mdi mdi-account-circle m-r-5"></i> Profile<div class="ripple-wrapper"></div></a></li>

@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $nama = Peserta::find(Auth::user()->instruktur->peserta_id)->nama;
-        return view('home', compact('nama'));
+        return view('home');
     }
 }
