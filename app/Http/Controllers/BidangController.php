@@ -45,7 +45,7 @@ class BidangController extends Controller
       if ($request->hasFile('nama_file')) {
         $file = $request->file('nama_file');
         $name = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
-        $file->move('assets/file/file_sertifikasi_bidang', $name);
+        $file->move('assets/file/file_bidang', $name);
       }
       $jml = Bidang::where('nama_sertifikasi', '=', $request['nama_sertifikasi'])
         ->where('instruktur_id', Auth::user()->instruktur->id)->count();
