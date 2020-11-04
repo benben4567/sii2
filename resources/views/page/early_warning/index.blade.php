@@ -30,7 +30,7 @@
               <div class="card-body">
                 <form method="post" action="#" id="form-warning" target="votar">
                   @csrf
-                  <table class="table table-bordered table-early" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                  <table  class="table table-bordered table-materi" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -41,21 +41,10 @@
                         <th>Aksi</th>
                       </tr>
                     </thead>
-
                     <tbody>
 
                     </tbody>
 
-                    <tfoot>
-                      <tr>
-                        <th>No</th>
-                        <th>Judul</th>
-                        <th>Nama Instruktur</th>
-                        <th>Aspek</th>
-                        <th>Informasi Pendukung</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </tfoot>
                   </table>
                 </form>
               </div>
@@ -73,23 +62,23 @@
 <script type="text/javascript">
 var table;
 $(function(){
-    table = $('.table-early').DataTable({
+  table = $('.table-materi').DataTable({
       "responsive" : true,
       "pageLength" : 10,
       "deferRender": true,
       "lengthChange": false,
-      "processing" : true,
+      "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "/warning/getdata",
+        "url" : "warning/getdata",
         "type" : "GET"
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'username', name: 'username'},
             {data: 'nama_judul', name: 'nama_judul'},
+            {data: 'username', name: 'username'},
             {data: 'aspek', name: 'aspek'},
-            {data: 'informasi_pendukung', name: 'informasi_pendukung'}
+            {data: 'informasi_pendukung', name: 'tipe_instruktur'}
       ],
       "columnDefs": [{
         "targets" : 5,
@@ -97,6 +86,7 @@ $(function(){
         "defaultContent": `<button type="button" class="btn btn-sm btn-show btn-info"><i class="fas fa-eye"></i></button>`
       }]
     });
+})
 
 $(".swal-confirm").click(function(e) {
   id = e.target.dataset.id;

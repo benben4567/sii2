@@ -24,8 +24,8 @@ class WarningController extends Controller
   {
     if ($request->ajax()) {
       $judul = DB::table('warnings')
-        ->join('users', 'users.id', "=", "warnings.user_id")
         ->join('juduls', 'juduls.id', "=", "warnings.judul_id")
+        ->join('users', 'users.id', "=", "warnings.user_id")
         ->get();
 
       // return dd($judul);
