@@ -46,7 +46,15 @@
                 <li class="nav-item">
                   <a class="nav-link" id="penyusun-tab" data-toggle="tab" href="#penyusun" role="tab" aria-controls="penyusun" aria-selected="false">Penyusun</a>
                 </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sertifikasi</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" id="bidang-tab" data-toggle="tab" href="#bidang">Bidang</a>
+                    <a class="dropdown-item" id="kompetensi-tab" data-toggle="tab" href="#kompetensi">Kompetensi</a>
+                  </div>
+                </li>
               </ul>
+              
 
               <!-- Tab panes -->
               <div class="tab-content">
@@ -285,6 +293,50 @@
                     </div>
                   </div>
                 </div>
+                <div class="tab-pane" id="bidang" role="tabpanel" aria-labelledby="bidang-tab">
+                  <div class="card mt-2">
+                    <div class="card-header">
+                      <h6>Sertifikasi Bidang</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-bordered" id="table-bidang" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Sertifikasi</th>
+                            <th>Tanggal Pelaksanaan</th>
+                            <th>Masa Berlaku</th>
+                            <th>File</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="kompetensi" role="tabpanel" aria-labelledby="kompetensi-tab">
+                  <div class="card mt-2">
+                    <div class="card-header">
+                      <h6>Sertifikasi Kompetensi</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-bordered" id="table-kompetensi" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Sertifikasi</th>
+                            <th>Tanggal Pelaksanaan</th>
+                            <th>Masa Berlaku</th>
+                            <th>File</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -383,6 +435,42 @@
               {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
         ],
       });
+
+      var table6 = $('#table-bidang').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/bidang' }}",
+          "type" : "GET"
+        },
+        "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_sertifikasi', name: 'nama_sertifikasi'},
+            {data: 'tgl_pelaksanaan', name: 'tgl_pelaksanaan'},
+            {data: 'batas_sertifikasi', name: 'batas_sertifikasi'},
+            {data: 'nama_file', name: 'nama_file'}
+      ],
+      });
+
+      var table7 = $('#table-kompetensi').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/kompetensi' }}",
+          "type" : "GET"
+        },
+        "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_sertifikasi', name: 'nama_sertifikasi'},
+            {data: 'tgl_pelaksanaan', name: 'tgl_pelaksanaan'},
+            {data: 'batas_sertifikasi', name: 'batas_sertifikasi'},
+            {data: 'nama_file', name: 'nama_file'}
+      ],
+      });
+
+
     });
   </script>
 @endpush

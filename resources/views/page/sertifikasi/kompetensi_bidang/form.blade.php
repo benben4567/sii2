@@ -55,3 +55,46 @@
       </div>
     </div>
   </div>
+
+  {{-- MODAL SHOW DETAIL DATA --}}
+  <div class="modal fade" id="show-data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detail Pengalaman Sertifikasi Kompetensi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="nama_sertifikasi" class="col-sm-4 col-form-label">Nama Sertifikat</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="nama_sertifikasi_show">
+            </div>
+            </div>
+          <div class="form-group row">
+            <label for="tgl_pelaksanaan" class="col-sm-4 col-form-label">Tanggal Pelaksanaan</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="tgl_pelaksanaan_show">
+            </div>
+            </div>
+            <div class="form-group row">
+              <label for="batas_sertifikasi" class="col-sm-4 col-form-label">Batas Sertifikasi</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="batas_sertifikasi_show" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nama_file" class="col-sm-4 col-form-label">File Pendidikan Formal</label>
+              <div class="col-sm-8">
+                <input type="text" min="0" class="form-control" id="nama_file_show">
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
