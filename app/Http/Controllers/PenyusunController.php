@@ -58,28 +58,28 @@ class PenyusunController extends Controller
         $file = $request->file('file_penyusun');
         $file_penyusun = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         // $file->move('assets/file/penyusun/file_penyusun', $file_penyusun);
-        $path = $request->file('file_penyusun')->storeAs('public/file/penyusun/file_penyusun', $file_penyusun);
+        $path = $request->file('file_penyusun')->storeAs('/storage/file/penyusun/file_penyusun', $file_penyusun);
       }
       $namafilesertifikat = NULL;
       if ($request->hasFile('file_sertifikat_pembelajaran')) {
         $file = $request->file('file_sertifikat_pembelajaran');
         $namafilesertifikat = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         // $file->move('assets/file/penyusun/file_sertifikat_pembelajaran', $namafilesertifikat);
-        $path = $request->file('file_sertifikat_pembelajaran')->storeAs('public/file/penyusun/file_sertifikat_pembelajaran', $namafilesertifikat);
+        $path = $request->file('file_sertifikat_pembelajaran')->storeAs('/storage/file/penyusun/file_sertifikat_pembelajaran', $namafilesertifikat);
       }
       $ijazah = NULL;
       if ($request->hasFile('file_pendidikan_formal')) {
         $file = $request->file('file_pendidikan_formal');
         $ijazah = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         // $file->move('assets/file/penyusun/file_pendidikan_formal', $ijazah);
-        $path = $request->file('file_pendidikan_formal')->storeAs('public/file/penyusun/file_pendidikan_formal', $ijazah);
+        $path = $request->file('file_pendidikan_formal')->storeAs('/storage/file/penyusun/file_pendidikan_formal', $ijazah);
       }
       $file_karya_tulis = NULL;
       if ($request->hasFile('file_bukti_karyatulis')) {
         $file = $request->file('file_bukti_karyatulis');
         $file_karya_tulis = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         // $file->move('assets/file/penyusun/file_bukti_karyatulis', $file_karya_tulis);
-        $path = $request->file('file_bukti_karyatulis')->storeAs('public/file/penyusun/file_bukti_karyatulis', $file_karya_tulis);
+        $path = $request->file('file_bukti_karyatulis')->storeAs('/storage/file/penyusun/file_bukti_karyatulis', $file_karya_tulis);
       }
       $penyusun = Penyusun::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
         'file_penyusun' => $file_penyusun,

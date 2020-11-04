@@ -99,11 +99,23 @@
             {data: 'batas_sertifikasi', name: 'batas_sertifikasi'},
             {data: 'nama_file', name: 'nama_file'}
       ],
-      "columnDefs": [{
+      
+      "columnDefs": [
+        {
+          "targets" : 4,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/narasumber/nama_file/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        },
+
+        {
         "targets" : 5,
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
-      }]
+      }
+      ]
     });
 
     $('.table-sertifikasi_bidang tbody').on( 'click', '.btn-show', function () {
