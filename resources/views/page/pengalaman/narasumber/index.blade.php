@@ -43,22 +43,9 @@
                           <th>Aksi</th>
                         </tr>
                       </thead>
-
                       <tbody>
 
                       </tbody>
-
-                      <tfoot class='text-center'>
-                        <tr>
-                          <th>No</th>
-                          <th>Lama Pengalaman</th>
-                          <th>Pendidikan Formal</th>
-                          <th>Sertifikasi</th>
-                          <th>File Pendidikan</th>
-                          <th>File Sertifikasi</th>
-                          <th>Aksi</th>
-                        </tr>
-                      </tfoot>
                     </table>
                   </div>
                 </div>
@@ -88,14 +75,32 @@
             {data: 'pengalaman_bidang', name: 'pengalaman_bidang'},
             {data: 'pendidikan_formal', name: 'pendidikan_formal'},
             {data: 'nama_judul', name: 'nama_judul'},
-            {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
-            {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
       ],
-      "columnDefs": [{
-        "targets" : 6,
-        "data" : null,
-        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
-      }]
+      "columnDefs": [
+        {
+          "targets" : 4,
+          "className": 'text-center',
+          "data" : 'file_pendidikan_formal',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/narasumber/file_pendidikan_formal/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        },
+        {
+          "targets" : 5,
+          "className": 'text-center',
+          "data" : 'file_sertifikat_pembelajaran',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/narasumber/file_sertifikat_pembelajaran/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        },
+        {
+          "targets" : 6,
+          "className": "text-center",
+          "data" : null,
+          "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+        },
+      ]
+
     });
 
 
@@ -153,7 +158,7 @@
       cache: true
     }
   });
-  
+
   $('#modal-narasumber form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
         var id = $('#id').val();

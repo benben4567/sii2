@@ -38,9 +38,10 @@
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Selesai</th>
                         <th>Pendidikan Formal</th>
-                        <th>File Pembelajaran</th>
+                        <th>File Sertifikasi</th>
                         <th>File Pendidikan</th>
                         <th>File Karya Tulis</th>
+                        <th>File pembelajaran</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -48,21 +49,6 @@
                     <tbody>
 
                     </tbody>
-
-                    <tfoot class='text-center'>
-                      <tr>
-                        <th>No</th>
-                        <th>Sertifikasi Pembelajaran</th>
-                        <th>Tanggal Mulai</th>
-                        <th>Tanggal Selesai</th>
-                        <th>Pendidikan Formal</th>
-                        <th>File Pembelajaran</th>
-                        <th>File Pendidikan</th>
-                        <th>File Karya Tulis</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </tfoot>
-
                   </table>
                 </div>
               </div>
@@ -91,15 +77,46 @@
             {data: 'tanggal_mulai', name: 'tanggal_mulai'},
             {data: 'tanggal_selesai', name: 'tanggal_selesai'},
             {data: 'pendidikan_formal', name: 'pendidikan_formal'},
-            {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
-            {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
-            {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
           ],
-          "columnDefs": [{
-            "targets" : 8,
-            "data" : null,
-            "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
-          }]
+          "columnDefs": [
+            {
+              "targets" : 5,
+              "className": 'text-center',
+              "data" : 'file_sertifikat_pembelajaran',
+              "render": function ( data, type, row, meta ) {
+                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_sertifikat_pembelajaran/${data}"><i class="fas fa-download"></i></a>` ;
+              }
+            },
+            {
+              "targets" : 6,
+              "className": 'text-center',
+              "data" : 'file_pendidikan_formal',
+              "render": function ( data, type, row, meta ) {
+                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_pendidikan_formal/${data}"><i class="fas fa-download"></i></a>` ;
+              }
+            },
+            {
+              "targets" : 7,
+              "className": 'text-center',
+              "data" : 'file_bukti_karyatulis',
+              "render": function ( data, type, row, meta ) {
+                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_bukti_karyatulis/${data}"><i class="fas fa-download"></i></a>` ;
+              }
+            },
+            {
+              "targets" : 8,
+              "className": 'text-center',
+              "data" : 'file_penyusun',
+              "render": function ( data, type, row, meta ) {
+                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_penyusun/${data}"><i class="fas fa-download"></i></a>` ;
+              }
+            },
+            {
+              "targets" : 9,
+              "data" : null,
+              "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+            }
+          ]
         });
 
 
@@ -128,7 +145,7 @@
         };
       });
 
-      
+
       $('select#sertifikasi').select2({
         allowClear: true,
         placeholder: 'Search',
