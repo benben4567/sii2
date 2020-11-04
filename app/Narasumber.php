@@ -12,7 +12,7 @@ class Narasumber extends Model
         'pengalaman_bidang',
         'pendidikan_formal',
         'file_pendidikan_formal',
-        'file_sertifikat_pembelajaran'
+        'file_sertifikat_pembelajaran',
     ];
 
     public function judul()

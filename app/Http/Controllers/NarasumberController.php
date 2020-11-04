@@ -49,17 +49,14 @@ class NarasumberController extends Controller
 
   public function store(Request $request)
   {
-    // dd($request);
-    // // dd($request->all());
+
     DB::beginTransaction();
     try {
-      $namafilependidikan = NULL;
       if ($request->hasFile('file_pendidikan_formal')) {
         $file = $request->file('file_pendidikan_formal');
         $namafilependidikan = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         $file->move('assets/file/narasumber/file_pendidikan_formal', $namafilependidikan);
       }
-      $namafilesertifikat = NULL;
       if ($request->hasFile('file_sertifikat_pembelajaran')) {
         $file = $request->file('file_sertifikat_pembelajaran');
         $namafilesertifikat = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
@@ -84,6 +81,12 @@ class NarasumberController extends Controller
     } catch (\Exception $e) {
       DB::rollback();
       return response()->json_encode(['status' => 'error', 'data' => $e->getMessage()], 200);
+      // return response()->json(['status' => 'success'], 200);
+      return redirect()->route('instruktur.narasumber.index');
+    } catch (\Exception $e) {
+      DB::rollback();
+      return redirect()->back();
+      // return response()->json(['status' => 'error', 'data' => $e->getMessage()], 200);
     }
   }
 

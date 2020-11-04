@@ -96,9 +96,10 @@ class PenyusunController extends Controller
         alert()->error('Coba lagi...', 'Data gagal ditambah!');
         return redirect()->back();
       }
+      return response()->route('instruktur.penyusun.index');
     } catch (\Exception $e) {
       DB::rollback();
-      return response()->json(['status' => 'error', 'data' => $e->getMessage()], 200);
+      return response()->back();
     }
   }
 
