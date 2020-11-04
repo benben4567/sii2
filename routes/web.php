@@ -94,12 +94,14 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Kompetensi
   Route::get('pengalaman-kompetensi', ['as' => 'kompetensi.index', 'uses' => 'KompetensiController@index']);
+  Route::get('pengalaman-kompetensi/getdata', ['as' => 'kompetensi.getdata', 'uses' => 'KompetensiController@getData']);
   Route::get('pengalaman-kompetensi/show/{id}', ['as' => 'kompetensi.show', 'uses' => 'KompetensiController@show']);
   Route::post('pengalaman-kompetensi', ['as' => 'kompetensi.store', 'uses' => 'KompetensiController@store']);
   Route::put('pengalaman-kompetensi/update/{id}', ['as' => 'kompetensi.update', 'uses' => 'KompetensiController@update']);
 
   // Bidang
   Route::get('pengalaman-bidang', ['as' => 'bidang.index', 'uses' => 'BidangController@index']);
+  Route::get('pengalaman-bidang/getdata', ['as' => 'bidang.getdata', 'uses' => 'BidangController@getData']);
   Route::get('pengalaman-bidang/show/{id}', ['as' => 'bidang.show', 'uses' => 'BidangController@show']);
   Route::post('pengalaman-bidang', ['as' => 'bidang.store', 'uses' => 'BidangController@store']);
   Route::put('pengalaman-bidang/update/{id}', ['as' => 'bidang.update', 'uses' => 'BidangController@update']);

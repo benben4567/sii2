@@ -38,7 +38,6 @@
                     <table class="table table-bordered  nowrap table-bidang" style="border-collapse: collapse; border-spacing: 0; width: 100%;" >
                       <thead>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           {{-- @if(Auth::user()->roles->first->getOriginal()->name == "Super Admin")
                           <th>Nama</th>
@@ -50,9 +49,13 @@
                           <th>Aksi</th>
                         </tr>
                       </thead>
+
+                      <tbody>
+                      </tbody>
+
+
                       <tfoot>
                         <tr>
-                          <th width="20"><input type="checkbox" id="select-all" value="1" ></th>
                           <th>No</th>
                           {{-- @if(Auth::user()->roles->first->getOriginal()->name == "Super Admin")
                           <th>Nama</th>
@@ -64,8 +67,7 @@
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
-                      <tbody>
-                      </tbody>
+                      
                     </table>
                   </div>
                 </div>
@@ -85,13 +87,27 @@
   var table, save_method;
   $(function(){
     table = $('.table-bidang').DataTable({
+      "pageLength" : 10,
+      "deferRender": true,
+      "lengthChange": false,
       "processing" :true,
       "serverside" : true,
       "ajax":{
-        "url" : "#",
+        "url" : "pengalaman-bidang/getdata",
         "type" : "GET"
       },
-
+      "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_sertifikasi', name: 'nama_sertifikasi'},
+            {data: 'tgl_pelaksanaan', name: 'tgl_pelaksanaan'},
+            {data: 'batas_sertifikasi', name: 'batas_sertifikasi'},
+            {data: 'nama_file', name: 'nama_file'}
+      ],
+      "columnDefs": [{
+        "targets" : 5,
+        "data" : null,
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+      }]
     });
 
     $('#modal-bidang .dropify').dropify({
