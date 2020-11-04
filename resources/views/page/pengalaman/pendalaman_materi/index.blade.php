@@ -147,7 +147,7 @@
 
         $('#modal-pendalaman_materi form').validator().on('submit', function(e){
           if(!e.isDefaultPrevented()){
-            var id = $('#id_pendalaman_materi').val();
+            var id = $('#id').val();
             if (save_method == "add")
             url = "#";
             else url = "pendalaman_materi/"+id;

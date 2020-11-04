@@ -15,16 +15,14 @@
       <div class="user-info">
         <div class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{-- {{!empty(Auth::user()->instrukturs()->first()->nama_instruktur) ? awalNama(Auth::user()->instrukturs()->first()->nama_instruktur) : Auth::user()->username}} --}}
-            nama_user
+            {{!empty(Auth::user()->instruktur()->first()->nama_instruktur) ? awalNama(Auth::user()->instruktur()->first()->nama_instruktur) : Auth::user()->username}}
           </a>
           <ul class="dropdown-menu">
             <li><a href="#" class="dropdown-item"><i class="mdi mdi-account-circle m-r-5"></i> Profile<div class="ripple-wrapper"></div></a></li>
             <li><a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="mdi mdi-power m-r-5"></i> Logout</a></li>
           </ul>
         </div>
-        {{-- <p class="text-white-50 m-0">{{!empty(Auth::user()->roles()->first()->name) ? Auth::user()->roles()->first()->name : "Users"}}</p> --}}
-        <p class="text-white-50 m-0">Roles</p>
+        <p class="text-white-50 m-0">{{!empty(Auth::user()->roles()->first()->name) ? Auth::user()->roles()->first()->name : "Users"}}</p>
       </div>
 
     </div>

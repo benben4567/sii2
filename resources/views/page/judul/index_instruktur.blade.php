@@ -52,7 +52,7 @@
                         <th>Nama Judul</th>
                         <th>Dahan Profesi</th>
                         <th>Level Profisiensi</th>
-                        <th>Tambah Warning</th>
+                        <th>Warning</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -101,7 +101,7 @@
         "targets" : 6,
         "className": "text-center",
         "data" : null,
-        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fas fa-exclamation-triangle\"></i></button>"
+        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-dark\"><i class=\"far fa-paper-plane\"></i></button>"
       }],
       "order": [[1, 'asc']]
     });
@@ -118,27 +118,27 @@
               '<td>'+d.sifat_diklat+'</td>'+
           '</tr>'+
           '<tr>'+
-              '<td>Sifat Diklat:</td>'+
+              '<td>Jenis Diklat:</td>'+
               '<td>'+d.jenis_diklat+'</td>'+
           '</tr>'+
           '<tr>'+
-              '<td>Sifat Diklat:</td>'+
+              '<td>Penyelenggaraan:</td>'+
               '<td>'+d.penyelenggaraan+'</td>'+
           '</tr>'+
           '<tr>'+
-              '<td>Sifat Diklat:</td>'+
+              '<td>Penanggung Jawab:</td>'+
               '<td>'+d.penanggung_jawab+'</td>'+
           '</tr>'+
           '<tr>'+
-              '<td>Sifat Diklat:</td>'+
+              '<td>Jenis Sertifikat:</td>'+
               '<td>'+d.jenis_Sertifikat+'</td>'+
           '</tr>'+
           '<tr>'+
-              '<td>Sifat Diklat:</td>'+
+              '<td>Tahun Terbit:</td>'+
               '<td>'+d.tahun_terbit+'</td>'+
           '</tr>'+
           '<tr>'+
-              '<td>Sifat Diklat:</td>'+
+              '<td>Durasi Hari:</td>'+
               '<td>'+d.durasi_hari+'</td>'+
           '</tr>'+
       '</table>';
@@ -161,15 +161,14 @@
         }
     } );
 
-    $('.table-judul tbody').on( 'click', '.btn-danger', function () {
+    $('.table-judul tbody').on( 'click', '.btn-dark', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        $('#id_judul').val(data.id)
+        $('#judul_id').val(data.id)
         $('.modal-title').html(data.nama_judul)
         $('#add-warning').modal('show')
     });
 
-
-  })
+  });
 
 
 

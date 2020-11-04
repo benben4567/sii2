@@ -121,7 +121,7 @@
       };
     });
 
-    $('select#judul_id').select2({
+    $('select#judul').select2({
       allowClear: true,
       placeholder: 'Search',
       minimumInputLength: 1,
@@ -154,7 +154,7 @@
   });
 
   $('.form-edit').validator().on('submit',function(e){
-    var id = $('#idnarasumber').val();
+    var id = $('#id').val();
     if(!e.isDefaultPrevented()){
       $.ajax({
         url : "narasumber/"+id+"/change",

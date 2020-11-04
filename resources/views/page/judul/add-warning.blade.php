@@ -14,24 +14,25 @@
           {{ csrf_field() }}
           <div class="form-group">
 
-            <input id="id_judul" type="hidden" name="id_judul" readonly/>
+            <input id="id" type="hidden" name="id" readonly/>
+            <input id="judul_id" type="hidden" name="judul_id" readonly/>
 
             <label for="aspek">
               <i class="fas fa-exclamation-triangle mr-3"></i> Aspek Pembaruan
             </label>
 
 
-            {{-- @forelse($aspeks as $aspek)
+            @forelse($aspeks as $aspek)
               <div class="custom-control custom-checkbox my-1 mr-sm-2">
                 <input type="checkbox" class="custom-control-input aspek" id="{{$aspek->aspek}}" name="aspek[]" value="{{$aspek->aspek}}">
                 <label class="custom-control-label" for="{{$aspek->aspek}}">{{$aspek->aspek}}</label>
               </div>
-            @empty --}}
+            @empty
               <div class="custom-control custom-checkbox my-1 mr-sm-2">
                 <input type="checkbox" class="custom-control-input aspek" name="aspek[]" value="">
                 <label class="custom-control-label"></label>
               </div>
-            {{-- @endforelse --}}
+            @endforelse
 
             <br><label for="informasi_pendukung"><i class="fas fa-info-circle mr-2 informasi_pendukung"></i>Informasi Pendukung</label>
             <textarea class="form-control" id="informasi_pendukung" name="informasi_pendukung" rows="3"></textarea>

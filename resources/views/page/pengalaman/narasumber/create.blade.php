@@ -29,6 +29,7 @@
                 {{csrf_field()}} {{method_field('POST')}}
                 <div class="card-body">
                   <div class="form-group">
+                    <input type="hidden" id="id" name="id" >
                     <label for="pengalaman_bidang">Lama Pengalaman Bidang</label>
                     <select class="form-control" name="pengalaman_bidang" id="pengalaman_bidang">
                       <option value="1 Tahun">< 1 Tahun</option>
@@ -61,8 +62,8 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="judul_id">Sertifikasi</label>
-                        <select name="judul_id" id="judul_id" type="text" class="form-control">
+                        <label for="judul">Sertifikasi</label>
+                        <select name="judul" id="judul" type="text" class="form-control">
                         </select>
                         <span class="help-block with-errors"></span>
                       </div>

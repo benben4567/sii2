@@ -113,7 +113,7 @@
 
     $('#modal-mengajar form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
-        var id = $('#id_mengajar').val();
+        var id = $('#id').val();
         if (save_method == "add")
         url = "#";
         else url = "mengajar/"+id;

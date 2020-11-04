@@ -36,7 +36,6 @@ Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function 
 
   // Early Warning
   Route::get('warning/', ['as' => 'warning.index', 'uses' => 'WarningController@index']);
-  Route::get('warning/create', ['as' => 'warning.create', 'uses' => 'WarningController@create']);
   Route::get('warning/edit', ['as' => 'warning.edit', 'uses' => 'WarningController@edit']);
 
   // Instruktur
@@ -91,6 +90,7 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
 
   // Warning
   Route::get('warning/kategori', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
+  Route::post('warning/store', ['as' => 'warning.store', 'uses' => 'WarningController@store']);
 
   // Kompetensi
   Route::get('pengalaman-kompetensi', ['as' => 'kompetensi.index', 'uses' => 'KompetensiController@index']);

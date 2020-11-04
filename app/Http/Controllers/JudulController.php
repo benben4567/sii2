@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
+use App\Aspek;
 
 class JudulController extends Controller
 {
   public function index()
   {
+    $aspeks = Aspek::get();
     $role = Auth::user()->roles->pluck('name');
-    if ($role[0] == 'superadmin') {
+    if ($role[0] == 'super-admin') {
       return view('page.judul.index_admin');
     } else {
-      return view('page.judul.index_instruktur');
+      return view('page.judul.index_instruktur', compact(['aspeks']));
     }
   }
 
