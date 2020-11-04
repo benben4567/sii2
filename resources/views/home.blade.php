@@ -109,7 +109,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-8 border-right">
-                  <h4 class="mt-0 header-title mb-0">Selamat Datang _nama_</h4>
+                  <h4 class="mt-0 header-title mb-0">Selamat Datang {{ $nama }}</h4>
                 </div>
 
               </div>
@@ -132,11 +132,12 @@
 
 @section('js')
 <script type="text/javascript">
+  var nama = "{{{ $nama }}}";
   $(function() {
     toastr.options.timeOut = "10000";
     toastr.options.closeButton = true;
     toastr.options.positionClass = 'toast-bottom-right';
-    toastr['info']('Selamat datang _nama_ ');
+    toastr['info']('Selamat datang '+nama);
     $('.btn-toastr').on('click', function() {
       $context = $(this).data('context');
       $message = $(this).data('message');

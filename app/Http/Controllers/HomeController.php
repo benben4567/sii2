@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Instruktur;
+use App\Peserta;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $nama = Peserta::find(Auth::user()->instruktur->peserta_id)->nama;
+        return view('home', compact('nama'));
     }
 }
