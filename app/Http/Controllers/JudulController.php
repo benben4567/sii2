@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use App\Aspek;
+use App\LevelProfisiensi;
+use App\Warning;
 
 class JudulController extends Controller
 {
@@ -14,18 +16,20 @@ class JudulController extends Controller
   {
     $aspeks = Aspek::get();
     $role = Auth::user()->roles->pluck('name');
+
+    $warnings = Warning::with('judul')->get();
     if ($role[0] == 'super-admin') {
-      return view('page.judul.index_admin');
+      return view('page.judul.index_admin', compact('warnings'));
     } else {
-      return view('page.judul.index_instruktur', compact(['aspeks']));
+      return view('page.judul.index_instruktur', compact('aspeks'));
     }
   }
 
   public function getData(Request $request)
   {
     if ($request->ajax()) {
-      $judul = \App\Judul::select('id','nama_judul', 'sifatdiklat_id', 'jenisdiklat_id' )
-                ->with(['warnings:id,judul_id','sifatdiklat:id,sifat_diklat','jenisdiklat:id,jenis_diklat'])
+      $judul = \App\Judul::select('id','kode_judul','nama_judul', 'sifatdiklat_id', 'jenisdiklat_id', 'dahanprofesi_id', 'levelprofisiensi_id' )
+                ->with(['warnings:id,judul_id','sifatdiklat:id,sifat_diklat','jenisdiklat:id,jenis_diklat','dahanprofesi:id,dahan_profesi','levelprofisiensi:id,level_profisiensi'])
                 ->get();
       // $judul = \App\Judul::with(['warnings','sifatdiklat','jenisdiklat'])->get();
       // $judul = DB::table('juduls')

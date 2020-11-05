@@ -59,7 +59,7 @@ class Judul extends Model
 
     public function levelprofisiensi()
     {
-        return $this->hasOne(LevelProfisiensi::class);
+        return $this->belongsTo(LevelProfisiensi::class);
     }
 
     public function penyelenggaraan()
@@ -79,7 +79,7 @@ class Judul extends Model
 
     public function dahanprofesi()
     {
-        return $this->hasOne(DahanProfesi::class);
+        return $this->belongsTo(DahanProfesi::class);
     }
 
     public function akademi()

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LevelProfisiensi extends Model
 {
+    protected $table = 'levelprofisiensis';
     protected $fillable = [
         'kode_level_profisiensi',
         'level_profisiensi',
@@ -17,7 +18,7 @@ class LevelProfisiensi extends Model
 
     public function judul()
     {
-        return $this->belongsTo(Judul::class);
+        return $this->hasMany(Judul::class);
     }
 
     public function instruktur()
