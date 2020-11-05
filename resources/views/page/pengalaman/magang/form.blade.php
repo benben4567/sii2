@@ -8,7 +8,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"> &times;</span> </button>
         </div>
         <div class="modal-body">
-          <input type="hidden" id="id_magang" name="id_magang" >
+          <input type="hidden" id="id" name="id" >
           <div class="form-group">
             <label for="tempat_magang" class="col-md-5 control-label">Tempat Magang</label>
             <div class="col-md-12">

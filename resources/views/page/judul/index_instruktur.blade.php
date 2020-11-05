@@ -86,11 +86,11 @@
       
       "columns": [
         {
-                "className":      'details-control',
-                "orderable":      false,
-                "data":           null,
-                "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
-            }
+          "className":      'details-control',
+          "orderable":      false,
+          "data":           null,
+          "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
+        }
       ],
       "columnDefs": [
         {
@@ -148,23 +148,23 @@
           '</tr>'+
           '<tr>'+
               '<td>Sifat Diklat:</td>'+
-              '<td>'+d.sifat_diklat+'</td>'+
+              '<td>'+d.sifatdiklat.sifat_diklat+'</td>'+
           '</tr>'+
           '<tr>'+
               '<td>Jenis Diklat:</td>'+
-              '<td>'+d.jenis_diklat+'</td>'+
+              '<td>'+d.jenisdiklat.jenis_diklat+'</td>'+
           '</tr>'+
           '<tr>'+
               '<td>Penyelenggaraan:</td>'+
-              '<td>'+d.penyelenggaraan+'</td>'+
+              '<td>'+d.penyelenggaraan.penyelenggaraan+'</td>'+
           '</tr>'+
           '<tr>'+
               '<td>Penanggung Jawab:</td>'+
-              '<td>'+d.penanggung_jawab+'</td>'+
+              '<td>'+d.penanggung_jawab.penanggung_jawab+'</td>'+
           '</tr>'+
           '<tr>'+
               '<td>Jenis Sertifikat:</td>'+
-              '<td>'+d.jenis_Sertifikat+'</td>'+
+              '<td>'+d.jenis_sertifikat.jenis_sertifikat+'</td>'+
           '</tr>'+
           '<tr>'+
               '<td>Tahun Terbit:</td>'+

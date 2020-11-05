@@ -14,10 +14,11 @@ class JudulController extends Controller
   {
     $aspeks = Aspek::get();
     $role = Auth::user()->roles->pluck('name');
-
+    $itung = Warning::count('judul_id');
     $warnings = Warning::with('judul')->get();
+    // dd($warnings);
     if ($role[0] == 'super-admin') {
-      return view('page.judul.index_admin', compact('warnings'));
+      return view('page.judul.index_admin', compact('warnings', 'itung'));
     } else {
       return view('page.judul.index_instruktur', compact('aspeks', 'warnings'));
     }
@@ -26,8 +27,8 @@ class JudulController extends Controller
   public function getData(Request $request)
   {
     if ($request->ajax()) {
-      $judul = Judul::select('id', 'kode_judul_lama', 'kode_judul', 'durasi_hari', 'tahun_terbit', 'nama_judul', 'sifatdiklat_id', 'jenisdiklat_id', 'dahanprofesi_id', 'levelprofisiensi_id')
-        ->with(['warnings:id,judul_id', 'sifatdiklat:id,sifat_diklat', 'jenisdiklat:id,jenis_diklat', 'dahanprofesi:id,dahan_profesi', 'levelprofisiensi:id,level_profisiensi'])
+      $judul = Judul::select('id', 'kode_judul_lama', 'kode_judul', 'durasi_hari', 'tahun_terbit', 'nama_judul', 'sifatdiklat_id', 'jenisdiklat_id', 'dahanprofesi_id', 'levelprofisiensi_id',  'penanggungjawab_id', 'penyelenggaraan_id', 'jenissertifikat_id', 'akademi_id')
+        ->with(['warnings:id,judul_id', 'sifatdiklat:id,sifat_diklat', 'jenisdiklat:id,jenis_diklat', 'dahanprofesi:id,dahan_profesi', 'levelprofisiensi:id,level_profisiensi', 'penyelenggaraan:id,penyelenggaraan', 'penanggungJawab:id,penanggung_jawab', 'jenisSertifikat:id,jenis_sertifikat'])
         ->get();
       // $judul = \App\Judul::with(['warnings','sifatdiklat','jenisdiklat'])->get();
       // $judul = DB::table('juduls')

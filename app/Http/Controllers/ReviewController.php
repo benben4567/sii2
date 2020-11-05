@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\{Kurikulum, Silabus, Handout, MateriTayang, PetunjukInstruktur, PetunjukPenyelenggara, PetunjukPraktik, ToolsEvaluasi};
 
 class ReviewController extends Controller
 {
+
+    public function index()
+    {
+        // dd(Auth::user()->instruktur->id);
+        return view('page.early_warning.kategoriReview');
+    }
     public function storeKurikulum(Request $request)
     {
         $create = Kurikulum::create([
@@ -19,9 +26,11 @@ class ReviewController extends Controller
             'strategi' => $request->strategi,
             'level' => $request->level,
             'sertifikat' => $request->sertifikat,
-            'referensi' => $request->referensi
+            'referensi' => $request->referensi,
+            'instruktur_id' => Auth::user()->instruktur->id
 
         ]);
+        // dd($create);
         if ($create) {
             alert()->success('Data berhasil Ditambah!', 'Terimakasih sudah memberi review.');
             return redirect()->back();

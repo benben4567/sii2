@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JenisSertifikat extends Model
 {
+    protected $table = 'jenissertifikats';
     protected $fillable = [
         'jenis_sertifikat',
         'dibuat_oleh',
@@ -15,6 +16,6 @@ class JenisSertifikat extends Model
 
     public function judul()
     {
-        return $this->belongsTo(Judul::class);
+        return $this->hasMany(Judul::class, 'jenissertifikat_id');
     }
 }

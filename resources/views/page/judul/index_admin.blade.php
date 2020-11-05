@@ -41,10 +41,11 @@
                       <span aria-hidden="true">&times;</span>
                       <span class="sr-only">Close</span>
                     </button>
-                    <strong>Perhatian!</strong></br> Ada <strong>n</strong> judul mendapat warning.
+                  <strong>Perhatian!</strong></br> Ada <strong>{{$itung}}</strong> judul mendapat warning.
                     <ul>
-                      <li>judul1</li>
-                      <li>judul2</li>
+                      @foreach ($warnings as $judul)
+                          <li>{{$judul->judul['nama_judul']}}</li>
+                      @endforeach
                     </ul>
                   </div>
                   <table  class="table table-bordered table-responsive nowrap" id="table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -89,6 +90,10 @@
 <script type="text/javascript">
   var table, save_method;
   $(function(){
+    $(this)
+    .find('[data-fa-i2svg]')
+    .toggleClass('fa-minus-square')
+    .toggleClass('fa-plus-square');
     table = $('#table-judul').DataTable({
       "pageLength" : 10,
       "deferRender": true,
@@ -100,7 +105,12 @@
         "type" : "GET"
       },
       "columns": [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+        {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
+        }
       ],
       "columnDefs": [
         {
@@ -109,7 +119,8 @@
           "data" : "warnings",
           "render": function (data, type, row, meta ) {
             if(data.length >= 2) {
-              return `<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-exclamation-triangle"></i></button>`
+              //  console.log(data)
+              return `<button onclick="showWarning(${data[0].judul_id})" type="button" class="btn btn-sm btn-danger"><i class="fas fa-exclamation-triangle"></i></button>`
             } else {
               return `<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>`
             }
@@ -121,6 +132,7 @@
           "render": function (data, type, row, meta ) {
             return data
           }
+
         },
         {
           "targets" : 3,
@@ -144,7 +156,66 @@
 
       ]
     });
+    function format ( d ) {
+      // `d` is the original data object for the row
+      return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+              '<td>Kode Judul :</td>'+
+              '<td>'+d.kode_judul+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Kode Judul Lama:</td>'+
+              '<td>'+d.kode_judul_lama+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Sifat Diklat:</td>'+
+              '<td>'+d.sifatdiklat.sifat_diklat+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Jenis Diklat:</td>'+
+              '<td>'+d.jenisdiklat.jenis_diklat+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Penyelenggaraan:</td>'+
+              '<td>'+d.penyelenggaraan.penyelenggaraan+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Penanggung Jawab:</td>'+
+              '<td>'+d.penanggung_jawab.penanggung_jawab+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Jenis Sertifikat:</td>'+
+              '<td>'+d.jenis_sertifikat.jenis_sertifikat+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Tahun Terbit:</td>'+
+              '<td>'+d.tahun_terbit+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Durasi Hari:</td>'+
+              '<td>'+d.durasi_hari+'</td>'+
+          '</tr>'+
+      '</table>';
+    }
 
+    // Add event listener for opening and closing details
+    $('.table-judul tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.find('i[name="collapse"]').attr('class', 'fas fa-plus-circle');    // FontAwesome 5
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.find('i[name="collapse"]').attr('class', 'fas fa-minus-circle'); // FontAwesome 5
+        }
+    } );
+
+    
     $('#table-judul tbody').on( 'click', '.btn-show', function () {
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
@@ -158,6 +229,7 @@
       $('#show-data').modal('toggle');
     }
 
+    
 
   // $('.table-judul tbody').on( 'click', '.detailWarning', function () {
   //   let id = $(this).data('id')
@@ -192,7 +264,9 @@
   //       $('#show-warning').modal('show')
   //   });
 
+
     function showWarning(id){
+      console.log(id)
       $.ajax({
         url : '/warning/' + id + '/detail',
         type : "GET",
@@ -223,27 +297,6 @@
     $(".close").click(function(){
       $(".empty").empty();
     });
-    // function showWarning(id){
-    //   $.ajax({
-    //     url : '/warning/' + id + '/detail',
-    //     type : "GET",
-    //     dataType : "JSON",
-    //     success:function(data){
-    //       $('.warningShow').text(data.id_warning);
-    //       $('.judulShow').text(data.id_judul);
-    //       $('.userShow').text(data.user_id);
-    //       $('.aspekShow').text(data.aspek);
-    //       $('.infoShow').text(data.informasi_pendukung);
-    //       $('.show-title').text('Detail Warning');
-    //       $('#show-warning').modal('show');
-    //     }
-    //     },
-    //     error : function(){
-    //       alert('Not working properly!');
-    //     }
-    //   });
-    // }
-
 
     $('#modal-import .dropify').dropify({
       messages: {

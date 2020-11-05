@@ -118,11 +118,13 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   Route::get('judul-instruktur/getdata', ['as' => 'judul.getdata', 'uses' => 'JudulController@getData']);
 
   // Warning
+  Route::get('/warning/{id}/detail', ['as' => 'warning.detail', 'uses' => 'WarningController@detail']);
   Route::get('warning/kategori', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
   Route::post('warning/store', ['as' => 'warning.store', 'uses' => 'WarningController@store']);
-
+  // Route::get('warning/show/{id}/{type?}', ['as' => 'warning.show', 'uses' => 'WarningController@show']);
 
   // Review judul pembelajaran
+  Route::get('review', ['as' => 'review', 'uses' => 'ReviewController@index']);
   Route::post('review/kurikulum', ['as' => 'review.kurikulum', 'uses' => 'ReviewController@storeKurikulum']);
   Route::post('review/silabus', ['as' => 'review.silabus', 'uses' => 'ReviewController@storeSilabus']);
   Route::post('review/handout', ['as' => 'review.handout', 'uses' => 'ReviewController@storeHandout']);

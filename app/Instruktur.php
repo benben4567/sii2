@@ -86,4 +86,9 @@ class Instruktur extends Model
     {
         return $this->hasMany(Warning::class);
     }
+
+    public function kurikulum()
+    {
+        return $this->belongsTo(Kurikulum::class);
+    }
 }

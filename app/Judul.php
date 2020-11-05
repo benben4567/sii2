@@ -64,17 +64,17 @@ class Judul extends Model
 
     public function penyelenggaraan()
     {
-        return $this->hasOne(Penyelenggaraan::class);
+        return $this->belongsTo(Penyelenggaraan::class, 'penyelenggaraan_id');
     }
 
     public function jenisSertifikat()
     {
-        return $this->hasOne(JenisSertifikat::class);
+        return $this->belongsTo(JenisSertifikat::class, 'jenissertifikat_id');
     }
 
     public function penanggungJawab()
     {
-        return $this->hasMany(PenanggungJawab::class);
+        return $this->belongsTo(PenanggungJawab::class, 'penanggungjawab_id');
     }
 
     public function dahanprofesi()
@@ -84,7 +84,7 @@ class Judul extends Model
 
     public function akademi()
     {
-        return $this->hasOne(Akademi::class);
+        return $this->belongsTo(Akademi::class);
     }
 
     public function warnings()

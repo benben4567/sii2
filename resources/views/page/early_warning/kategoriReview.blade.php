@@ -121,7 +121,8 @@
         <form action="/review/kurikulum" method="post">
           @csrf
           <div class="modal-body">
-            <input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+		  <input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+		  <input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
             <div class="form-group">
               <label for="tujuan" class="col-form-label">Tujuan:</label>
               <input type="text" class="form-control" id="tujuan" name="tujuan">

@@ -19,6 +19,6 @@ class Penyelenggaraan extends Model
 
     public function judul()
     {
-        return $this->belongsTo(Judul::class);
+        return $this->hasMany(Judul::class, 'penyelenggaraan_id');
     }
 }
