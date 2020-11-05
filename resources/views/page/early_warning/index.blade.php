@@ -76,7 +76,7 @@ $(function(){
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'nama_judul', name: 'nama_judul'},
-            {data: 'username', name: 'username'},
+            {data: 'nama', name: 'nama'},
             {data: 'aspek', name: 'aspek'},
             {data: 'informasi_pendukung', name: 'tipe_instruktur'}
       ],
