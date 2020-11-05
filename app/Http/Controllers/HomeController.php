@@ -31,7 +31,7 @@ class HomeController extends Controller
             $magang = Magang::where('instruktur_id', Auth::user()->instruktur->id)
                 ->orderBy('id_magang', 'desc')->count();
         } else {
-            $magang = Magang::where('instruktur_id', isset(Auth::user()->instrukturs()->first()->instruktur_id))
+            $magang = Magang::where('instruktur_id', isset(Auth::user()->instruktur->id))
                 ->orderBy('id_magang', 'desc')->count();
         }
         if (isset(Auth::user()->instruktur->id)) {
