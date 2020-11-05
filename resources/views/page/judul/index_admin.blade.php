@@ -36,7 +36,17 @@
               </div>
 
               <div class="card-body">
-                  {{ csrf_field() }}
+                  <div class="alert alert-danger ary alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      <span class="sr-only">Close</span>
+                    </button>
+                    <strong>Perhatian!</strong></br> Ada <strong>n</strong> judul mendapat warning.
+                    <ul>
+                      <li>judul1</li>
+                      <li>judul2</li>
+                    </ul>
+                  </div>
                   <table  class="table table-bordered table-responsive nowrap" id="table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
                     <thead>
@@ -80,7 +90,7 @@
   var table, save_method;
   $(function(){
     table = $('#table-judul').DataTable({
-      "pageLength" : 25,
+      "pageLength" : 10,
       "deferRender": true,
       "lengthChange": false,
       "processing" : true,
