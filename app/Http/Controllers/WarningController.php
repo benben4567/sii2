@@ -25,7 +25,8 @@ class WarningController extends Controller
     if ($request->ajax()) {
       $judul = DB::table('warnings')
         ->join('juduls', 'juduls.id', "=", "warnings.judul_id")
-        ->join('users', 'users.id', "=", "warnings.user_id")
+        ->join('instrukturs', 'instrukturs.id', "=", "warnings.instruktur_id")
+        ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
         ->get();
 
       // return dd($judul);
@@ -52,7 +53,9 @@ class WarningController extends Controller
     $inputvalue = $request->all();
     $arraytostring = implode(',', $request->input('aspek'));
     $inputvalue['aspek'] = $arraytostring;
-    $input = auth()->user()->warnings()->create($inputvalue);
+    // $input = auth()->user()->warnings()->create($inputvalue);
+    $instruktur = Auth::user()->instruktur;
+    $input = $instruktur->warnings()->create($inputvalue);
     if ($input) {
       alert()->success('Data berhasil Ditambah!', 'Terimakasih sudah memberi warning.');
       return redirect()->back();
