@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
-use App\Aspek;
-use App\LevelProfisiensi;
-use App\Warning;
+use App\{Aspek, Judul, Warning};
 
 class JudulController extends Controller
 {
@@ -28,9 +26,9 @@ class JudulController extends Controller
   public function getData(Request $request)
   {
     if ($request->ajax()) {
-      $judul = \App\Judul::select('id','kode_judul','nama_judul', 'sifatdiklat_id', 'jenisdiklat_id', 'dahanprofesi_id', 'levelprofisiensi_id' )
-                ->with(['warnings:id,judul_id','sifatdiklat:id,sifat_diklat','jenisdiklat:id,jenis_diklat','dahanprofesi:id,dahan_profesi','levelprofisiensi:id,level_profisiensi'])
-                ->get();
+      $judul = Judul::select('id', 'kode_judul_lama', 'kode_judul', 'durasi_hari', 'tahun_terbit', 'nama_judul', 'sifatdiklat_id', 'jenisdiklat_id', 'dahanprofesi_id', 'levelprofisiensi_id')
+        ->with(['warnings:id,judul_id', 'sifatdiklat:id,sifat_diklat', 'jenisdiklat:id,jenis_diklat', 'dahanprofesi:id,dahan_profesi', 'levelprofisiensi:id,level_profisiensi'])
+        ->get();
       // $judul = \App\Judul::with(['warnings','sifatdiklat','jenisdiklat'])->get();
       // $judul = DB::table('juduls')
       //   ->join('jenisdiklats', 'jenisdiklats.id', "=", "juduls.jenisdiklat_id")

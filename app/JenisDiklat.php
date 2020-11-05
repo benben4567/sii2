@@ -17,6 +17,6 @@ class JenisDiklat extends Model
 
     public function judul()
     {
-        return $this->hasMany(Judul::class);
+        return $this->hasMany(Judul::class, 'jenisdiklat_id');
     }
 }

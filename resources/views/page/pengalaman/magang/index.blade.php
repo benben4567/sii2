@@ -95,11 +95,21 @@
             {data: 'tgl_selesai', name: 'tgl_selesai'},
             {data: 'nama_file', name: 'nama_file'}
       ],
-      "columnDefs": [{
+      "columnDefs": [
+        {
+          "targets" : 5,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/file_magang/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        },
+        {
         "targets" : 6,
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
-      }]
+      }
+      ]
     });
 
     $('#modal-magang .dropify').dropify({

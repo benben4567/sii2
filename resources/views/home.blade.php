@@ -28,7 +28,7 @@
                 <h6 class="text-uppercase verti-label text-white-50">Magang</h6>
                 <div class="text-white">
                   <h6 class="text-uppercase mt-0 text-white-50">Magang</h6>
-                  <h3 class="mb-3 mt-0">0</h3>
+                <h3 class="mb-3 mt-0">{{$magang}}</h3>
                   <div class="">
                     <span class="ml-2">Pengalaman Magang</span>
                   </div>
@@ -47,7 +47,7 @@
                 <h6 class="text-uppercase verti-label text-white-50">Mengajar</h6>
                 <div class="text-white">
                   <h6 class="text-uppercase mt-0 text-white-50">Mengajar</h6>
-                  <h3 class="mb-3 mt-0">0</h3>
+                  <h3 class="mb-3 mt-0">{{$mengajar}}</h3>
                   <div class="">
                     <span class="ml-2">Pengalaman Mengajar</span>
                   </div>
@@ -66,7 +66,7 @@
                 <h6 class="text-uppercase verti-label text-white-50">Materi</h6>
                 <div class="text-white">
                   <h6 class="text-uppercase mt-0 text-white-50">Materi</h6>
-                  <h3 class="mb-3 mt-0">0</h3>
+                <h3 class="mb-3 mt-0">{{$materi}}</h3>
                   <div class="">
                     <span class="ml-2">Pendalaman Materi</span>
                   </div>
@@ -85,7 +85,7 @@
                 <h6 class="text-uppercase verti-label text-white-50">Bidang</h6>
                 <div class="text-white">
                   <h6 class="text-uppercase mt-0 text-white-50">Kompentensi</h6>
-                  <h3 class="mb-3 mt-0">0</h3>
+                <h3 class="mb-3 mt-0">{{$sertifikasi_bidang}}</h3>
                   <div class="">
                     <span class="ml-2">Kompentensi Bidang</span>
                   </div>
@@ -97,6 +97,7 @@
             </div>
           </div>
         </div>
+        
       </div>
       <!-- end row -->
 

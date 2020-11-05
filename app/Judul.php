@@ -49,7 +49,7 @@ class Judul extends Model
     //Batch 2
     public function jenisdiklat()
     {
-        return $this->belongsTo(JenisDiklat::class);
+        return $this->belongsTo(JenisDiklat::class, 'jenisdiklat_id');
     }
 
     public function sifatdiklat()

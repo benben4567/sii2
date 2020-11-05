@@ -84,7 +84,7 @@
               "className": 'text-center',
               "data" : 'file_sertifikat_pembelajaran',
               "render": function ( data, type, row, meta ) {
-                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_sertifikat_pembelajaran/${data}"><i class="fas fa-download"></i></a>` ;
+                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="storage/file/penyusun/file_sertifikat_pembelajaran/${data}"><i class="fas fa-download"></i></a>` ;
               }
             },
             {
@@ -92,7 +92,7 @@
               "className": 'text-center',
               "data" : 'file_pendidikan_formal',
               "render": function ( data, type, row, meta ) {
-                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_pendidikan_formal/${data}"><i class="fas fa-download"></i></a>` ;
+                return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="storage/file/penyusun/file_pendidikan_formal/${data}"><i class="fas fa-download"></i></a>` ;
               }
             },
             {

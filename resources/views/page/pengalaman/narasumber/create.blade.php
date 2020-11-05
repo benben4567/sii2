@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h5>Tambah Pengalaman Narasumber</h5>
               </div>
-            <form class="form" method="post" enctype="multipart/form-data" action="/pengalaman-narasumber/store">
+            <form class="form" method="post" enctype="multipart/form-data" data-toggle="validator" action="/pengalaman-narasumber/store">
                 {{csrf_field()}} {{method_field('POST')}}
                 <div class="card-body">
                   <div class="form-group">
@@ -56,6 +56,7 @@
                       <div class="form-group">
                         <label for="file_pendidikan_formal">Bukti Dukung Pendidikan Formal</label>
                         <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <span class="help-block with-errors"></span>
                       </div>
                     </div>
                   </div>

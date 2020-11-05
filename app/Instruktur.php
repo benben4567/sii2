@@ -24,9 +24,8 @@ class Instruktur extends Model
 
     public function user()
     {
-      return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
-
 
     public function peserta()
     {
@@ -85,6 +84,6 @@ class Instruktur extends Model
 
     public function warnings()
     {
-        return $this->hasMany('App\Warning', 'instruktur_id');
+        return $this->hasMany(Warning::class);
     }
 }

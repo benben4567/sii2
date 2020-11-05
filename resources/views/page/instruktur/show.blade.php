@@ -365,6 +365,16 @@
               {data: 'tgl_selesai', name: 'tgl_selesai'},
               {data: 'nama_file', name: 'nama_file'},
         ],
+        "columnDefs": [
+        {
+          "targets" : 5,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/file_magang/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
       });
 
       var table2 = $('#table-mengajar').DataTable({
@@ -417,6 +427,24 @@
               {data: 'file_pendidikan_formal', name: 'file_pendidikan_formal'},
               {data: 'file_sertifikat_pembelajaran', name: 'file_sertifikat_pembelajaran'},
         ],
+        "columnDefs": [
+        {
+          "targets" : 3,
+          "className": 'text-center',
+          "data" : 'file_pendidikan_formal',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/narasumber/file_pendidikan_formal/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        },
+        {
+          "targets" : 4,
+          "className": 'text-center',
+          "data" : 'file_sertifikat_pembelajaran',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/narasumber/file_sertifikat_pembelajaran/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
       });
 
       var table5 = $('#table-penyusun').DataTable({
@@ -434,6 +462,16 @@
               {data: 'tanggal_selesai', name: 'tanggal_selesai'},
               {data: 'file_bukti_karyatulis', name: 'file_bukti_karyatulis'},
         ],
+        "columnDefs": [
+        {
+          "targets" : 4,
+          "className": 'text-center',
+          "data" : 'file_bukti_karyatulis',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/penyusun/file_bukti_karyatulis/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
       });
 
       var table6 = $('#table-bidang').DataTable({
@@ -451,6 +489,17 @@
             {data: 'batas_sertifikasi', name: 'batas_sertifikasi'},
             {data: 'nama_file', name: 'nama_file'}
       ],
+
+      "columnDefs": [
+        {
+          "targets" : 4,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/file_bidang/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
       });
 
       var table7 = $('#table-kompetensi').DataTable({
@@ -468,6 +517,16 @@
             {data: 'batas_sertifikasi', name: 'batas_sertifikasi'},
             {data: 'nama_file', name: 'nama_file'}
       ],
+      "columnDefs": [
+        {
+          "targets" : 4,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/file_sertifikasi_bidang/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
       });
 
 

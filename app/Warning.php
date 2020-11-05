@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Warning extends Model
 {
     protected $fillable = [
-        'instruktur',
+        'instruktur_id',
         'judul_id',
         'aspek',
         'informasi_pendukung'
