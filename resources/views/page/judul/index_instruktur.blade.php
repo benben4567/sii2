@@ -141,34 +141,6 @@
       ]
     });
 
-
-
-
-    // // 
-    // "columns": [
-    //         {
-    //             "className":      'details-control',
-    //             "orderable":      false,
-    //             "data":           null,
-    //             "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
-    //         },
-    //         {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-    //         {data: 'kode_judul', name: 'kode_judul'},
-    //         {data: 'nama_judul', name: 'nama_judul'},
-    //         {data: 'dahanprofesi.dahan_profesi', name: 'dahanprofesi.dahan_profesi'},
-    //         {data: 'levelprofisiensi.level_profisiensi', name: 'levelprofisiensi.level_profisiensi'},
-    //   ],
-    //   "columnDefs": [
-    //     {
-    //     "targets" : 6,
-    //     "className": "text-center",
-    //     "data" : null,
-    //     "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-dark\"><i class=\"far fa-paper-plane\"></i></button>"
-    //   }
-    //   ],
-    //   "order": [[1, 'asc']]
-    // // 
-
     function format ( d ) {
       // `d` is the original data object for the row
       return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
