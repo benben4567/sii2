@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SifatDiklat extends Model
 {
+    protected $table = "sifatdiklats";
     protected $fillable = [
         'kode_sifat_diklat',
         'sifat_diklat',
@@ -16,6 +17,6 @@ class SifatDiklat extends Model
 
     public function judul()
     {
-        return $this->belongsTo(Judul::class);
+        return $this->hasMany(Judul::class, 'sifatdiklat_id');
     }
 }

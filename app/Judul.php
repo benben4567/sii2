@@ -49,12 +49,12 @@ class Judul extends Model
     //Batch 2
     public function jenisdiklat()
     {
-        return $this->hasOne(JenisDiklat::class);
+        return $this->belongsTo(JenisDiklat::class);
     }
 
     public function sifatdiklat()
     {
-        return $this->hasOne(SifatDiklat::class);
+        return $this->belongsTo(SifatDiklat::class, 'sifatdiklat_id');
     }
 
     public function levelprofisiensi()

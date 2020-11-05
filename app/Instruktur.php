@@ -82,4 +82,9 @@ class Instruktur extends Model
     {
         return $this->hasOne(KelompokGrade::class);
     }
+
+    public function warnings()
+    {
+        return $this->hasMany('App\Warning', 'instruktur_id');
+    }
 }
