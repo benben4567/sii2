@@ -94,8 +94,8 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'kode_judul', name: 'kode_judul'},
             {data: 'nama_judul', name: 'nama_judul'},
-            {data: 'dahan_profesi', name: 'dahan_profesi'},
-            {data: 'level_profisiensi', name: 'level_profisiensi'},
+            {data: 'dahanprofesi.dahan_profesi', name: 'dahanprofesi.dahan_profesi'},
+            {data: 'levelprofisiensi.level_profisiensi', name: 'levelprofisiensi.level_profisiensi'},
       ],
       "columnDefs": [{
         "targets" : 6,
