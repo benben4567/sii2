@@ -15,7 +15,7 @@ class CreateWarningsTable extends Migration
     {
         Schema::create('warnings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('instruktur_id')->constrained();
             $table->foreignId('judul_id')->constrained();
             $table->string('aspek', 500);
             $table->string('informasi_pendukung', 500);
