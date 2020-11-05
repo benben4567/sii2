@@ -38,11 +38,12 @@
               <div class="card-body">
                   {{ csrf_field() }}
                   <table  class="table table-bordered table-responsive nowrap" id="table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    
+
                     <thead>
                       <tr>
                         {{-- <th width="20"><input type="checkbox" id="select-all" value="1" ></th> --}}
                         <th>No</th>
+                        <th>Warning</th>
                         <th>Nama Judul</th>
                         <th>Jenis Diklat</th>
                         <th>Sifat Diklat</th>
@@ -78,7 +79,7 @@
 <script type="text/javascript">
   var table, save_method;
   $(function(){
-    table = $('#table-judul').DataTable({ 
+    table = $('#table-judul').DataTable({
       "pageLength" : 25,
       "deferRender": true,
       "lengthChange": false,
@@ -90,15 +91,48 @@
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'nama_judul', name: 'nama_judul'},
-            {data: 'jenis_diklat', name: 'jenis_diklat'},
-            {data: 'sifat_diklat', name: 'sifat_diklat'}
       ],
-      "columnDefs": [{
-        "targets" : 4,
-        "data" : null,
-        "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
-      }]
+      "columnDefs": [
+        {
+          "targets" : 1,
+          "className": "text-center",
+          "data" : "warnings",
+          "render": function (data, type, row, meta ) {
+            if(data.length >= 2) {
+              return `<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-exclamation-triangle"></i></button>`
+            } else {
+              return `<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>`
+            }
+          }
+        },
+        {
+          "targets" : 2,
+          "data" : "nama_judul",
+          "render": function (data, type, row, meta ) {
+            return data
+          }
+        },
+        {
+          "targets" : 3,
+          "data" : "jenisdiklat.jenis_diklat",
+          "render": function (data, type, row, meta ) {
+            return data;
+          }
+        },
+        {
+          "targets" : 4,
+          "data" : "sifatdiklat.sifat_diklat",
+          "render": function (data, type, row, meta ) {
+            return data;
+          }
+        },
+        {
+          "targets" : 5,
+          "data" : null,
+          "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+        },
+
+      ]
     });
 
     $('#table-judul tbody').on( 'click', '.btn-show', function () {
