@@ -115,7 +115,7 @@ class ReviewController extends Controller
         }
     }
 
-    public function storeToolsEval(Request $request)
+    public function storeToolsEvaluasi(Request $request)
     {
         $create = ToolsEvaluasi::create([
             'warning_id' => $request->warning_id,

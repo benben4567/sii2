@@ -16,8 +16,8 @@ class CreateToolsevaluasisTable extends Migration
         Schema::create('toolsevaluasis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('toolsevaluasi_sebelum');
-            $table->string('toolsevaluasi_new');
+            $table->string('toolsevaluasi_sebelum')->nullable();
+            $table->string('toolsevaluasi_new')->nullable();
             $table->timestamps();
         });
     }

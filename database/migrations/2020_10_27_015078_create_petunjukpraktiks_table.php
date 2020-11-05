@@ -16,8 +16,8 @@ class CreatePetunjukpraktiksTable extends Migration
         Schema::create('petunjukpraktiks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('petunjukpraktik_sebelum');
-            $table->string('petunjukpraktik_new');
+            $table->string('petunjukpraktik_sebelum')->nullable();
+            $table->string('petunjukpraktik_new')->nullable();
             $table->timestamps();
         });
     }

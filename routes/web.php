@@ -84,15 +84,6 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   Route::get('pendalaman-materi/show/{id}', ['as' => 'pendalaman-materi.show', 'uses' => 'PendalamanMateriController@show']);
   Route::post('pendalaman-materi', ['as' => 'pendalaman-materi.store', 'uses' => 'PendalamanMateriController@store']);
   Route::put('pendalaman-materi/update/{id}', ['as' => 'pendalaman-materi.update', 'uses' => 'PendalamanMateriController@update']);
-
-  // Judul
-  Route::get('judul-instruktur', ['as' => 'judul.index', 'uses' => 'JudulController@index']);
-  Route::get('judul-instruktur/getdata', ['as' => 'judul.getdata', 'uses' => 'JudulController@getData']);
-
-  // Warning
-  Route::get('warning/kategori', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
-  Route::post('warning/store', ['as' => 'warning.store', 'uses' => 'WarningController@store']);
-
   // Kompetensi
   Route::get('pengalaman-kompetensi', ['as' => 'kompetensi.index', 'uses' => 'KompetensiController@index']);
   Route::get('pengalaman-kompetensi/getdata', ['as' => 'kompetensi.getdata', 'uses' => 'KompetensiController@getData']);
@@ -122,4 +113,22 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   Route::get('pengalaman-penyusun/create', ['as' => 'penyusun.create', 'uses' => 'PenyusunController@create']);
   Route::post('pengalaman-penyusun/store', ['as' => 'penyusun.store', 'uses' => 'PenyusunController@store']);
   Route::get('pengalaman-penyusun/edit', ['as' => 'penyusun.edit', 'uses' => 'PenyusunController@edit']);
+  // Judul
+  Route::get('judul-instruktur', ['as' => 'judul.index', 'uses' => 'JudulController@index']);
+  Route::get('judul-instruktur/getdata', ['as' => 'judul.getdata', 'uses' => 'JudulController@getData']);
+
+  // Warning
+  Route::get('warning/kategori', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
+  Route::post('warning/store', ['as' => 'warning.store', 'uses' => 'WarningController@store']);
+
+
+  // Review judul pembelajaran
+  Route::post('review/kurikulum', ['as' => 'review.kurikulum', 'uses' => 'ReviewController@storeKurikulum']);
+  Route::post('review/silabus', ['as' => 'review.silabus', 'uses' => 'ReviewController@storeSilabus']);
+  Route::post('review/handout', ['as' => 'review.handout', 'uses' => 'ReviewController@storeHandout']);
+  Route::post('review/materi_tayang', ['as' => 'review.materi_tayang', 'uses' => 'ReviewController@storeMateriTayang']);
+  Route::post('review/petunjuk_instruktur', ['as' => 'review.petunjuk_instruktur', 'uses' => 'ReviewController@storePetunjukInstruktur']);
+  Route::post('review/petunjuk_penyelenggara', ['as' => 'review.petunjuk_penyelenggara', 'uses' => 'ReviewController@storePetunjukPenyelenggara']);
+  Route::post('review/tools_evaluasi', ['as' => 'review.tools_evaluasi', 'uses' => 'ReviewController@storeToolsEvaluasi']);
+  Route::post('review/petunjuk_praktik', ['as' => 'review.petunjuk_praktik', 'uses' => 'ReviewController@storePetunjukPraktik']);
 });

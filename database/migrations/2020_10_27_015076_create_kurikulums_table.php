@@ -16,15 +16,15 @@ class CreateKurikulumsTable extends Migration
         Schema::create('kurikulums', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('tujuan', 250);
-            $table->string('syarat_peserta', 250);
-            $table->string('skp', 250);
-            $table->string('metode', 250);
-            $table->string('lingkup', 250);
-            $table->string('strategi', 250);
-            $table->string('level', 250);
-            $table->string('sertifikat', 255);
-            $table->string('referensi', 250);
+            $table->string('tujuan', 250)->nullable();
+            $table->string('syarat_peserta', 250)->nullable();
+            $table->string('skp', 250)->nullable();
+            $table->string('metode', 250)->nullable();
+            $table->string('lingkup', 250)->nullable();
+            $table->string('strategi', 250)->nullable();
+            $table->string('level', 250)->nullable();
+            $table->string('sertifikat', 255)->nullable();
+            $table->string('referensi', 250)->nullable();
             $table->timestamps();
         });
     }

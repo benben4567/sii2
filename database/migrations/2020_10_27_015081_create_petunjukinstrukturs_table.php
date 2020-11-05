@@ -16,8 +16,8 @@ class CreatePetunjukinstruktursTable extends Migration
         Schema::create('petunjukinstrukturs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('petunjukinstruktur_sebelum');
-            $table->string('petunjukinstruktur_new');
+            $table->string('petunjukinstruktur_sebelum')->nullable();
+            $table->string('petunjukinstruktur_new')->nullable();
             $table->timestamps();
         });
     }

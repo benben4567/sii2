@@ -138,6 +138,10 @@
     function format ( d ) {
       // `d` is the original data object for the row
       return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+              '<td>Kode Judul :</td>'+
+              '<td>'+d.kode_judul+'</td>'+
+          '</tr>'+
           '<tr>'+
               '<td>Kode Judul Lama:</td>'+
               '<td>'+d.kode_judul_lama+'</td>'+

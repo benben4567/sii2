@@ -16,8 +16,8 @@ class CreateMateritayangsTable extends Migration
         Schema::create('materitayangs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('materitayang_sebelum');
-            $table->string('materitayang_new');
+            $table->string('materitayang_sebelum')->nullable();
+            $table->string('materitayang_new')->nullable();
             $table->timestamps();
         });
     }

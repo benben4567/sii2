@@ -16,12 +16,12 @@ class CreateSilabusTable extends Migration
         Schema::create('silabus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('bahasan');
-            $table->string('hasil_pelatihan');
-            $table->string('kriteria_penilaian');
-            $table->string('metode_penilaian');
-            $table->string('waktu');
-            $table->string('referensi');
+            $table->string('bahasan')->nullable();
+            $table->string('hasil_pelatihan')->nullable();
+            $table->string('kriteria_penilaian')->nullable();
+            $table->string('metode_penilaian')->nullable();
+            $table->string('waktu')->nullable();
+            $table->string('referensi')->nullable();
             $table->timestamps();
         });
     }

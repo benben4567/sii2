@@ -118,7 +118,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/reviewKurikulum" method="post">
+        <form action="/review/kurikulum" method="post">
           @csrf
           <div class="modal-body">
             <input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
@@ -189,7 +189,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/reviewSilabus" method="post">
+		        <form action="/review/silabus" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
@@ -239,7 +239,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/reviewHandout" method="post">
+		        <form action="/review/handout" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
@@ -272,7 +272,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-				<form action="/reviewMateriTayang" method="post">
+				<form action="/review/materi_tayang" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
@@ -305,7 +305,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-				<form action="/reviewPetunjukInstruktur" method="post">
+				<form action="/review/petunjuk_instruktur" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
@@ -338,7 +338,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/reviewPetunjukPenyelenggara" method="post">
+		        <form action="/review/petunjuk_penyelenggara" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
@@ -371,7 +371,7 @@
 		        </button>
 			  </div>
 			  <div class="modal-body">
-		        <form action="/reviewToolsEval" method="post">
+		        <form action="/review/tools_evaluasi" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
@@ -405,7 +405,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="/reviewPetunjukPraktik" method="post">
+		        <form action="/review/petunjuk_praktik" method="post">
 				@csrf
 				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">

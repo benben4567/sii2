@@ -16,8 +16,8 @@ class CreateHandoutsTable extends Migration
         Schema::create('handouts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('warning_id')->constrained();
-            $table->string('handout_sebelum');
-            $table->string('handout_new');
+            $table->string('handout_sebelum')->nullable();
+            $table->string('handout_new')->nullable();
             $table->timestamps();
         });
     }
