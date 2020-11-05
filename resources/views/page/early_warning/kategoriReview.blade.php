@@ -121,7 +121,7 @@
         <form action="/reviewKurikulum" method="post">
           @csrf
           <div class="modal-body">
-            <input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+            <input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
             <div class="form-group">
               <label for="tujuan" class="col-form-label">Tujuan:</label>
               <input type="text" class="form-control" id="tujuan" name="tujuan">
@@ -191,7 +191,7 @@
 		      <div class="modal-body">
 		        <form action="/reviewSilabus" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="bahasan" class="col-form-label">Pokok/Sub Pokok Bahasan:</label>
 		            <input type="text" class="form-control" id="bahasan" name="bahasan">
@@ -241,7 +241,7 @@
 		      <div class="modal-body">
 		        <form action="/reviewHandout" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="handout_sebelum" class="col-form-label">Previous Handout:</label>
 		            <input type="text" class="form-control" id="handout_sebelum" name="handout_sebelum">
@@ -274,7 +274,7 @@
 		      <div class="modal-body">
 				<form action="/reviewMateriTayang" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="materi_sebelum" class="col-form-label">Previous Materi Tayang:</label>
 		            <input type="text" class="form-control" id="materi_sebelum" name="materi_sebelum">
@@ -307,7 +307,7 @@
 		      <div class="modal-body">
 				<form action="/reviewPetunjukInstruktur" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="jukins_sebelum" class="col-form-label">Previous Petunjuk Instruktur:</label>
 		            <input type="text" class="form-control" id="jukins_sebelum" name="jukins_sebelum">
@@ -340,7 +340,7 @@
 		      <div class="modal-body">
 		        <form action="/reviewPetunjukPenyelenggara" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="jukpen_sebelum" class="col-form-label">Previous Petunjuk Penyelenggara:</label>
 		            <input type="text" class="form-control" id="jukpen_sebelum" name="jukpen_sebelum">
@@ -373,7 +373,7 @@
 			  <div class="modal-body">
 		        <form action="/reviewToolsEval" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="toolseval_sebelum" class="col-form-label">Previous Tools Evaluasi:</label>
 		            <input type="text" class="form-control" id="toolseval_sebelum" name="toolseval_sebelum">
@@ -407,7 +407,7 @@
 		      <div class="modal-body">
 		        <form action="/reviewPetunjukPraktik" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->id_warning ?? ''}}" name="id_warning">
+				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
 		          <div class="form-group">
 		            <label for="jukpraktik_sebelum" class="col-form-label">Previous Petunjuk Praktik:</label>
 		            <input type="text" class="form-control" id="jukpraktik_sebelum" name="jukpraktik_sebelum">

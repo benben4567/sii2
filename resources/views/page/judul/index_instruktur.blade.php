@@ -52,7 +52,6 @@
                         <th>Nama Judul</th>
                         <th>Jenis Diklat</th>
                         <th>Sifat Diklat</th>
-                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -100,7 +99,7 @@
           "data" : "warnings",
           "render": function (data, type, row, meta ) {
             if(data.length >= 2) {
-              return `<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-exclamation-triangle"></i></button>`
+              return `<a class="btn btn-sm btn-danger" href="warning/kategori/" target="_blank"><i class="fas fa-exclamation-triangle"></i></a>`
             } else {
               return `<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>`
             }
@@ -132,11 +131,6 @@
           "render": function (data, type, row, meta ) {
             return data;
           }
-        },
-        {
-          "targets" : 6,
-          "data" : null,
-          "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
         }
       ]
     });
