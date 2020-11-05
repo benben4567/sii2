@@ -41,7 +41,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="file_sertifikat_pembelajaran">Bukti Dukung Sertifikasi</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran" data-buttonname="btn-secondary"  class="form-control filestyle">
                       </div>
                     </div>
                   </div>

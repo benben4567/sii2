@@ -19,7 +19,7 @@ class JudulController extends Controller
     if ($role[0] == 'super-admin') {
       return view('page.judul.index_admin', compact('warnings'));
     } else {
-      return view('page.judul.index_instruktur', compact('aspeks'));
+      return view('page.judul.index_instruktur', compact('aspeks', 'warnings'));
     }
   }
 

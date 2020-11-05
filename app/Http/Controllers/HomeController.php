@@ -29,31 +29,31 @@ class HomeController extends Controller
         // dd($auth);
         if (isset(Auth::user()->instruktur->id)) {
             $magang = Magang::where('instruktur_id', Auth::user()->instruktur->id)
-                ->orderBy('id_magang', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         } else {
             $magang = Magang::where('instruktur_id', isset(Auth::user()->instruktur->id))
-                ->orderBy('id_magang', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         }
         if (isset(Auth::user()->instruktur->id)) {
             $mengajar = Mengajar::where('instruktur_id', Auth::user()->instruktur->id)
-                ->orderBy('id_mengajar', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         } else {
             $mengajar = Mengajar::where('instruktur_id', isset(Auth::user()->instruktur->id))
-                ->orderBy('id_mengajar', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         }
         if (isset(Auth::user()->instruktur->id)) {
             $materi = PendalamanMateri::where('instruktur_id', Auth::user()->instruktur->id)
-                ->orderBy('id_materi', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         } else {
             $materi = PendalamanMateri::where('instruktur_id', isset(Auth::user()->instruktur->id))
-                ->orderBy('id_materi', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         }
         if (isset(Auth::user()->instruktur->id)) {
             $sertifikasi_bidang = SertifikasiBidang::where('instruktur_id', Auth::user()->instruktur->id)
-                ->orderBy('id_sertifikasi_bidang', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         } else {
             $sertifikasi_bidang = SertifikasiBidang::where('instruktur_id', isset(Auth::user()->instruktur->id))
-                ->orderBy('id_sertifikasi_bidang', 'desc')->count();
+                ->orderBy('id', 'desc')->count();
         }
 
         return view('home', compact('magang', 'mengajar', 'materi', 'sertifikasi_bidang'));

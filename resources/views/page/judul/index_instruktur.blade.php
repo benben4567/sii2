@@ -46,13 +46,13 @@
                   <table  class="table table-bordered table-responsive nowrap table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                       <tr class="text-center">
-                        <th></th>
                         <th>No</th>
-                        <th>Kode Judul</th>
-                        <th>Nama Judul</th>
-                        <th>Dahan Profesi</th>
-                        <th>Level Profisiensi</th>
                         <th>Warning</th>
+                        <th>Add Warning</th>
+                        <th>Nama Judul</th>
+                        <th>Jenis Diklat</th>
+                        <th>Sifat Diklat</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,27 +84,90 @@
         "url" : "/judul-instruktur/getdata",
         "type" : "GET"
       },
+      
       "columns": [
-            {
+        {
                 "className":      'details-control',
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
-            },
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'kode_judul', name: 'kode_judul'},
-            {data: 'nama_judul', name: 'nama_judul'},
-            {data: 'dahanprofesi.dahan_profesi', name: 'dahanprofesi.dahan_profesi'},
-            {data: 'levelprofisiensi.level_profisiensi', name: 'levelprofisiensi.level_profisiensi'},
+            }
       ],
-      "columnDefs": [{
-        "targets" : 6,
+      "columnDefs": [
+        {
+          "targets" : 1,
+          "className": "text-center",
+          "data" : "warnings",
+          "render": function (data, type, row, meta ) {
+            if(data.length >= 2) {
+              return `<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-exclamation-triangle"></i></button>`
+            } else {
+              return `<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>`
+            }
+          }
+        },
+        {
+        "targets" : 2,
         "className": "text-center",
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-dark\"><i class=\"far fa-paper-plane\"></i></button>"
-      }],
-      "order": [[1, 'asc']]
+        },
+        {
+          "targets" : 3,
+          "data" : "nama_judul",
+          "render": function (data, type, row, meta ) {
+            return data
+          }
+        },
+        {
+          "targets" : 4,
+          "data" : "jenisdiklat.jenis_diklat",
+          "render": function (data, type, row, meta ) {
+            return data;
+          }
+        },
+        {
+          "targets" : 5,
+          "data" : "sifatdiklat.sifat_diklat",
+          "render": function (data, type, row, meta ) {
+            return data;
+          }
+        },
+        {
+          "targets" : 6,
+          "data" : null,
+          "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+        }
+      ]
     });
+
+
+
+
+    // // 
+    // "columns": [
+    //         {
+    //             "className":      'details-control',
+    //             "orderable":      false,
+    //             "data":           null,
+    //             "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
+    //         },
+    //         {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+    //         {data: 'kode_judul', name: 'kode_judul'},
+    //         {data: 'nama_judul', name: 'nama_judul'},
+    //         {data: 'dahanprofesi.dahan_profesi', name: 'dahanprofesi.dahan_profesi'},
+    //         {data: 'levelprofisiensi.level_profisiensi', name: 'levelprofisiensi.level_profisiensi'},
+    //   ],
+    //   "columnDefs": [
+    //     {
+    //     "targets" : 6,
+    //     "className": "text-center",
+    //     "data" : null,
+    //     "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-dark\"><i class=\"far fa-paper-plane\"></i></button>"
+    //   }
+    //   ],
+    //   "order": [[1, 'asc']]
+    // // 
 
     function format ( d ) {
       // `d` is the original data object for the row
