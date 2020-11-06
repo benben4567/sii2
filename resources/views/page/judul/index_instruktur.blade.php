@@ -71,11 +71,6 @@
 <script type="text/javascript">
   var table, save_method;
   $(function(){
-    $(this)
-    .find('[data-fa-i2svg]')
-    .toggleClass('fa-minus-square')
-    .toggleClass('fa-plus-square');
-
     table = $('.table-judul').DataTable({
       "processing" :true,
       "serverside" : true,
