@@ -12,7 +12,7 @@
           <img src="{{asset('assets/images/brain.png')}}" height="230" alt="brain">
         </h3>
         <h5 class="text-center">
-          The Brain Generator
+          The Brainware Generator
         </h5>
       </div>
       <div class="col-lg-6 border-left">

@@ -34,35 +34,14 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Judul</th>
+                        <th>Judul Pembelajaran</th>
                         <th>Nama Instruktur</th>
                         <th>Aspek</th>
                         <th>Informasi Pendukung</th>
-                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {{-- <?php $i=0; ?>
-                      @foreach($warnings as $warning)
-                      @php
-                        $detailReviewKurikulum = DB::select("SELECT COUNT(id) as jumlah_kurikulum FROM kurikulums WHERE id = :id GROUP BY id HAVING jumlah_kurikulum >= 1", ['id' => $warning->kurikulum['id']]);
-                      //   dd($detailReviewKurikulum);
-              
-                        $detailReviewSilabus = DB::select("SELECT COUNT(id) as jumlah_silabus FROM silabus WHERE id = :id GROUP BY id HAVING jumlah_silabus >= 1", ['id' => $warning->silabus['id']]);
-              
-                        $detailReviewHandout = DB::select("SELECT COUNT(id) as jumlah_handout FROM handouts WHERE id = :id GROUP BY id HAVING jumlah_handout >= 1", ['id' => $warning->handout['id']]);
-              
-                        $detailReviewMateriTayang = DB::select("SELECT COUNT(id) as jumlah_materitayang FROM materitayangs WHERE id = :id GROUP BY id HAVING jumlah_materitayang >= 1", ['id' => $warning->materitayang['id']]);
-                        
-                        $detailReviewPetunjukInstruktur = DB::select("SELECT COUNT(id) as jumlah_petunjukinstruktur FROM petunjukinstrukturs WHERE id = :id GROUP BY id HAVING jumlah_petunjukinstruktur >= 1", ['id' => $warning->petunjukinstruktur['id']]);
-              
-                        $detailReviewPetunjukPen = DB::select("SELECT COUNT(id) as jumlah_petunjukpenyelenggara FROM petunjukpenyelenggara WHERE id = :id GROUP BY id HAVING jumlah_petunjukpenyelenggara >= 1", ['id' => $warning->petunjukpenyelenggara['id']]);
-              
-                        $detailReviewToolseval = DB::select("SELECT COUNT(id) as jumlah_toolsevaluasi FROM toolsevaluasi WHERE id = :id GROUP BY id HAVING jumlah_toolsevaluasi >= 1", ['id' => $warning->toolsevaluasi['id']]);
-              
-                        $detailReviewPetunjukPrak = DB::select("SELECT COUNT(id) as jumlah_petunjuk_praktik FROM petunjukpraktik WHERE id = :id GROUP BY id HAVING jumlah_petunjuk_praktik >= 1", ['id' => $warning->petunjuk_praktik['id']]);
-                      @endphp
-                      @endforeach --}}
+                      
                     </tbody>
 
                   </table>
@@ -99,13 +78,6 @@ $(function(){
             {data: 'nama', name: 'nama'},
             {data: 'aspek', name: 'aspek'},
             {data: 'informasi_pendukung', name: 'tipe_instruktur'}
-      ],
-      "columnDefs": [
-        {
-        "targets" : 5,
-        "data" : '',
-        "defaultContent": `<button type="button" class="btn btn-sm btn-show btn-info"><i class="fas fa-eye"></i></button>`
-        }
       ]
     });
 })
