@@ -15,7 +15,7 @@ class CreateKurikulumsTable extends Migration
     {
         Schema::create('kurikulums', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('warning_id')->constrained();
+            $table->foreignId('judul_id')->constrained();
             $table->foreignId('instruktur_id')->constrained();
             $table->string('tujuan', 250)->nullable();
             $table->string('syarat_peserta', 250)->nullable();

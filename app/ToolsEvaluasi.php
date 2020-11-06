@@ -8,7 +8,8 @@ class ToolsEvaluasi extends Model
 {
     protected $table = 'toolsevaluasis';
     protected $fillable = [
-        'warning_id',
+        'judul_id',
+        'instruktur_id',
         'toolsevaluasi_sebelum',
         'toolsevaluasi_new'
     ];

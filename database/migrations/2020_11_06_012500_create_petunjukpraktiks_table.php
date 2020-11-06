@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetunjukinstruktursTable extends Migration
+class CreatePetunjukpraktiksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePetunjukinstruktursTable extends Migration
      */
     public function up()
     {
-        Schema::create('petunjukinstrukturs', function (Blueprint $table) {
+        Schema::create('petunjukpraktiks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('warning_id')->constrained();
-            $table->string('petunjukinstruktur_sebelum')->nullable();
-            $table->string('petunjukinstruktur_new')->nullable();
+            $table->foreignId('judul_id')->constrained();
+            $table->foreignId('instruktur_id')->constrained();
+            $table->string('petunjukpraktik_sebelum')->nullable();
+            $table->string('petunjukpraktik_new')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePetunjukinstruktursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petunjukinstrukturs');
+        Schema::dropIfExists('petunjukpraktiks');
     }
 }

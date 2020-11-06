@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
-use App\{Aspek, Warning};
+use App\{Aspek, Judul, Warning};
 
 class WarningController extends Controller
 {
@@ -17,14 +17,16 @@ class WarningController extends Controller
 
   public function detail($id)
   {
-    $detailWarning = Warning::where('judul_id', $id)->with('user', 'judul')->get();
+    $detailWarning = Warning::where('judul_id', $id)->with('instruktur', 'peserta', 'judul')->get();
     // dd($detailWarning);
     return response()->json($detailWarning);
   }
 
-  public function show()
+  public function show($id)
   {
-    return view('page.early_warning.kategoriReview');
+    $judul = Warning::with('judul')->where('judul_id', $id)->get();
+    // dd($judul);
+    return view('page.early_warning.kategoriReview', compact('judul'));
   }
 
   // public function show(Request $request, $warning, $type = null)

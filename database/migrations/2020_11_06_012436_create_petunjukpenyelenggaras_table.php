@@ -15,7 +15,8 @@ class CreatePetunjukpenyelenggarasTable extends Migration
     {
         Schema::create('petunjukpenyelenggaras', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('warning_id')->constrained();
+            $table->foreignId('judul_id')->constrained();
+            $table->foreignId('instruktur_id')->constrained();
             $table->string('petunjukpenyelenggara_sebelum')->nullable();
             $table->string('petunjukpenyelenggara_new')->nullable();
             $table->timestamps();

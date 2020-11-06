@@ -8,7 +8,8 @@ class Silabus extends Model
 {
     protected $table = 'silabus';
     protected $fillable = [
-        'warning_id',
+        'judul_id',
+        'instruktur_id',
         'bahasan',
         'hasil_pelatihan',
         'kriteria_penilaian',

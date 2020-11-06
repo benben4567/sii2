@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateToolsevaluasisTable extends Migration
+class CreateMateritayangsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateToolsevaluasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('toolsevaluasis', function (Blueprint $table) {
+        Schema::create('materitayangs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('warning_id')->constrained();
-            $table->string('toolsevaluasi_sebelum')->nullable();
-            $table->string('toolsevaluasi_new')->nullable();
+            $table->foreignId('judul_id')->constrained();
+            $table->foreignId('instruktur_id')->constrained();
+            $table->string('materitayang_sebelum')->nullable();
+            $table->string('materitayang_new')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateToolsevaluasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('toolsevaluasis');
+        Schema::dropIfExists('materitayangs');
     }
 }

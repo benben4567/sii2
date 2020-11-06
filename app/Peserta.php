@@ -82,6 +82,11 @@ class Peserta extends Model
         return $this->hasOne(Udiklat::class);
     }
 
+    public function warning()
+    {
+        return $this->hasMany(Instruktur::class);
+    }
+
     public function detailpenjadwalanpeserta()
     {
         return $this->belongsTo(DetailPenjadwalanPeserta::class);

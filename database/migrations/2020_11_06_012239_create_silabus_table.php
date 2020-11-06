@@ -15,7 +15,8 @@ class CreateSilabusTable extends Migration
     {
         Schema::create('silabus', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('warning_id')->constrained();
+            $table->foreignId('judul_id')->constrained();
+            $table->foreignId('instruktur_id')->constrained();
             $table->string('bahasan')->nullable();
             $table->string('hasil_pelatihan')->nullable();
             $table->string('kriteria_penilaian')->nullable();

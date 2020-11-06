@@ -35,6 +35,7 @@ Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function 
   Route::get('judul/edit', ['as' => 'judul.edit', 'uses' => 'JudulController@edit']);
 
   // Early Warning
+  Route::get('/warning/{id}/detail', ['as' => 'warning.detail', 'uses' => 'WarningController@detail']);
   Route::get('warning/', ['as' => 'warning.index', 'uses' => 'WarningController@index']);
   Route::get('warning/getdata', ['as' => 'warning.getdata', 'uses' => 'WarningController@getData']);
   Route::get('warning/edit', ['as' => 'warning.edit', 'uses' => 'WarningController@edit']);
@@ -118,8 +119,7 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   Route::get('judul-instruktur/getdata', ['as' => 'judul.getdata', 'uses' => 'JudulController@getData']);
 
   // Warning
-  Route::get('/warning/{id}/detail', ['as' => 'warning.detail', 'uses' => 'WarningController@detail']);
-  Route::get('warning/kategori', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
+  Route::get('warning/kategori/{id}', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
   Route::post('warning/store', ['as' => 'warning.store', 'uses' => 'WarningController@store']);
   // Route::get('warning/show/{id}/{type?}', ['as' => 'warning.show', 'uses' => 'WarningController@show']);
 

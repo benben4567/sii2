@@ -17,7 +17,8 @@ class ReviewController extends Controller
     public function storeKurikulum(Request $request)
     {
         $create = Kurikulum::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'tujuan' => $request->tujuan,
             'syarat_peserta' => $request->syarat_peserta,
             'skp' => $request->skp,
@@ -26,8 +27,7 @@ class ReviewController extends Controller
             'strategi' => $request->strategi,
             'level' => $request->level,
             'sertifikat' => $request->sertifikat,
-            'referensi' => $request->referensi,
-            'instruktur_id' => Auth::user()->instruktur->id
+            'referensi' => $request->referensi
 
         ]);
         // dd($create);
@@ -43,7 +43,8 @@ class ReviewController extends Controller
     public function storeSilabus(Request $request)
     {
         $create = Silabus::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'bahasan' => $request->bahasan,
             'hasil_pelatihan' => $request->hasil_pelatihan,
             'kriteria_penilaian' => $request->kriteria_penilaian,
@@ -64,7 +65,8 @@ class ReviewController extends Controller
     public function storeHandout(Request $request)
     {
         $create = Handout::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'handout_sebelum' => $request->handout_sebelum,
             'handout_new' => $request->handout_new
         ]);
@@ -79,7 +81,8 @@ class ReviewController extends Controller
     public function storeMateriTayang(Request $request)
     {
         $create = MateriTayang::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'materi_sebelum' => $request->materi_sebelum,
             'materi_new' => $request->materi_new
         ]);
@@ -95,7 +98,8 @@ class ReviewController extends Controller
     public function storePetunjukInstruktur(Request $request)
     {
         $create = PetunjukInstruktur::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'jukins_sebelum' => $request->jukins_sebelum,
             'jukins_new' => $request->jukins_new
         ]);
@@ -111,7 +115,8 @@ class ReviewController extends Controller
     public function storePetunjukPenyelenggara(Request $request)
     {
         $create = PetunjukPenyelenggara::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'jukpen_sebelum' => $request->jukpen_sebelum,
             'jukpen_new' => $request->jukpen_new
         ]);
@@ -127,7 +132,8 @@ class ReviewController extends Controller
     public function storeToolsEvaluasi(Request $request)
     {
         $create = ToolsEvaluasi::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'toolseval_sebelum' => $request->toolseval_sebelum,
             'toolseval_new' => $request->toolseval_new
         ]);
@@ -143,7 +149,8 @@ class ReviewController extends Controller
     public function storePetunjukPraktik(Request $request)
     {
         $create = PetunjukPraktik::create([
-            'warning_id' => $request->warning_id,
+            'judul_id' => $request->judul_id,
+            'instruktur_id' => Auth::user()->instruktur->id,
             'jukpraktik_sebelum' => $request->jukpraktik_sebelum,
             'jukpraktik_new' => $request->jukpraktik_new
         ]);

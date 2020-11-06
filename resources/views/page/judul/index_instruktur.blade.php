@@ -99,7 +99,7 @@
           "data" : "warnings",
           "render": function (data, type, row, meta ) {
             if(data.length >= 2) {
-              return `<a class="btn btn-sm btn-danger" href="warning/kategori/" target="_blank"><i class="fas fa-exclamation-triangle"></i></a>`
+              return `<a class="btn btn-sm btn-danger" href="warning/kategori/${data[0].judul_id}" target="_blank"><i class="fas fa-exclamation-triangle"></i></a>`
             } else {
               return `<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>`
             }
@@ -192,7 +192,7 @@
             row.child( format(row.data()) ).show();
             tr.find('i[name="collapse"]').attr('class', 'fas fa-minus-circle'); // FontAwesome 5
         }
-    } );
+    });
 
     $('.table-judul tbody').on( 'click', '.btn-dark', function () {
         var data = table.row( $(this).parents('tr') ).data();

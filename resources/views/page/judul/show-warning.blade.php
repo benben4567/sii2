@@ -16,7 +16,7 @@
                 <tr>
                     <th>No</th>
                     <th>Judul</th>
-                    <th>Username</th>
+                    <th>Nama Instruktur</th>
                     <th>Aspek</th>
                     <th>Informasi Pendukung</th>
                 </tr>

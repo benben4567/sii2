@@ -13,10 +13,15 @@ class Warning extends Model
         'informasi_pendukung'
     ];
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function peserta()
+    {
+        return $this->belongsTo(Peserta::class);
+    }
 
     public function instruktur()
     {

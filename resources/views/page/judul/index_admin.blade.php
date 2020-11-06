@@ -156,6 +156,7 @@
 
       ]
     });
+    
     function format ( d ) {
       // `d` is the original data object for the row
       return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
@@ -213,14 +214,13 @@
             row.child( format(row.data()) ).show();
             tr.find('i[name="collapse"]').attr('class', 'fas fa-minus-circle'); // FontAwesome 5
         }
-    } );
-
+    });
     
     $('#table-judul tbody').on( 'click', '.btn-show', function () {
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
         showData(data);
-    } );
+    });
 
     function showData(data){
       $.each(data, function (index, value) {
@@ -228,70 +228,34 @@
       });
       $('#show-data').modal('toggle');
     }
+  });
 
-    
-
-  // $('.table-judul tbody').on( 'click', '.detailWarning', function () {
-  //   let id = $(this).data('id')
-  //       $('.warningShow').val(id)
-  //   $.ajax({
-  //     url: 'warning/'+id+'/detail',
-  //     type: "GET",
-  //     dataType: "JSON",
-  //     success: function(data){
-  //         $('#show-warning').modal("show");
-  //         $('.show-title').text('Detail Warning');
-  //       },
-
-  //       error: function(){
-  //         alert("not working properly");
-  //       }
-  //     });
-
-  //   });
-
-  // $('.table-judul tbody').on( 'click', '.detailWarning', function () {
-  //       let id = $(this).data('id')
-  //       let warning = $(this).data('warning')
-  //       let user = $(this).data('user')
-  //       let aspek = $(this).data('aspek')
-  //       let info = $(this).data('info')
-  //       $('.warningShow').text(id)
-  //       $('.judulShow').text(warning)
-  //       $('.userShow').text(user)
-  //       $('.aspekShow').text(aspek)
-  //       $('.infoShow').text(info)
-  //       $('#show-warning').modal('show')
-  //   });
-
-
-    function showWarning(id){
-      console.log(id)
-      $.ajax({
-        url : '/warning/' + id + '/detail',
-        type : "GET",
-        dataType : "JSON",
-        success:function(data){
-          for(var i = 0; i<data.length; ++i){
-            row = data[i];
-            //masukin seluruh isi tabel
-            $('#my-table').append(
-              $('<tr class="empty"></tr>').append(
-                $('<td class="empty"></td>').html(i+1),
-                $('<td class="empty"></td>').html(row.judul.nama_judul),
-                $('<td class="empty"></td>').html(row.user.username),
-                $('<td class="empty"></td>').html(row.aspek),
-                $('<td class="empty"></td>').html(row.informasi_pendukung),
-                )
-                );
-              }
-              $('.show-title').text('Detail Warning');
-              $('#show-warning').modal('show');
-        },
-        error : function(){
-          alert('Not working properly!');
-        }
-      });
+  function showWarning(id){
+    $.ajax({
+      url : '/warning/' + id + '/detail',
+      type : "GET",
+      dataType : "JSON",
+      success:function(data){
+        for(var i = 0; i<data.length; ++i){
+          row = data[i];
+          //masukin seluruh isi tabel
+          $('#my-table').append(
+            $('<tr class="empty"></tr>').append(
+              $('<td class="empty"></td>').html(i+1),
+              $('<td class="empty"></td>').html(row.judul.nama_judul),
+              $('<td class="empty"></td>').html(row.instruktur.atas_nama_rekening),
+              $('<td class="empty"></td>').html(row.aspek),
+              $('<td class="empty"></td>').html(row.informasi_pendukung),
+              )
+              );
+            }
+            $('.show-title').text('Detail Warning');
+            $('#show-warning').modal('show');
+      },
+      error : function(){
+        alert('Not working properly!');
+      }
+    });
     }
 
     $(".close").click(function(){
@@ -348,7 +312,6 @@
         return false;
       }
     });
-  });
 
   function importForm(){
     $('input[name = _method]').val('POST');
@@ -379,6 +342,7 @@
       }
     });
   }
+  
   function deleteData(id){
     swal({
       title: "Apakah anda yakin?",
@@ -415,6 +379,39 @@
   $('#select-all').click(function(){
     $('input[type="checkbox"]').prop('checked', this.checked);
   });
+
+// $('.table-judul tbody').on( 'click', '.detailWarning', function () {
+  //   let id = $(this).data('id')
+  //       $('.warningShow').val(id)
+  //   $.ajax({
+  //     url: 'warning/'+id+'/detail',
+  //     type: "GET",
+  //     dataType: "JSON",
+  //     success: function(data){
+  //         $('#show-warning').modal("show");
+  //         $('.show-title').text('Detail Warning');
+  //       },
+
+  //       error: function(){
+  //         alert("not working properly");
+  //       }
+  //     });
+
+  //   });
+
+  // $('.table-judul tbody').on( 'click', '.detailWarning', function () {
+  //       let id = $(this).data('id')
+  //       let warning = $(this).data('warning')
+  //       let user = $(this).data('user')
+  //       let aspek = $(this).data('aspek')
+  //       let info = $(this).data('info')
+  //       $('.warningShow').text(id)
+  //       $('.judulShow').text(warning)
+  //       $('.userShow').text(user)
+  //       $('.aspekShow').text(aspek)
+  //       $('.infoShow').text(info)
+  //       $('#show-warning').modal('show')
+  //   });
 
 </script>
 @endsection

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kurikulum extends Model
 {
     protected $fillable = [
-        'warning_id',
+        'judul_id',
         'instruktur_id',
         'tujuan',
         'syarat_peserta',

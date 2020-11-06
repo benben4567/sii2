@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetunjukpraktiksTable extends Migration
+class CreateHandoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePetunjukpraktiksTable extends Migration
      */
     public function up()
     {
-        Schema::create('petunjukpraktiks', function (Blueprint $table) {
+        Schema::create('handouts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('warning_id')->constrained();
-            $table->string('petunjukpraktik_sebelum')->nullable();
-            $table->string('petunjukpraktik_new')->nullable();
+            $table->foreignId('judul_id')->constrained();
+            $table->foreignId('instruktur_id')->constrained();
+            $table->string('handout_sebelum')->nullable();
+            $table->string('handout_new')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePetunjukpraktiksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petunjukpraktiks');
+        Schema::dropIfExists('handouts');
     }
 }

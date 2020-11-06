@@ -8,7 +8,8 @@ class MateriTayang extends Model
 {
     protected $table = 'materitayangs';
     protected $fillable = [
-        'warning_id',
+        'judul_id',
+        'instruktur_id',
         'materitayang_sebelum',
         'materitayang_new'
     ];

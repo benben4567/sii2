@@ -14,7 +14,7 @@
           </li>
 
           <li class="breadcrumb-item active">
-          {{$detail[0]->judul['nama_judul'] ?? ''}}
+          {{$judul[0]['judul']->nama_judul ?? ''}}
           </li>
         </ol>
         </div>
@@ -113,7 +113,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="kurikulum-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+          <h5 class="kurikulum-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -121,7 +121,7 @@
         <form action="/review/kurikulum" method="post">
           @csrf
           <div class="modal-body">
-		  <input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+		  <input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
 		  <input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
             <div class="form-group">
               <label for="tujuan" class="col-form-label">Tujuan:</label>
@@ -184,7 +184,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+		        <h5 class="modal-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -192,7 +192,8 @@
 		      <div class="modal-body">
 		        <form action="/review/silabus" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="bahasan" class="col-form-label">Pokok/Sub Pokok Bahasan:</label>
 		            <input type="text" class="form-control" id="bahasan" name="bahasan">
@@ -234,7 +235,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+		        <h5 class="modal-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -242,7 +243,8 @@
 		      <div class="modal-body">
 		        <form action="/review/handout" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="handout_sebelum" class="col-form-label">Previous Handout:</label>
 		            <input type="text" class="form-control" id="handout_sebelum" name="handout_sebelum">
@@ -267,7 +269,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+		        <h5 class="modal-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -275,7 +277,8 @@
 		      <div class="modal-body">
 				<form action="/review/materi_tayang" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="materi_sebelum" class="col-form-label">Previous Materi Tayang:</label>
 		            <input type="text" class="form-control" id="materi_sebelum" name="materi_sebelum">
@@ -300,7 +303,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+		        <h5 class="modal-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -308,7 +311,8 @@
 		      <div class="modal-body">
 				<form action="/review/petunjuk_instruktur" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="jukins_sebelum" class="col-form-label">Previous Petunjuk Instruktur:</label>
 		            <input type="text" class="form-control" id="jukins_sebelum" name="jukins_sebelum">
@@ -333,7 +337,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+		        <h5 class="modal-title" id="exampleModalLabel">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -341,7 +345,8 @@
 		      <div class="modal-body">
 		        <form action="/review/petunjuk_penyelenggara" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="jukpen_sebelum" class="col-form-label">Previous Petunjuk Penyelenggara:</label>
 		            <input type="text" class="form-control" id="jukpen_sebelum" name="jukpen_sebelum">
@@ -366,7 +371,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-			  <h5 class="modal-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+			  <h5 class="modal-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -374,7 +379,8 @@
 			  <div class="modal-body">
 		        <form action="/review/tools_evaluasi" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="toolseval_sebelum" class="col-form-label">Previous Tools Evaluasi:</label>
 		            <input type="text" class="form-control" id="toolseval_sebelum" name="toolseval_sebelum">
@@ -400,7 +406,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-			  <h5 class="modal-title">{{$detail[0]->judul['nama_judul'] ?? ''}}</h5>
+			  <h5 class="modal-title">{{$judul[0]['judul']->nama_judul ?? ''}}</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -408,7 +414,8 @@
 		      <div class="modal-body">
 		        <form action="/review/petunjuk_praktik" method="post">
 				@csrf
-				<input type="hidden" value="{{$detail[0]->warning_id ?? ''}}" name="warning_id">
+				<input type="hidden" value="{{$judul[0]['judul_id']}}" name="judul_id">
+		  		<input type="hidden" value="{{Auth::user()->instruktur->id}}" id="instruktur_id" name="instruktur_id"/>
 		          <div class="form-group">
 		            <label for="jukpraktik_sebelum" class="col-form-label">Previous Petunjuk Praktik:</label>
 		            <input type="text" class="form-control" id="jukpraktik_sebelum" name="jukpraktik_sebelum">

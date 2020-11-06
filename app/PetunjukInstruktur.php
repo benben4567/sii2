@@ -8,7 +8,8 @@ class PetunjukInstruktur extends Model
 {
     protected $table = 'petunjukinstrukturs';
     protected $fillable = [
-        'warning_id',
+        'judul_id',
+        'instruktur_id',
         'petunjukinstruktur_sebelum',
         'petunjukinstruktur_new'
     ];
