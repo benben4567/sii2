@@ -128,8 +128,6 @@ class InstrukturController extends Controller
           break;
       }
     }
-
-
     // dd($instruktur);
     return view('page.instruktur.show', compact("instruktur"));
   }

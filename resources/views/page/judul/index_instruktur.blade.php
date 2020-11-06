@@ -46,7 +46,7 @@
                   <table  class="table table-bordered table-responsive nowrap table-judul" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                       <tr class="text-center">
-                        <th>No</th>
+                        <th>Detail</th>
                         <th>Warning</th>
                         <th>Add Warning</th>
                         <th>Nama Judul</th>
@@ -81,7 +81,7 @@
       
       "columns": [
         {
-          "className":      'details-control',
+          "className":      'details-control text-center',
           "orderable":      false,
           "data":           null,
           "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'

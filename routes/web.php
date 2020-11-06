@@ -39,6 +39,7 @@ Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function 
   Route::get('warning/', ['as' => 'warning.index', 'uses' => 'WarningController@index']);
   Route::get('warning/getdata', ['as' => 'warning.getdata', 'uses' => 'WarningController@getData']);
   Route::get('warning/edit', ['as' => 'warning.edit', 'uses' => 'WarningController@edit']);
+  Route::get('warning/show/{id}/{type?}', ['as' => 'warning.show', 'uses' => 'WarningController@showDetail']);
 
   // Instruktur
   Route::get('instruktur/', ['as' => 'instruktur.index', 'uses' => 'InstrukturController@index']);
@@ -121,7 +122,6 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   // Warning
   Route::get('warning/kategori/{id}', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);
   Route::post('warning/store', ['as' => 'warning.store', 'uses' => 'WarningController@store']);
-  // Route::get('warning/show/{id}/{type?}', ['as' => 'warning.show', 'uses' => 'WarningController@show']);
 
   // Review judul pembelajaran
   Route::get('review', ['as' => 'review', 'uses' => 'ReviewController@index']);

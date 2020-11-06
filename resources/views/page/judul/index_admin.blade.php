@@ -53,7 +53,7 @@
                     <thead>
                       <tr>
                         {{-- <th width="20"><input type="checkbox" id="select-all" value="1" ></th> --}}
-                        <th>No</th>
+                        <th>Detail</th>
                         <th>Warning</th>
                         <th>Nama Judul</th>
                         <th>Jenis Diklat</th>
@@ -100,7 +100,7 @@
       
       "columns": [
         {
-          "className":      'details-control',
+          "className":      'details-control text-center',
           "orderable":      false,
           "data":           null,
           "defaultContent": '<i name="collapse" class="fas fa-plus-circle"></i>'
@@ -143,10 +143,17 @@
         },
         {
           "targets" : 5,
-          "data" : null,
-          "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
+          "className" : "text-center",
+          "data" : 'judul',
+          "defaultContent": `<button type="button" class="btn btn-sm btn-show btn-info"><i class="fas fa-eye"></i></button>`
         }
-      ]
+        ]
+    });
+
+    $('#table-judul tbody').on( 'click', '.btn-show', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data)
+        location.href = "/warning/show/"+data.id
     });
 
     function format ( d ) {
