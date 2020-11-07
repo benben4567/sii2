@@ -14,9 +14,11 @@ class JudulController extends Controller
   {
     $aspeks = Aspek::get();
     $role = Auth::user()->roles->pluck('name');
+
     $itung = Warning::count('judul_id');
     $warnings = Warning::with('judul')->get();
     // dd($warnings);
+
     if ($role[0] == 'super-admin') {
       return view('page.judul.index_admin', compact('warnings', 'itung'));
     } else {

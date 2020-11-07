@@ -79,7 +79,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a class="btn btn-secondary" href="{{ route('instruktur.narasumber.index') }}" role="button">Kembali</a>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary submit">Simpan</button>
                   </div>
                 </div>
               </form>

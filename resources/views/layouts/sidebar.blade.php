@@ -110,9 +110,14 @@
         {{-- Evaluasi Instruktur (admin) --}}
         @role('super-admin')
         <li>
-          <a href="#" class="waves-effect">
-            <i class="fas fa-suitcase"></i><span> Evaluasi Instruktur </span>
+          <a href="javascript:void(3);" class="waves-effect"><i class="fab fa-readme"></i>
+            <span> Evaluasi Level Satu <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i>
+            </span></span>
           </a>
+          <ul class="submenu">
+            <li><a href="{{ route('admin.evaluasi.terbuka') }}">Evaluasi Terbuka</a></li>
+            <li><a href="{{ route('admin.evaluasi.tertutup') }}">Evaluasi Tertutup</a></li>
+          </ul>
         </li>
         @endrole
 

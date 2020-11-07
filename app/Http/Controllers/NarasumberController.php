@@ -62,6 +62,11 @@ class NarasumberController extends Controller
         $namafilesertifikat = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
         $path = $request->file('file_sertifikat_pembelajaran')->storeAs('public/file/narasumber/file_sertifikat_pembelajaran', $namafilesertifikat);
       }
+
+      $request->validate([
+        'file_pendidikan_formal' => 'required|file|max:5000|mimes:pdf,docx,doc',
+        'file_sertifikat_pembelajaran' => 'required|file|max:5000|mimes:pdf,docx,doc'
+      ]);
       $narasumber = Narasumber::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
         'pengalaman_bidang' => $request->pengalaman_bidang,
         'pendidikan_formal' => $request->pendidikan_formal,

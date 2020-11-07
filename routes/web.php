@@ -53,6 +53,12 @@ Route::group(['middleware' => ['role:super-admin'], 'as' => 'admin.'], function 
   Route::get('penyusun/create', ['as' => 'penyusun.create', 'uses' => 'PenyusunController@create']);
   Route::get('penyusun/update', ['as' => 'penyusun.update', 'uses' => 'PenyusunController@update']);
 
+  //Evaluasi 
+  Route::get('evaluasi/terbuka', ['as' => 'evaluasi.terbuka', 'uses' => 'EvaluasiController@indexTerbuka']);
+  Route::get('evaluasi/getdataterbuka', ['as' => 'evaluasi.getdataterbuka', 'uses' => 'EvaluasiController@getDataTerbuka']);
+  Route::get('evaluasi/tertutup', ['as' => 'evaluasi.tertutup', 'uses' => 'EvaluasiController@indexTertutup']);
+  Route::get('evaluasi/getdatatertutup', ['as' => 'evaluasi.getdatatertutup', 'uses' => 'EvaluasiController@getDataTertutup']);
+
   // Role
   Route::get('role', ['as' => 'role.create', 'uses' => 'RoleController@create']);
   Route::post('role', ['as' => 'role.store', 'uses' => 'RoleController@store']);

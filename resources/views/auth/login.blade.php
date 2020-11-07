@@ -18,7 +18,7 @@
       <div class="col-lg-6 border-left">
         <div class="p-3">
           <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
-          <p class="text-muted text-center">Sign in to continue to continue</p>
+          <p class="text-muted text-center">Sign in to continue</p>
 
           <form class="form-horizontal m-t-30" method="POST" action="{{ route('login') }}">
             @csrf
