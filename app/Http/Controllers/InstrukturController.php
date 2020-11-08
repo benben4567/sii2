@@ -123,6 +123,27 @@ class InstrukturController extends Controller
             ->addIndexColumn()
             ->make(true);
           break;
+        case 'jurnalilmiah':
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('jurnalilmiahs', 'jurnalilmiahs.instruktur_id', "=", "instrukturs.id")
+            ->join('juduls', 'juduls.id', "=", "jurnalilmiahs.judul_id")
+            ->where('pesertas.nip', "=", $nip)
+            ->get();
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
+          break;
+        case 'toefl':
+          $instruktur = DB::table('instrukturs')
+            ->join('pesertas', 'pesertas.id', "=", "instrukturs.peserta_id")
+            ->join('toefls', 'toefls.instruktur_id', "=", "instrukturs.id")
+            ->where('pesertas.nip', "=", $nip)
+            ->get();
+          return DataTables::of($instruktur)
+            ->addIndexColumn()
+            ->make(true);
+          break;
 
         default:
           break;

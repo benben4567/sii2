@@ -49,8 +49,10 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sertifikasi</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" id="bidang-tab" data-toggle="tab" href="#bidang">Bidang</a>
+                    <a class="dropdown-item" id="jurnal-ilmiah-tab" data-toggle="tab" href="#jurnal-ilmiah">Jurnal Ilmiah</a>
                     <a class="dropdown-item" id="kompetensi-tab" data-toggle="tab" href="#kompetensi">Kompetensi</a>
+                    <a class="dropdown-item" id="bidang-tab" data-toggle="tab" href="#bidang">Bidang</a>
+                    <a class="dropdown-item" id="toefl-tab" data-toggle="tab" href="#toefl">Toefl</a>
                   </div>
                 </li>
               </ul>
@@ -337,6 +339,70 @@
                     </div>
                   </div>
                 </div>
+
+              <div class="tab-pane" id="jurnal-ilmiah" role="tabpanel" aria-labelledby="jurnal-ilmiah-tab">
+                <div class="card mt-2">
+                  <div class="card-header">
+                    <h6>Jurnal Ilmiah</h6>
+                  </div>
+                    <div class="card-body">
+                      <table class="table table-bordered" id="table-jurnal-ilmiah" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Judul</th>
+                            <th>Tingkatan</th>
+                            <th>Lembaga Penyelenggara</th>
+                            <th>Tanggal Submit</th>
+                            <th>Tanggal Presentasi</th>
+                            <th>File Jurnal Ilmiah</th>
+                            <th>File Abstrak</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="toefl" role="tabpanel" aria-labelledby="toefl-tab">
+                  <div class="card mt-2">
+                    <div class="card-header">
+                      <h6>Sertifikasi Toefl</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-bordered" id="table-toefl" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Skor Toefl</th>
+                            <th>Tipe</th>
+                            <th>Lembaga Penyelenggara</th>
+                            <th>Masa Berlaku</th>
+                            <th>File Sertifikat</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                        </tbody>
+
+                        <tfoot>
+                          <tr>
+                            <th>No</th>
+                            <th>Skor Toefl</th>
+                            <th>Tipe</th>
+                            <th>Lembaga Penyelenggara</th>
+                            <th>Masa Berlaku</th>
+                            <th>File Sertifikat</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+
               </div>
             </div>
           </div>
@@ -524,6 +590,69 @@
           "data" : 'nama_file',
           "render": function ( data, type, row, meta ) {
             return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/file_sertifikasi_bidang/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
+      });
+
+      var table8 = $('#table-jurnal-ilmiah').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/jurnalilmiah/' }}",
+          "type" : "GET"
+        },
+        "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'nama_judul', name: 'nama_judul'},
+            {data: 'lembaga_penyelenggara', name: 'lembaga_penyelenggara'},
+            {data: 'tingkatan', name: 'tingkatan'},
+            {data: 'tanggal_submit', name: 'tanggal_submit'},
+            {data: 'tanggal_presentasi', name: 'tanggal_presentasi'},
+      ],
+      "columnDefs": [
+        {
+          "targets" : 6,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/jurnalilmiah/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        },
+        {
+          "targets" : 7,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/jurnalilmiah/abstrak/${data}"><i class="fas fa-download"></i></a>` ;
+          }
+        }
+      ]
+      });
+
+      var table9 = $('#table-toefl').DataTable({
+        "responsive" : true,
+        "processing" : true,
+        "serverside" : true,
+        "ajax":{
+          "url" : "{{ '/instruktur/show/'.$instruktur->nip.'/toefl/' }}",
+          "type" : "GET"
+        },
+        "columns": [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'skor', name: 'skor'},
+            {data: 'tipe', name: 'tipe'},
+            {data: 'lembaga_penyelenggara', name: 'lembaga_penyelenggara'},
+            {data: 'masa_berlaku', name: 'masa_berlaku'}
+      ],
+      "columnDefs": [
+        {
+          "targets" : 5,
+          "className": 'text-center',
+          "data" : 'nama_file',
+          "render": function ( data, type, row, meta ) {
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/toefl/${data}"><i class="fas fa-download"></i></a>` ;
           }
         }
       ]
