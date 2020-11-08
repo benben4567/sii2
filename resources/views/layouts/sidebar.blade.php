@@ -49,11 +49,11 @@
             <span> Pengalaman <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span>
           </a>
           <ul class="submenu">
-            <li><a href="{{ route('instruktur.magang.index') }}">Magang</a></li>
-            <li><a href="{{ route('instruktur.mengajar.index') }}">Mengajar</a></li>
             <li><a href="{{ route('instruktur.pendalaman-materi.index') }}">Pendalaman Materi</a></li>
             <li><a href="{{ route('instruktur.narasumber.index') }}">Narasumber</a></li>
             <li><a href="{{ route('instruktur.penyusun.index') }}">Penyusun</a></li>
+            <li><a href="{{ route('instruktur.mengajar.index') }}">Mengajar</a></li>
+            <li><a href="{{ route('instruktur.magang.index') }}">Magang</a></li>
           </ul>
         </li>
         @endrole
@@ -66,9 +66,9 @@
           {{-- admin --}}
           @role('super-admin')
           <ul class="submenu">
-            <li><a href="{{ route('admin.materi.index')}}">Materi</a></li>
             <li><a href="{{ route('admin.judul.index')}}">Judul Pembelajaran</a></li>
             <li><a href="{{ route('admin.warning.index')}}">Early Warning</a></li>
+            <li><a href="{{ route('admin.materi.index')}}">Materi</a></li>
           </ul>
           @endrole
 
@@ -128,8 +128,10 @@
             <span> Sertifikasi <span class="float-right menu-arrow"> <i class="mdi mdi-plus"></i></span> </span>
           </a>
           <ul class="submenu">
-            <li><a href="{{ route('instruktur.kompetensi.index') }}">Kompetensi</a></li>
-            <li><a href="{{ route('instruktur.bidang.index') }}">Bidang</a></li>
+          <li><a href="{{ route('instruktur.jurnalilmiah.index') }}">Jurnal Ilmiah</a></li>
+          <li><a href="{{ route('instruktur.kompetensi.index') }}">Kompetensi</a></li>
+          <li><a href="{{ route('instruktur.bidang.index') }}">Bidang</a></li>
+          <li><a href="{{ route('instruktur.toefl.index') }}">Toefl</a></li>
           </ul>
         </li>
         @endrole

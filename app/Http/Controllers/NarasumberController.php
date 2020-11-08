@@ -64,8 +64,8 @@ class NarasumberController extends Controller
       }
 
       $request->validate([
-        'file_pendidikan_formal' => 'required|file|max:5000|mimes:pdf,docx,doc',
-        'file_sertifikat_pembelajaran' => 'required|file|max:5000|mimes:pdf,docx,doc'
+        'file_pendidikan_formal' => 'required|file|max:5000|mimes:pdf',
+        'file_sertifikat_pembelajaran' => 'required|file|max:5000|mimes:pdf'
       ]);
       $narasumber = Narasumber::create([ //MODIFIKASI BAGIAN INI DENGAN MEMASUKKANYA KE DALAM VARIABLE $USER
         'pengalaman_bidang' => $request->pengalaman_bidang,

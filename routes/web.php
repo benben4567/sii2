@@ -121,9 +121,20 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   Route::get('pengalaman-penyusun/create', ['as' => 'penyusun.create', 'uses' => 'PenyusunController@create']);
   Route::post('pengalaman-penyusun/store', ['as' => 'penyusun.store', 'uses' => 'PenyusunController@store']);
   Route::get('pengalaman-penyusun/edit', ['as' => 'penyusun.edit', 'uses' => 'PenyusunController@edit']);
+
+  // Toefl
+  Route::get('pengalaman-toefl', ['as' => 'toefl.index', 'uses' => 'ToeflController@index']);
+  Route::get('pengalaman-toefl/getdata', ['as' => 'toefl.getdata', 'uses' => 'ToeflController@getData']);
+  Route::post('pengalaman-toefl', ['as' => 'toefl.store', 'uses' => 'ToeflController@store']);
+
+  // Jurnal Ilmiah
+  Route::get('pengalaman/jurnalilmiah', ['as' => 'jurnalilmiah.index', 'uses' => 'JurnalIlmiahController@index']);
+  Route::get('pengalaman-jurnalilmiah/getdata', ['as' => 'jurnalilmiah.getdata', 'uses' => 'JurnalIlmiahController@getData']);
+
   // Judul
   Route::get('judul-instruktur', ['as' => 'judul.index', 'uses' => 'JudulController@index']);
   Route::get('judul-instruktur/getdata', ['as' => 'judul.getdata', 'uses' => 'JudulController@getData']);
+
 
   // Warning
   Route::get('warning/kategori/{id}', ['as' => 'warning.kategori', 'uses' => 'WarningController@show']);

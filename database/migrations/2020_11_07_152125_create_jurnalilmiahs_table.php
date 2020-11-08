@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateToeflsTable extends Migration
+class CreateJurnalilmiahsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateToeflsTable extends Migration
      */
     public function up()
     {
-        Schema::create('toefls', function (Blueprint $table) {
+        Schema::create('jurnalilmiahs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('instruktur_id')->constrained();
-            $table->integer('skor');
-            $table->text('tipe');
+            $table->foreignId('judul_id')->constrained();
+            $table->string('tingkatan');
+            $table->string('file_jurnal_ilmiah');
+            $table->string('file_abstrak');
             $table->string('lembaga_penyelenggara');
-            $table->date('masa_berlaku');
-            $table->string('file_sertifikat');
+            $table->date('tanggal_submit');
+            $table->date('tanggal_presentasi');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreateToeflsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('toefls');
+        Schema::dropIfExists('jurnalilmiahs');
     }
 }

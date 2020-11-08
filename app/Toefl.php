@@ -12,6 +12,7 @@ class Toefl extends Model
         'tipe',
         'lembaga_penyelenggara',
         'masa_berlaku',
-        'file_sertifikat'
+        'file_sertifikat',
+        'instruktur_id'
     ];
 }
