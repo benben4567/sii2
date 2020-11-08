@@ -109,15 +109,15 @@
         {
           "targets" : 7,
           "className": 'text-center',
-          "data" : 'file_sertifikat',
+          "data" : 'file_jurnal_ilmiah',
           "render": function ( data, type, row, meta ) {
-            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/jurnalilmiah/${data}"><i class="fas fa-download"></i></a>` ;
+            return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/jurnalilmiah/jurnalilmiah/${data}"><i class="fas fa-download"></i></a>` ;
           }
         },
         {
           "targets" : 8,
           "className": 'text-center',
-          "data" : 'file_sertifikat',
+          "data" : 'file_abstrak',
           "render": function ( data, type, row, meta ) {
             return `<a class="btn btn-sm btn-primary" role="button" target="_blank" href="/storage/file/jurnalilmiah/abstrak/${data}"><i class="fas fa-download"></i></a>` ;
           }

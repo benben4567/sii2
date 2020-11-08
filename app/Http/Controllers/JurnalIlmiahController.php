@@ -52,7 +52,7 @@ class JurnalIlmiahController extends Controller
             if ($request->hasFile('file_jurnal_ilmiah')) {
                 $file = $request->file('file_jurnal_ilmiah');
                 $jurnalilmiah = Str::random(10) . '-' . time() . '.' . $file->getClientOriginalExtension();
-                $path = $request->file('file_jurnal_ilmiah')->storeAs('public/file/jurnalilmiah/', $jurnalilmiah);
+                $path = $request->file('file_jurnal_ilmiah')->storeAs('public/file/jurnalilmiah/jurnalilmiah/', $jurnalilmiah);
                 // $file->move('public/file/toefl', $jurnalilmiah);
             }
 
