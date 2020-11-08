@@ -130,6 +130,8 @@ Route::group(['middleware' => ['role:instruktur'], 'as' => 'instruktur.'], funct
   // Jurnal Ilmiah
   Route::get('pengalaman/jurnalilmiah', ['as' => 'jurnalilmiah.index', 'uses' => 'JurnalIlmiahController@index']);
   Route::get('pengalaman-jurnalilmiah/getdata', ['as' => 'jurnalilmiah.getdata', 'uses' => 'JurnalIlmiahController@getData']);
+  Route::get('pengalaman-jurnalilmiah/select2', ['as' => 'jurnalilmiah.select2', 'uses' => 'JurnalIlmiahController@select2']);
+  Route::post('pengalaman/jurnalilmiah', ['as' => 'jurnalilmiah.store', 'uses' => 'JurnalIlmiahController@store']);
 
   // Judul
   Route::get('judul-instruktur', ['as' => 'judul.index', 'uses' => 'JudulController@index']);

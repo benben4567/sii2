@@ -8,12 +8,13 @@ class JurnalIlmiah extends Model
 {
     protected $table = 'jurnalilmiahs';
     protected $fillable = [
-        'judul',
+        'instruktur_id',
+        'judul_id',
         'tingkatan',
         'file_jurnal_ilmiah',
         'file_abstrak',
         'lembaga_penyelenggara',
-        'tanggal_selesai',
+        'tanggal_submit',
         'tanggal_presentasi'
     ];
 }

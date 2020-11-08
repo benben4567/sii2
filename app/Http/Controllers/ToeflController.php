@@ -21,7 +21,9 @@ class ToeflController extends Controller
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $toefl = DB::table('toefls')->get();
+            $toefl = DB::table('toefls')
+                ->join('instrukturs', 'instrukturs.id', "toefls.instruktur_id")
+                ->get();
             // dd($toefl);
             return DataTables::of($toefl)
                 ->addIndexColumn()

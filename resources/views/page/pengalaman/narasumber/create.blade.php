@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h5>Tambah Pengalaman Narasumber</h5>
               </div>
-            <form class="form" method="post" enctype="multipart/form-data" data-toggle="validator" action="/pengalaman-narasumber/store">
+            <form class="form" id="form-narasumber" method="post" enctype="multipart/form-data" data-toggle="validator" action="/pengalaman-narasumber/store">
                 {{csrf_field()}} {{method_field('POST')}}
                 <div class="card-body">
                   <div class="form-group">
@@ -55,7 +55,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="file_pendidikan_formal">Bukti Dukung Pendidikan Formal</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary" class="form-control filestyle">
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary" class="form-control dropify">
                         <span class="help-block with-errors"></span>
                       </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="file_sertifikat_pembelajaran">Bukti Dukung Sertifikasi</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran"  data-buttonname="btn-secondary"  class="form-control dropify">
                       </div>
                     </div>
                   </div>
@@ -123,6 +123,16 @@ $('select#judul_id').select2({
     cache: true
   }
 });
+
+
+$('#form-narasumber .dropify').dropify({
+      messages: {
+          'default': 'Drag and drop a file here or click',
+          'replace': 'Drag and drop or click to replace',
+          'remove':  'Hapus',
+          'error':   'Ooops, something wrong happended.'
+      }
+    });
 
 </script>
 @endpush

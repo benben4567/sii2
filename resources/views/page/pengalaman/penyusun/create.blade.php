@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h5>Tambah Pengalaman Penyusun</h5>
               </div>
-              <form class="form" method="post" enctype="multipart/form-data" action="/pengalaman-penyusun/store">
+              <form class="form" id="form-penyusun" method="post" enctype="multipart/form-data" action="/pengalaman-penyusun/store">
               @csrf
                 <div class="card-body">
 
@@ -40,12 +40,21 @@
 
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="file_sertifikat_pembelajaran">Bukti Dukung Sertifikasi</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran" data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <label for="pendidikan_formal">Pendidikan Formal</label>
+                        <select class="form-control" name="pendidikan_formal" id="pendidikan_formal">
+                          <option value="" selected disabled>- pilih -</option>
+                          <option>SMA</option>
+                          <option>D3</option>
+                          <option>S1</option>
+                          <option>S2</option>
+                          <option>S3</option>
+                        </select>
                       </div>
                     </div>
-                  </div>
 
+
+                    
+                  </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
@@ -62,22 +71,15 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="pendidikan_formal">Pendidikan Formal</label>
-                        <select class="form-control" name="pendidikan_formal" id="pendidikan_formal">
-                          <option value="" selected disabled>- pilih -</option>
-                          <option>SMA</option>
-                          <option>D3</option>
-                          <option>S1</option>
-                          <option>S2</option>
-                          <option>S3</option>
-                        </select>
+                        <label for="file_sertifikat_pembelajaran">Bukti Dukung Sertifikasi</label>
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_sertifikat_pembelajaran" id="file_sertifikat_pembelajaran" data-buttonname="btn-secondary"  class="form-control dropify">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="file_pendidikan_formal">Bukti Dukung Pendidikan Formal</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_pendidikan_formal" id="file_pendidikan_formal"  data-buttonname="btn-secondary"  class="form-control dropify">
                       </div>
                     </div>
                   </div>
@@ -86,13 +88,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="file_bukti_karyatulis">Karya Ilmiah</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_bukti_karyatulis" id="file_bukti_karyatulis"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_bukti_karyatulis" id="file_bukti_karyatulis"  data-buttonname="btn-secondary"  class="form-control dropify">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="file_penyusun">Materi Pembelajaran</label>
-                        <input type="file" data-allowed-file-extensions="pdf" name="file_penyusun" id="file_penyusun"  data-buttonname="btn-secondary"  class="form-control filestyle">
+                        <input type="file" data-allowed-file-extensions="pdf" name="file_penyusun" id="file_penyusun"  data-buttonname="btn-secondary"  class="form-control dropify">
                       </div>
                     </div>
                   </div>
@@ -144,6 +146,16 @@ $('select#judul_id').select2({
     cache: true
   }
 });
+
+$('#form-penyusun .dropify').dropify({
+      messages: {
+          'default': 'Drag and drop a file here or click',
+          'replace': 'Drag and drop or click to replace',
+          'remove':  'Hapus',
+          'error':   'Ooops, something wrong happended.'
+      }
+    });
+
 </script>
 
 @endpush

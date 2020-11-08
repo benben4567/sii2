@@ -41,6 +41,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
+                          <th>Nama Instruktur</th>
                           <th>Skor Toefl</th>
                           <th>Tipe Ujian</th>
                           <th>Lembaga Penyelenggara</th>
@@ -57,6 +58,7 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
+                          <th>Nama Instruktur</th>
                           <th>Skor Toefl</th>
                           <th>Tipe Ujian</th>
                           <th>Lembaga Penyelenggara</th>
@@ -92,6 +94,7 @@
       },
       "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'atas_nama_rekening', name: 'atas_nama_rekening'},
             {data: 'skor', name: 'skor'},
             {data: 'tipe', name: 'tipe'},
             {data: 'lembaga_penyelenggara', name: 'lembaga_penyelenggara'},
@@ -99,7 +102,7 @@
       ],
       "columnDefs": [
         {
-          "targets" : 5,
+          "targets" : 6,
           "className": 'text-center',
           "data" : 'file_sertifikat',
           "render": function ( data, type, row, meta ) {
@@ -107,7 +110,7 @@
           }
         },
         {
-        "targets" : 6,
+        "targets" : 7,
         "data" : null,
         "defaultContent": "<button type=\"button\" class=\"btn btn-sm btn-show btn-info\"><i class=\"fas fa-eye\"></i></button>"
         }]
